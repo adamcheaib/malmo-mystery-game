@@ -10,16 +10,19 @@ const statue_coords =
     }
 
 navigator.geolocation.getCurrentPosition((position) => {
-    console.log(position);
-
+    // create map
     var map = L.map('map', {enableHighAccuracy: true, watch: true}).setView([position.coords.latitude, position.coords.longitude], 15);
+
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
+    // create marker
     var marker = L.marker([position.coords.latitude, position.coords.longitude]).addTo(map);
 
+
+    // create circles
     for (const location in statue_coords) {
         L.circle([statue_coords[location]["latitude"], statue_coords[location]["longitude"]], {
             color: statue_coords[location]["color"],
@@ -29,16 +32,12 @@ navigator.geolocation.getCurrentPosition((position) => {
         }).addTo(map);
     }
 
-    map.on('locationfound', (e) => {
-        console.log("hej");
-        marker.setLatLng([e.latlng.lat, e.latlng.lng]); 
-    })
-
-    // map.on('click', (e) => {console.log(e);
-    //     marker.setLatLng([e.latlng.lat, e.latlng.lng]); 
-    //     for (const location in statue_coords) {
-
-    //     }
-    //     // L.marker([e.latlng.lat, e.latlng.lng]).addTo(map);
-    // });
+    setInterval( () => {
+        navigator.geolocation.getCurrentPosition((position) => marker.setLatLng([position.coords.latitude, position.coords.longitude]));
+        
+        // map.on('locationfound', function(ev){
+        //     console.log(ev.latlng);
+        //     marker.setLatLng(ev.latlng);
+        // })
+    }, 1000 );
 })
