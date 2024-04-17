@@ -12,7 +12,7 @@ const statue_coords =
 navigator.geolocation.getCurrentPosition((position) => {
     console.log(position);
 
-    var map = L.map('map').setView([position.coords.latitude, position.coords.longitude], 15);
+    var map = L.map('map', {enableHighAccuracy: true, watch: true}).setView([position.coords.latitude, position.coords.longitude], 15);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
