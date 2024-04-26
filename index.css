@@ -7,7 +7,7 @@ body { margin: 0; }
 
 #wrapper { position: relative; height: 100vh; width: 100vw; }
 
-#map { height: 100%; }
+#map { height: 100%; filter: brightness(70%) }
 
 #ui_container 
 {
@@ -51,6 +51,11 @@ body { margin: 0; }
 
 .supertest {
     background-color: aqua;
+}
+
+#mission_board {
+    grid-row: 1;
+    grid-column: 3;
 }
 
 #dialogue_container {

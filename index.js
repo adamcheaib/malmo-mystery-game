@@ -1,5 +1,8 @@
+import { testing } from "./distance.js";
+import { update_missions, mission_options } from "./missions.js";
+
 // var map = L.map('map').setView([55.60275864327367, 13.000073510709273], 13);
-const statue_coords = 
+export const statue_coords = 
     {
         adolf: {latitude: 55.606749499890064, longitude: 13.000073510709273, color: "red"},
         gass: {latitude: 55.602315039588795, longitude: 12.98734215319501, color: "green"},
@@ -17,6 +20,7 @@ let currentPosition = [];
 navigator.geolocation.getCurrentPosition(createMap, function (er) {console.log(er)}, {enableHighAccuracy: true});
 function createMap (position) {
     currentPosition = [position.coords.latitude, position.coords.longitude];
+    update_missions("post", {newText: mission_options["none"]()});
 
     // map
     var map = L.map('map').setView([position.coords.latitude, position.coords.longitude], 15);
@@ -29,14 +33,6 @@ function createMap (position) {
     var marker = L.marker([position.coords.latitude, position.coords.longitude]).addTo(map);
 
     // create circles
-    L.circle(main, {
-        color: "black",
-        stroke: false,
-        // fillColor: statue_coords[location]["color"],
-        fillOpacity: 0.25,
-        radius: 800
-    }).addTo(map);
-
     for (const location in statue_coords) {
         let circle = L.circle([statue_coords[location]["latitude"], statue_coords[location]["longitude"]], {
             color: statue_coords[location]["color"],
@@ -45,14 +41,22 @@ function createMap (position) {
             radius: 50
         }).addTo(map);
     }
+    L.circle(main, {
+        color: "black",
+        stroke: false,
+        fillOpacity: 0.15,
+        radius: 800
+    }).addTo(map);
 
     map.locate({watch: true, enableHighAccuracy: true, timeout: 2000, maximumAge: Infinity})
         .on("locationfound", e => {
             console.log(e.latitude, e.longitude); 
             currentPosition = [e.latitude, e.longitude];
             marker.setLatLng(currentPosition);
+
+            testing(currentPosition, map);
         })
-        .on("locationerror", e => {console.log(e)})
+        .on("locationerror", e => {})
 
     document.querySelector(".supertest").addEventListener("click", e => {
         map.flyTo(currentPosition, 18, {duration: 0.8});
