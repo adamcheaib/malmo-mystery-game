@@ -1,44 +1,46 @@
-// var map = L.map('map').setView([55.60275864327367, 13.000073510709273], 13);
-const statue_coords = 
-    {
-        storTorg: {latitude: 55.606749499890064, longitude: 13.000073510709273, color: "red"},
-        folketsPark: {latitude: 55.59347581530123, longitude: 13.013949793519787, color: "green"},
-        soderTull: {latitude: 55.60132802122993, longitude: 13.000414613334193, color: "blue"},
-        mollan: {latitude: 55.591883687522206, longitude: 13.007768948210334, color: "yellow"},
-        vallGatan: {latitude: 55.607391899774534, longitude: 12.99839459721525, color: "orange"},
-        kungsParken: {latitude: 55.60371767788408, longitude: 12.992158258580288, color: "purple"},
-    }
+"use strict"
 
-navigator.geolocation.getCurrentPosition((position) => {
-    console.log(position);
+const hamburger_btn = document.getElementById("hamburger_menu");
 
-    var map = L.map('map').setView([position.coords.latitude, position.coords.longitude], 15);
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(map);
+function load_phone_menu(event) {
+    event.target.style.pointerEvents = "none";
+    const container = document.createElement("div");
+    const menu_btns_container = document.createElement("div");
+    const close_space = document.createElement("div");
 
-    var marker = L.marker([position.coords.latitude, position.coords.longitude]).addTo(map);
+    container.id = "hamburger_menu_shown";
+    menu_btns_container.id = "menu_btns_container";
+    close_space.id = "hamburger_menu_close";
 
-    for (const location in statue_coords) {
-        L.circle([statue_coords[location]["latitude"], statue_coords[location]["longitude"]], {
-            color: statue_coords[location]["color"],
-            fillColor: statue_coords[location]["color"],
-            fillOpacity: 0.5,
-            radius: 100
-        }).addTo(map);
-    }
+    menu_btns_container.innerHTML = `
+        <h3 style="color: white; border-bottom: solid 1px white">Meny</h3>
+        <div class="menu_btn">Spela</div>
+        <div class="menu_btn">Info</div>
+        <div class="menu_btn">Guide</div>`;
 
-    map.on('locationfound', (e) => {
-        console.log("hej");
-        marker.setLatLng([e.latlng.lat, e.latlng.lng]); 
-    })
+    container.appendChild(menu_btns_container);
+    container.appendChild(close_space);
 
-    // map.on('click', (e) => {console.log(e);
-    //     marker.setLatLng([e.latlng.lat, e.latlng.lng]); 
-    //     for (const location in statue_coords) {
 
-    //     }
-    //     // L.marker([e.latlng.lat, e.latlng.lng]).addTo(map);
-    // });
-})
+    document.body.prepend(container);
+    close_space.onclick = () => container.remove();
+    
+    setTimeout(() => {
+        container.style.left = "50%"
+    }, 30);
+    setTimeout(() => {
+        close_space.style.opacity = "1";
+    }, 230);
+
+    setTimeout(() => {
+        event.target.style.pointerEvents = "all"
+    }, 400);
+
+}
+
+hamburger_btn.onclick = load_phone_menu;
+
+function render_play_page() {
+
+}
+

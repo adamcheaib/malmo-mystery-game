@@ -1,25 +1,44 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-     crossorigin=""/>
-     <link rel="stylesheet" href="index.css">
-
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The spirits of Malmö</title>
+    <link rel="stylesheet" href="landing_page.css">
+    <script defer src="./index.js"></script>
 </head>
 <body>
+<div id="wrapper">
+    <div id="content">
+        <nav id="navigation">
+            <div id="hamburger_menu">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </nav>
+        <span id="title">The Spirits of Malmö</span>
+        <!--        <p id="description">I det fängslande spelet "The Spirits of Malmö" får spelarna lösa olika mysterier kring de ikoniska statyerna i-->
+        <!--            Malmö.-->
+        <!--            Kommer det vara du/ni som befriar andarna från statyerna i Malmö genom att hjälpa de uppfylla sina sista önskan?-->
+        <!--            Varje staty innehåller ledtrådar till en större berättelse som förbinder historiska händelser, dolda-->
+        <!--            meddelanden-->
+        <!--            och förlorade artefakter. Spelarna utforskar centrala Malmö, löser pussel och upptäcker hemligheter som är inbäddade i stadens konst. Detta-->
+        <!--            medryckande spel blandar lokal folktro med intriger och utmanar spelarna att sätta ihop en berättelse som är dold i det-->
+        <!--            synliga..</p>-->
 
-    <div id="map"></div>
-    
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-     crossorigin=""></script>
+        <form class="login" action="logreg.php" method="POST">
+            <span>INLOGGNING / REGISTRERING</span>
+            <input placeholder="Användarnamn" id="usernameField" name="usernameField" type="text">
+            <input placeholder="Lösenord" id="passwordField" name="passwordField" type="password">
+            <input placeholder="Upprepa lösenord" class="hidden" type="password" name="passwordRepeat" id="">
+            <button type="submit">LOGGA IN</button>
+            <a class="login" href="">Klicka här för att skapa ett konto för ditt lag!</a>
+        </form>
+    </div>
 
-    <script src="index.js"></script>
+</div>
 </body>
 </html>
