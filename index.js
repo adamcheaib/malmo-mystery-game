@@ -54,18 +54,18 @@ function createMap (position) {
         })
         .on("locationerror", e => {console.log(e)})
 
-    document.querySelector(".supertest").addEventListener("click", e => {
+    document.querySelector("#btn-panToLocation").addEventListener("click", e => {
         map.flyTo(currentPosition, 18, {duration: 0.8});
     });
-    document.getElementById("test2").addEventListener("click", e => {
+    document.getElementById("btn-show-gamezone").addEventListener("click", e => {
         map.flyTo(main, 14, {duration: 0.8});
     });
 
-    document.getElementById("test").addEventListener("click", e => {
-        document.getElementById("current_text").textContent = ghost_talk[0];
-        document.getElementById("dialogue_container").classList.toggle("hidden");
+    document.getElementById("btn-interact").addEventListener("click", e => {
+     show_dialogue();
     })
+
     document.getElementById("next_text").addEventListener("click", e => {
-        document.getElementById("current_text").textContent = ghost_talk[1];
+        increment_dialog_index(state.dialogue_index, state.current_phase, state.current_statue);
     })
 }

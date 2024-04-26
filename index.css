@@ -36,20 +36,20 @@ body { margin: 0; }
     gap: 10px;
 }
 
-.test {
+.btns-ui {
     height: 50px; width: 50px; 
     pointer-events: auto;
 }
 
-#test { 
+#btn-interact {
     background-color: red; 
 }
 
-#test2 {
+#btn-show-gamezone {
     background-color: yellow;
 }
 
-.supertest {
+#btn-panToLocation {
     background-color: aqua;
 }
 
