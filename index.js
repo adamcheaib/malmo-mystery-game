@@ -10,8 +10,13 @@ const statue_coords =
     }
 const main = [55.604096980734305, 12.996309487293441];
 
+const ghost_talk = ["bla, bla, bla", "hej hej"];
+
+let currentPosition = [];
+
 navigator.geolocation.getCurrentPosition(createMap, function (er) {console.log(er)}, {enableHighAccuracy: true});
 function createMap (position) {
+    currentPosition = [position.coords.latitude, position.coords.longitude];
 
     // map
     var map = L.map('map').setView([position.coords.latitude, position.coords.longitude], 15);
@@ -42,80 +47,25 @@ function createMap (position) {
     }
 
     map.locate({watch: true, enableHighAccuracy: true, timeout: 2000, maximumAge: Infinity})
-        .on("locationfound", e => {console.log(e.latitude, e.longitude); marker.setLatLng([e.latitude, e.longitude]);})
+        .on("locationfound", e => {
+            console.log(e.latitude, e.longitude); 
+            currentPosition = [e.latitude, e.longitude];
+            marker.setLatLng(currentPosition);
+        })
         .on("locationerror", e => {console.log(e)})
 
-    document.getElementById("test").addEventListener("click", e => {
-        map.flyTo([position.coords.latitude, position.coords.longitude], 18, {duration: 0.8});
+    document.querySelector(".supertest").addEventListener("click", e => {
+        map.flyTo(currentPosition, 18, {duration: 0.8});
     });
     document.getElementById("test2").addEventListener("click", e => {
         map.flyTo(main, 14, {duration: 0.8});
     });
+
+    document.getElementById("test").addEventListener("click", e => {
+        document.getElementById("current_text").textContent = ghost_talk[0];
+        document.getElementById("dialogue_container").classList.toggle("hidden");
+    })
+    document.getElementById("next_text").addEventListener("click", e => {
+        document.getElementById("current_text").textContent = ghost_talk[1];
+    })
 }
-
-
-// navigator.geolocation.watchPosition(onLocationFound, onLocationError, {
-//     enableHighAccuracy: true,
-//     maximumAge: 1000,
-//     timeout: 1000
-//   });
-//   function onLocationFound (e) {
-//     marker.setLatLng([e.coords.latitude, e.coords.longitude]);
-//     console.log(e);
-//   }
-//   function onLocationError (e) {
-//     console.log("error", e);
-//   }
-
-
-
-
-
-// navigator.geolocation.getCurrentPosition((position) => {
-//     // create map
-//     // {enableHighAccuracy: true, watch: true, timeout: 2000}
-//     var map = L.map('map').setView([position.coords.latitude, position.coords.longitude], 15);
-//     console.log(map.locate());
-
-//     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-//         maxZoom: 20,
-//         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-//     }).addTo(map);
- 
-//     // create marker
-//     var marker = L.marker([position.coords.latitude, position.coords.longitude]).addTo(map);
-    
-//     map.locate({watch: true, enableHighAccuracy: true, timeout: 2000, maximumAge: Infinity})
-//         .on("locationfound", e => {console.log(e.latitude, e.longitude); marker.setLatLng([e.latitude, e.longitude]);})
-//         .on("locationerror", e => {console.log(e)})
-
-//     // create circles
-//     for (const location in statue_coords) {
-//         let circle = L.circle([statue_coords[location]["latitude"], statue_coords[location]["longitude"]], {
-//             color: statue_coords[location]["color"],
-//             fillColor: statue_coords[location]["color"],
-//             fillOpacity: 0.5,
-//             radius: 50
-//         }).addTo(map);
-//         circle.on("click", e => {console.log(location)});
-//     }
-
-
-//     // navigator.geolocation.watchPosition(onLocationFound, onLocationError, {
-//     //     enableHighAccuracy: true,
-//     //     maximumAge: 1000,
-//     //     timeout: 1000
-//     //   });
-//     //   function onLocationFound (e) {
-//     //     marker.setLatLng([e.coords.latitude, e.coords.longitude]);
-//     //     console.log(e);
-//     //   }
-//     //   function onLocationError (e) {
-//     //     console.log("error", e);
-//     //   }
-
-
-//     document.getElementById("test").addEventListener("click", e => {
-//         map.flyTo([position.coords.latitude, position.coords.longitude], 18, {duration: 0.8});
-//     });
-// })
