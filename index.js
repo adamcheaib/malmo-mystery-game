@@ -1,16 +1,6 @@
 // var map = L.map('map').setView([55.60275864327367, 13.000073510709273], 13);
-const statue_coords = 
-    {
-        adolf: {latitude: 55.606749499890064, longitude: 13.000073510709273, color: "red"},
-        gass: {latitude: 55.602315039588795, longitude: 12.98734215319501, color: "green"},
-        katt: {latitude: 55.60132802122993, longitude: 13.000414613334193, color: "blue"},
-        tungsinnet: {latitude: 55.603156508261634, longitude: 13.00720665598558, color: "yellow"},
-        frans: {latitude: 55.607391899774534, longitude: 12.99839459721525, color: "orange"},
-        radjur: {latitude: 55.60371767788408, longitude: 12.992158258580288, color: "purple"},
-    }
-const main = [55.604096980734305, 12.996309487293441];
 
-const ghost_talk = ["bla, bla, bla", "hej hej"];
+const main = [55.604096980734305, 12.996309487293441];
 
 let currentPosition = [];
 
