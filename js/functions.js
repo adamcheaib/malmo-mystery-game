@@ -33,8 +33,7 @@ function animate_text(str) {
     }, 20)
 }
 
-function increment_dialog_index(dialogue_index, phase_index, statue_id) {
-    const current_dialog = document.getElementById("current_text");
+function display_dialogue_line(dialogue_index, phase_index, statue_id) {
     const dialogue_container = document.getElementById("dialogue_container");
     let statue_dialogues = statues_data[statue_id].statue_dialogues;
     let current_phase = statue_dialogues[phase_index];

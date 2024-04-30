@@ -56,6 +56,6 @@ function createMap (position) {
     })
 
     document.getElementById("next_text").addEventListener("click", e => {
-        increment_dialog_index(state.dialogue_index, state.current_phase, state.current_statue);
+        display_dialogue_line(state.dialogue_index, state.current_phase, state.current_statue);
     })
 }
