@@ -4,15 +4,18 @@ const main = [55.604096980734305, 12.996309487293441];
 
 let currentPosition = [];
 
-navigator.geolocation.getCurrentPosition(createMap, function (er) {console.log(er)}, {enableHighAccuracy: true});
-function createMap (position) {
+navigator.geolocation.getCurrentPosition(createMap, function (er) {
+    console.log(er)
+}, {enableHighAccuracy: true});
+
+function createMap(position) {
     currentPosition = [position.coords.latitude, position.coords.longitude];
 
     // map
     var map = L.map('map').setView([position.coords.latitude, position.coords.longitude], 15);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 20,
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'    
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
     // create marker
@@ -38,11 +41,13 @@ function createMap (position) {
 
     map.locate({watch: true, enableHighAccuracy: true, timeout: 2000, maximumAge: Infinity})
         .on("locationfound", e => {
-            console.log(e.latitude, e.longitude); 
+            console.log(e.latitude, e.longitude);
             currentPosition = [e.latitude, e.longitude];
             marker.setLatLng(currentPosition);
         })
-        .on("locationerror", e => {console.log(e)})
+        .on("locationerror", e => {
+            console.log(e)
+        })
 
     document.querySelector("#btn-panToLocation").addEventListener("click", e => {
         map.flyTo(currentPosition, 18, {duration: 0.8});
@@ -52,7 +57,7 @@ function createMap (position) {
     });
 
     document.getElementById("btn-interact").addEventListener("click", e => {
-     show_dialogue();
+        show_dialogue();
     })
 
     document.getElementById("next_text").addEventListener("click", e => {

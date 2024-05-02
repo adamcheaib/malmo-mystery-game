@@ -1,7 +1,6 @@
 "use strict"
 
 
-
 // Takes an object literal as an argument.
 function show_dialogue() {
     state.dialogue_index = 0;
@@ -51,6 +50,28 @@ function display_dialogue_line(dialogue_index, phase_index, statue_id) {
     if (dialogue_lines[dialogue_index] === undefined) dialogue_container.classList.toggle("hidden");
 
 
+}
+
+// window.onclick = () => trigger_game(statues_data[0]);
+
+function trigger_game(statue_data) {
+    const current_phase = state.current_phase;
+    const dialog = document.getElementById("game_dialog");
+    let iframe_src = statue_data.statue_challenges[current_phase].iframe_src;
+    dialog.innerHTML = `<iframe src=${iframe_src} width=100% height=100%></iframe>`;
+    dialog.showModal();
+    dialog.style.height = "50%";
+
+    let closing_interval = setInterval(() => {
+        if (localStorage.getItem("close_iframe") !== null && localStorage.getItem("close_iframe") !== undefined) {
+            clearInterval(closing_interval);
+            localStorage.removeItem("close_iframe");
+            dialog.innerHTML = "";
+            dialog.close();
+        }
+    }, 1000)
+
+    // dialog.innerHTML =
 }
 
 // adolf: {latitude: 55.606749499890064, longitude: 13.000073510709273, color: "red"},

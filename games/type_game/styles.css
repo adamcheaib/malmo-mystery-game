@@ -1,40 +1,43 @@
 body {
-  margin: 0;
-  height: 100vh;
+    margin: 0;
+    height: 100vh;
 }
 
 h1,
 h2 {
-  margin: 0;
-  font-size: 20px;
+    margin: 0;
+    font-size: 20px;
 }
 
 #wrapper {
-  height: 50%;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  align-items: center;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
 }
 
 #wrapper > #wordQueue {
-  border: solid 1px black;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 5px;
+    border: solid 1px black;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 5px;
+    width: 50%;
+    font-size: 21px;
 }
 
-#wordQueue > * {
-  display: grid;
-  place-items: center;
-  font-weight: bold;
+#wordQueue > .queuedWord {
+    display: none;
 }
 
 #wrapper > #playerInput {
-  height: 10px;
-  width: 200px;
+    height: 10px;
+    width: 200px;
 }
 
 .selected {
-  background: rgb(201, 201, 201);
+    display: grid;
+    background: rgb(201, 201, 201);
+    place-items: center;
+    font-weight: bold;
 }

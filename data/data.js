@@ -29,13 +29,16 @@ const statues_data =
             },
             statue_challenges: [
                 {
+                    phase: 0,
                     name: "Tre i Rad",
                     game: true,
                     riddle: false,
                     location_based: false,
+                    iframe_src: "./games/type_game/",
                     listener: "trigger_tictactoe", // <-- Ska vara en funktion som triggar spelet.
                 },
                 {
+                    phase: 1,
                     name: "Fisk gåtan",
                     game: false,
                     riddle: true,
@@ -45,6 +48,7 @@ const statues_data =
                     listener: "trigger_riddle", // <-- Ska vara en funktion som triggar gåtan.
                 },
                 {
+                    phase: 1,
                     name: "Hitta Spanaren",
                     game: false,
                     riddle: true,
