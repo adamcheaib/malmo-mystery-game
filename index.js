@@ -52,7 +52,7 @@ function createMap(position) {
         })
         .on("locationerror", e => {
             // console.clear();
-            console.log(e)
+            // console.log(e)
         })
 
     document.querySelector("#btn-panToLocation").addEventListener("click", e => {
@@ -67,6 +67,8 @@ function createMap(position) {
     })
 
     document.getElementById("next_text").addEventListener("click", e => {
-        display_dialogue_line(state.dialogue_index, state.current_phase, state.current_statue);
+        display_dialogue_line(state.dialogue_index, state.current_phase, state.current_statue, 1);
     })
 }
+
+console.log(Boolean("true"))

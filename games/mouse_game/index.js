@@ -18,7 +18,6 @@ let color_index = 0;
 let score = 0;
 
 mouse.ontouchstart = () => {
-    console.log("CLICKED")
     document.body.style.backgroundColor = colors[color_index];
     color_index++;
     score++;
@@ -31,6 +30,10 @@ mouse.ontouchstart = () => {
         document.body.innerHTML = "<h1>Bra Jobbat!</h1>";
         document.body.style.backgroundColor = "white";
         document.body.id = "winning_screen";
-        setTimeout(() => localStorage.setItem("close_iframe", true), 2000);
+        setTimeout(() => {
+                localStorage.setItem("completed", true); // Changes the value of the state.
+                localStorage.setItem("close_iframe", true);
+        }
+            , 2000);
     }
 }

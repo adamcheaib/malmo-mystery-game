@@ -11,13 +11,13 @@ const statue_coords =
     }
 
 let state = {
-    cleared_statues: [0], // När man ska interagera med en staty, så kontrolleras den först om den är avklarad.
-    current_statue: 0,
+    cleared_statues: [], // När man ska interagera med en staty, så kontrolleras den först om den är avklarad.
+    current_statue: 1,
     current_phase: 0,
     dialogue_index: 0
 }
 
-const statues_data =
+const all_statues_data =
     [
         {
             statue_id: 0,
@@ -140,7 +140,8 @@ const statues_data =
                         "Jag köpte tobak från USA för inte så längesen...!",
                         "Jag råkade köpa för mycket på grund av min inköpare som är dum!",
                         "Därför vill jag testa din skrivkunskaper innan du får prata med mig!"
-                    ]
+                    ],
+                    challenge_attached: true
                 },
                 {
                     phase: 1,

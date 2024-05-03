@@ -4,7 +4,7 @@
 function show_dialogue() {
     state.dialogue_index = 0;
     const dialogue_container = document.getElementById("dialogue_container");
-    const first_dialogue_line = statues_data[state.current_statue]
+    const first_dialogue_line = all_statues_data[state.current_statue]
         .statue_dialogues[state.current_statue]
         .dialogue_lines[0];
 
@@ -26,6 +26,7 @@ function animate_text(str) {
         if (str[str_index] === undefined) {
             next_text_btn.style.pointerEvents = "all";
             clearInterval(interval);
+            // trigger_game(statues_data[state.current_statue]);
             return null;
         }
 
@@ -36,7 +37,7 @@ function animate_text(str) {
 
 function display_dialogue_line(dialogue_index, phase_index, statue_id) {
     const dialogue_container = document.getElementById("dialogue_container");
-    let statue_dialogues = statues_data[statue_id].statue_dialogues;
+    let statue_dialogues = all_statues_data[statue_id].statue_dialogues;
     let current_phase = statue_dialogues[phase_index];
     let dialogue_lines = current_phase.dialogue_lines;
 
@@ -48,18 +49,22 @@ function display_dialogue_line(dialogue_index, phase_index, statue_id) {
         return null;
     }
 
-    if (dialogue_lines[dialogue_index] === undefined) dialogue_container.classList.toggle("hidden");
+    if (dialogue_lines[dialogue_index] === undefined) {
+        dialogue_container.classList.toggle("hidden");
 
-
+        if (current_phase.challenge_attached) {
+            trigger_game(all_statues_data[state.current_statue]); // The value of challange_attached
+        }
+    }
 }
-
-// window.onclick = () => trigger_game(statues_data[0]); // Delete this line later on.
 
 function trigger_game(statue_data, height = 50) {
     const current_phase = state.current_phase;
+    const dialog_container = document.getElementById("dialog_modal_container");
     const dialog = document.getElementById("game_dialog");
     let iframe_src = statue_data.statue_challenges[current_phase].iframe_src;
     dialog.innerHTML = `<iframe src=${iframe_src} width=100% height=100%></iframe>`;
+    dialog_container.className = "";
     dialog.showModal();
     dialog.style.height = `${height}%`;
 
@@ -67,7 +72,11 @@ function trigger_game(statue_data, height = 50) {
         if (localStorage.getItem("close_iframe") !== null && localStorage.getItem("close_iframe") !== undefined) {
             clearInterval(closing_interval);
             localStorage.removeItem("close_iframe");
+            statue_data.statue_challenges[state.current_phase].completed = localStorage.getItem("completed") === "true"; // Create a function for this line of code. Might make a lot of code blocks shorter.
+            localStorage.removeItem("completed");
+            console.log(all_statues_data);
             dialog.innerHTML = "";
+            dialog_container.className = "hidden";
             dialog.close();
         }
     }, 1000)
