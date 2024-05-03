@@ -1,0 +1,29 @@
+* {
+    /*user-select: none;*/
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    height: 100svh;
+    background-color: lightgreen;
+}
+
+#winning_screen {
+    display: grid;
+    place-items: center;
+    font-size: clamp(20px, 5vw, 30px);
+}
+
+h1 {
+    user-select: none;
+    margin: 0;
+    text-align: center;
+}
+
+img {
+    height: 75px;
+    width: 100px;
+    transition: left 100ms, top 100ms;
+    position: absolute;
+}

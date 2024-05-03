@@ -1,3 +1,9 @@
+import {detect_distance} from "./js/distance.js";
+import {update_missions, mission_options} from "./js/missions.js";
+
+"use strict"
+
+
 // var map = L.map('map').setView([55.60275864327367, 13.000073510709273], 13);
 
 const main = [55.604096980734305, 12.996309487293441];
@@ -44,6 +50,8 @@ function createMap(position) {
             console.log(e.latitude, e.longitude);
             currentPosition = [e.latitude, e.longitude];
             marker.setLatLng(currentPosition);
+
+            detect_distance(currentPosition, map);
         })
         .on("locationerror", e => {
             console.log(e)
