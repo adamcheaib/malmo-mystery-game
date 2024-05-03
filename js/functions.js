@@ -1,6 +1,5 @@
 "use strict"
 
-
 // Takes an object literal as an argument.
 function show_dialogue() {
     state.dialogue_index = 0;
@@ -17,12 +16,15 @@ function show_dialogue() {
 
 function animate_text(str) {
     const text_box = document.getElementById("current_text");
+    const next_text_btn = document.getElementById("next_text");
+    next_text_btn.style.pointerEvents = "none";
     let interval;
     let str_index = 0;
     text_box.textContent = "";
 
     interval = setInterval(() => {
         if (str[str_index] === undefined) {
+            next_text_btn.style.pointerEvents = "all";
             clearInterval(interval);
             return null;
         }
@@ -51,7 +53,7 @@ function display_dialogue_line(dialogue_index, phase_index, statue_id) {
 
 }
 
-window.onclick = () => trigger_game(statues_data[0]); // Delete this line later on.
+// window.onclick = () => trigger_game(statues_data[0]); // Delete this line later on.
 
 function trigger_game(statue_data, height = 50) {
     const current_phase = state.current_phase;

@@ -21,8 +21,8 @@ const statues_data =
     [
         {
             statue_id: 0,
-            image: "PATH HERE",
             statue_name: "Gustav Adolf",
+            image: "PATH HERE",
             color: "red",
             coordinates: {
                 latitude: 55.606749499890064,
@@ -79,5 +79,65 @@ const statues_data =
                 }
             ]
         },
+        {
+        statue_id: 1,
+        statue_name: "Frans Suell",
+        image: "PATH HERE",
+        color: "orange",
+        coordinates: {
+            latitude: 55.606749499890064,
+            longitude: 13.000073510709273
+        },
+        statue_challenges: [
+            {
+                phase: 0,
+                name: "Skriv Spelet",
+                game: true,
+                riddle: false,
+                location_based: false,
+                iframe_src: "./games/type_game/",
+                listener: "trigger_tictactoe", // <-- Ska vara en funktion som triggar spelet.
+            },
+            {
+                phase: 1,
+                name: "Fisk gåtan",
+                game: false,
+                riddle: true,
+                location_based: false,
+                question: "Vilken typ av fisk använder man när man grillar lax?",
+                answer: "Lax",
+                listener: "trigger_riddle", // <-- Ska vara en funktion som triggar gåtan.
+            },
+            {
+                phase: 1,
+                name: "Hitta Spanaren",
+                game: false,
+                riddle: true,
+                location_based: true,
+                listener: "trigger_find_lion", // <-- Ska vara en funktion som triggar platsgåtan
+                riddle_coordinates: {
+                    latitude: 0, // Uppdatera dessa
+                    longitude: 0 // Uppdatera dessa
+                }
+            }
+        ],
+        statue_dialogues: [
+            {
+                phase: 0,
+                dialogue_lines: [
+                    "Du där din äckliga gris!",
+                    "Du luktar skit!",
+                    "Åk hem till ditt hemland igen invandrarjävel!"
+                ]
+            },
+            {
+                phase: 1,
+                dialogue_lines: [
+                    "Tack för att du räddade Svea-riket från arab-jävlarna!",
+                    "Ditt nästa steg är att döda alla danskar!"
+                ]
+            }
+        ]
+    },
 
     ]
