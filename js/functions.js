@@ -51,15 +51,15 @@ function display_dialogue_line(dialogue_index, phase_index, statue_id) {
 
 }
 
-// window.onclick = () => trigger_game(statues_data[0]);
+window.onclick = () => trigger_game(statues_data[0]); // Delete this line later on.
 
-function trigger_game(statue_data) {
+function trigger_game(statue_data, height = 50) {
     const current_phase = state.current_phase;
     const dialog = document.getElementById("game_dialog");
     let iframe_src = statue_data.statue_challenges[current_phase].iframe_src;
     dialog.innerHTML = `<iframe src=${iframe_src} width=100% height=100%></iframe>`;
     dialog.showModal();
-    dialog.style.height = "50%";
+    dialog.style.height = `${height}%`;
 
     let closing_interval = setInterval(() => {
         if (localStorage.getItem("close_iframe") !== null && localStorage.getItem("close_iframe") !== undefined) {
@@ -70,7 +70,6 @@ function trigger_game(statue_data) {
         }
     }, 1000)
 
-    // dialog.innerHTML =
 }
 
 // adolf: {latitude: 55.606749499890064, longitude: 13.000073510709273, color: "red"},

@@ -1,17 +1,4 @@
-const data = [
-    "civilisation", "revolution", "kejsare", "koloni", "dynasti", "fördrag", "krig", "fred",
-    "upptäckt", "uppror", "monarki", "republik", "teokrati", "vasall", "förbund", "arkeologi",
-    "reformation", "guldålder", "imperium", "invasion", "migration", "kultur", "aristokrati",
-    "doktrin", "allians", "traktat", "härskare", "skepp", "krönika", "feodalism", "helgon",
-    "hov", "ritual", "konstitution", "edikt", "legion", "rebell", "stat", "tribut", "vapenvila"
-];
-
-// data.forEach((word) => {
-//     const span = document.createElement("span");
-//     span.textContent = word;
-//     span.className = "queuedWord";
-//     document.getElementById("wordQueue").appendChild(span);
-// });
+const data = ["civilisation", "revolution", "kejsare", "koloni", "dynasti", "fördrag", "krig", "fred", "upptäckt", "uppror", "monarki", "republik", "teokrati", "vasall", "förbund", "arkeologi", "reformation", "guldålder", "imperium", "invasion", "migration", "kultur", "aristokrati", "doktrin", "allians", "traktat", "härskare", "skepp", "krönika", "feodalism", "helgon", "hov", "ritual", "konstitution", "edikt", "legion", "rebell", "stat", "tribut", "vapenvila"];
 
 function display_current_word(index) {
     const word = data[index];
@@ -25,25 +12,25 @@ function trigger_win_lose_screen() {
     clearInterval(timeInterval);
     if (score >= 65) {
         setTimeout(() => {
-            alert("Du är ju smart!!");
+            document.body.innerHTML = "<h1>Bra jobbat!</h1>";
+            document.querySelector("h1").style.fontSize = "30px";
+            document.querySelector("h1").style.textAlign = "center";
         }, 100);
     } else {
         setTimeout(() => {
-            alert("Du behöver öva lite mer...!!");
+            document.body.innerHTML = "<h1>Du är för seg!</h1>";
+            document.querySelector("h1").style.fontSize = "30px";
+            document.querySelector("h1").style.textAlign = "center";
         }, 100);
     }
-    document.body.innerHTML = "";
-    localStorage.setItem("close_iframe", true);
-    console.log(localStorage);
+
+    setTimeout(() => localStorage.setItem("close_iframe", true), 1500);
 }
 
 let score = 0;
 let index = 0;
 
 display_current_word(index);
-// let fullList = document.querySelectorAll(".queuedWord");
-// let selectedWord = fullList[index];
-// selectedWord.classList.add("selected");
 
 let time = 58;
 
@@ -82,65 +69,5 @@ textarea.oninput = (event) => {
         display_current_word(index);
         document.getElementById("score").textContent = score;
 
-        // selectedWord.classList.remove("selected");
-        // if (textarea.value.replace(" ", "").toLowerCase() === selectedWord.textContent) {
-        //     selectedWord.style.color = "green";
-        //     selectedWord.classList.add("done");
-        //     selectedWord.classList.add("correct");
-        //     textarea.value = "";
-        //     score += 5;
-        //     document.getElementById("score").textContent = score;
-        // } else {
-        //     selectedWord.classList.add("done");
-        //     selectedWord.classList.add("wrong");
-        //     textarea.value = "";
-        //     selectedWord.style.color = "red";
-        //     score -= 8;
-        //     document.getElementById("score").textContent = score;
-        // }
-
-        // index++;
-
-        //     if (document.querySelectorAll(".done").length === fullList.length) {
-        //         console.log("DOne length: " + document.querySelectorAll(".done").length);
-        //         console.log(fullList.length);
-        //         alert("You won!");
-        //         clearInterval(timeInterval);
-        //     }
-        //
-        //     selectedWord = fullList[index];
-        //     if (selectedWord !== undefined) {
-        //         selectedWord.classList.add("selected");
-        //     }
-        // }
     }
-
-// textarea.addEventListener("keydown", (event) => {
-// alert(event.keyCode);
-// alert(event.which);
-// event.preventDefault();
-// selectedWord.classList.remove("selected");
-// if (textarea.value === selectedWord.textContent) {
-//   selectedWord.style.color = "green";
-//   selectedWord.classList.add("done");
-//   textarea.value = "";
-//   score += 5;
-//   document.getElementById("score").textContent = score;
-// } else {
-//   selectedWord.classList.add("done");
-//   textarea.value = "";
-//   selectedWord.style.color = "red";
-// }
-// index++;
-// if (document.querySelectorAll(".done").length === fullList.length) {
-//   console.log("DOne length: " + document.querySelectorAll(".done").length);
-//   console.log(fullList.length);
-//   alert("You won!");
-//   clearInterval(timeInterval);
-// }
-// selectedWord = fullList[index];
-// if (selectedWord !== undefined) {
-//   selectedWord.classList.add("selected");
-// }
-// });
 }
