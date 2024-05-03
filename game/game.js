@@ -23,15 +23,14 @@ let scoreCounter_op = 0;
 
 
 // some functions woooohoo
-function randomOption () {
-    return options[Math.round(Math.random() * 2)];
-}
+function randomOption () {return options[Math.round(Math.random() * 2)];}
+
 function winOrLose (cpu, player) {
     if(chart[player].weak == cpu) {scoreCounter_op++; return "LOSE"};
     if(chart[player].strong == cpu) {scoreCounter++; return "WIN"};
     if(player == cpu) return "TIE";
 }
-function gameOver (result) {
+function gameOver (result, timer = 10) {
     document.getElementById("result").textContent = `YOU ${result} THE GAME`;
     document.querySelectorAll("#options > button").forEach(button => button.disabled = true);
 
@@ -41,16 +40,23 @@ function gameOver (result) {
         tryagain_btn.classList.remove("hidden");
 
         // timer time
-        let timer = 9;
+        tryagain_btn.querySelector("span").textContent = `in ${timer}s`; tryagain_btn.disabled = true;
         let interval = setInterval(() => 
         {
             // if time is out
-            if(timer == 0) {clearInterval(interval); tryagain_btn.disabled = false; tryagain_btn.querySelector("span").textContent = ""; return};
-            tryagain_btn.querySelector("span").textContent = `in ${timer}s`;
             timer--;
+            if(timer == 0) {clearInterval(interval); localStorage.removeItem("timer"); tryagain_btn.disabled = false; tryagain_btn.querySelector("span").textContent = ""; return};
+            tryagain_btn.querySelector("span").textContent = `in ${timer}s`;
+
+            localStorage.setItem("timer", timer);
         }, 
         1000);
     };
+}
+// no reload cheating
+if(localStorage.getItem("timer")) {
+    gameOver("LOST", Number(localStorage.getItem("timer")));
+    document.getElementById("tryagain").disabled = true;
 }
 
 // the game(tm)
