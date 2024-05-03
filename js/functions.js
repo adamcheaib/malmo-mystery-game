@@ -41,7 +41,6 @@ function display_dialogue_line(dialogue_index, phase_index, statue_id) {
 
     if (dialogue_lines[dialogue_index] !== undefined) {
         const text_to_write = dialogue_lines[state.dialogue_index];
-        // current_dialog.textContent = dialogue_lines[state.dialogue_index];
         animate_text(text_to_write);
         state.dialogue_index++;
         return null;

@@ -11,6 +11,7 @@ const statue_coords =
     }
 
 let state = {
+    cleared_statues: [0], // När man ska interagera med en staty, så kontrolleras den först om den är avklarad.
     current_statue: 0,
     current_phase: 0,
     dialogue_index: 0
@@ -30,7 +31,7 @@ const statues_data =
             statue_challenges: [
                 {
                     phase: 0,
-                    name: "Tre i Rad",
+                    name: "Skriv Spelet",
                     game: true,
                     riddle: false,
                     location_based: false,
