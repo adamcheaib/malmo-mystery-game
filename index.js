@@ -3,9 +3,6 @@ import {update_missions, mission_options} from "./js/missions.js";
 
 "use strict"
 
-
-// var map = L.map('map').setView([55.60275864327367, 13.000073510709273], 13);
-
 const main = [55.604096980734305, 12.996309487293441];
 
 let currentPosition = [];
@@ -54,6 +51,7 @@ function createMap(position) {
             detect_distance(currentPosition, map);
         })
         .on("locationerror", e => {
+            // console.clear();
             console.log(e)
         })
 

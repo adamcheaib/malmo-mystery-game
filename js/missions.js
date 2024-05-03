@@ -1,28 +1,36 @@
 let current_missions = [];
-export let mission_options = 
-{
-    none () {return "Enter a zone"},
+export let mission_options =
+    {
+        none() {
+            return "Enter a zone"
+        },
 
-    inZone (statue) {return `Find ${statue}`},
-    challenge (statue) {return `Solve ${statue} challenge`},
+        inZone(statue) {
+            return `Find ${statue}`
+        },
+        challenge(statue) {
+            return `Solve ${statue} challenge`
+        },
 
-    finished () {return "You finished every mission!!"}
-}
+        finished() {
+            return "You finished every mission!!"
+        }
+    }
 
-export function update_missions (method, text) {
-    const {newText = null, oldText = null} = text; 
-    
+export function update_missions(method, text) {
+    const {newText = null, oldText = null} = text;
+
     if (method == "post") {
-        if(current_missions.includes(newText)) return;
+        if (current_missions.includes(newText)) return;
         current_missions.push(newText);
     }
 
     if (method == "delete") {
         let index = current_missions.findIndex(mission => mission == oldText);
-        index !== -1 ? current_missions.splice(index, 1): "";
+        index !== -1 ? current_missions.splice(index, 1) : "";
     }
 
-    if(method == "patch") {
+    if (method == "patch") {
         let index = current_missions.findIndex(mission => mission == oldText);
         index !== -1 ? current_missions[index] = newText : "";
     }
