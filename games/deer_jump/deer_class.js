@@ -1,12 +1,11 @@
-import {canvas_height, ctx} from "./index.js";
+import {ctx} from "./index.js";
 
 "use strict";
-
 
 export class Deer {
     constructor(y) {
         this.height = 75;
-        this.x = 0;
+        this.x = 10;
         this.y = y - this.height;
         this.width = 60;
         this.ground_y = y - this.height;
@@ -15,6 +14,7 @@ export class Deer {
 
 
     Draw() {
+        ctx.fillStyle = "black";
         ctx.fillRect(this.x, this.y, this.width, this.height);
     }
 
