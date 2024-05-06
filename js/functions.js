@@ -89,4 +89,3 @@ function trigger_game(statue_data, height = 50) {
 // tungsinnet: {latitude: 55.603156508261634, longitude: 13.00720665598558, color: "yellow"},
 // frans: {latitude: 55.607391899774534, longitude: 12.99839459721525, color: "orange"},
 // radjur: {latitude: 55.60371767788408, longitude: 12.992158258580288, color: "purple"},
-

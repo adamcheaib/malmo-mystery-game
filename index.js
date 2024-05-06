@@ -71,4 +71,4 @@ function createMap(position) {
     })
 }
 
-console.log(Boolean("true"))
+console.log("HJEJ")
