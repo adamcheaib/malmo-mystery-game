@@ -4,18 +4,21 @@ import {ctx} from "./index.js";
 
 export class Deer {
     constructor(y) {
-        this.height = 75;
+        this.height = 100;
         this.x = 10;
         this.y = y - this.height;
-        this.width = 60;
+        this.width = 80;
         this.ground_y = y - this.height;
         this.jumping = false;
+        this.img = document.getElementById("img_deer");
     }
 
 
     Draw() {
         ctx.fillStyle = "black";
-        ctx.fillRect(this.x, this.y, this.width, this.height);
+
+        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+        // ctx.fillRect(this.x, this.y, this.width, this.height);
     }
 
     Jump(canvas_height) {

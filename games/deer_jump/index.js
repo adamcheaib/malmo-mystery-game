@@ -48,8 +48,17 @@ function init_game() {
         deer.y + deer.height - 25 >= obstacle.y &&
         obstacle.y + obstacle.height - 20 >= deer.y) {
         lives--;
+
+        if (lives < 0) {
+            cancelAnimationFrame(init_game);
+            document.body.innerHTML = "<h1>Du har förlorat! Försök igen!</h1>";
+            return null;
+        }
+
         document.querySelector("span").textContent = lives;
         obstacle.Respawn(50);
+
+
     }
     requestAnimationFrame(init_game);
 }
