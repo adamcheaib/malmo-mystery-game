@@ -12,7 +12,7 @@ const statue_coords =
 
 let state = {
     cleared_statues: [], // När man ska interagera med en staty, så kontrolleras den först om den är avklarad.
-    current_statue: 1,
+    current_statue: 0,
     current_phase: 0,
     dialogue_index: 0
 }
@@ -68,7 +68,8 @@ const all_statues_data =
                         "Du där din äckliga gris!",
                         "Du luktar skit!",
                         "Åk hem till ditt hemland igen invandrarjävel!"
-                    ]
+                    ],
+                    challenge_attached: true
                 },
                 {
                     phase: 1,
