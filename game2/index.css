@@ -1,0 +1,36 @@
+body {
+    height: 100vh; width: 100vw;
+    margin: 0;
+}
+#wrapper {
+    height: 100vh; width: 100vw;
+
+    display: flex; flex-direction: column;
+    gap: 20px;
+
+    /* justify-content: center; */
+}
+
+.horse {
+    height: 50px; width: 50px;
+    transition: .2s;
+    background-size: cover;
+}
+
+#yourHorse {
+    background-color: black;
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/King_Charles_X_Gustavus_%28S%C3%A9bastien_Bourdon%29_-_Nationalmuseum_-_19702.tif/lossy-page1-1280px-King_Charles_X_Gustavus_%28S%C3%A9bastien_Bourdon%29_-_Nationalmuseum_-_19702.tif.jpg);
+}
+
+#otherHorse {
+    background-color: red;
+    background-image: url(https://historiesajten.se/fotobig/37.jpg);
+}
+#otherHorse2 {
+    background-color: cyan;
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/PPN663950589_Bildnis_von_Hans_Schack.jpg/456px-PPN663950589_Bildnis_von_Hans_Schack.jpg);
+}
+#otherHorse3 {
+    background-color: lime;
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/3/32/Bjelkejoergen1.jpg);
+}
