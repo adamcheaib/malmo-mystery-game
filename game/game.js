@@ -33,6 +33,8 @@ function winOrLose (cpu, player) {
 function gameOver (result, timer = 10) {
     document.getElementById("result").textContent = `YOU ${result} THE GAME`;
     document.querySelectorAll("#options > button").forEach(button => button.disabled = true);
+    
+    if(result == "WON") localStorage.setItem("close_iframe", true);
 
     if(result == "LOST") 
     {

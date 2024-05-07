@@ -7,7 +7,8 @@ body { margin: 0; }
 
 #wrapper { position: relative; height: 100vh; width: 100vw; }
 
-#map { height: 100%; filter: brightness(70%) }
+#ui_container svg {height: 100%; width: 100%; fill: var(--white);}
+#ui_container svg path {fill: var(--white);}
 
 #ui_container 
 {
@@ -18,7 +19,7 @@ body { margin: 0; }
     padding: var(--padding);
 
     grid-template-rows: repeat(3, 1fr);
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
 
     z-index: 1000;
     top: 0;
@@ -27,13 +28,13 @@ body { margin: 0; }
 
 #test_panel {
     grid-row: 3;
-    grid-column: 3;
+    grid-column: 4;
     align-self: flex-end;
     justify-self: end;
 
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 30px;
 }
 
 .test {
@@ -42,20 +43,44 @@ body { margin: 0; }
 }
 
 #test { 
-    background-color: red; 
+    /* background-color: red; */
+
+}
+.blink {animation: blink 0.7s infinite;}
+@keyframes blink {
+    0% {opacity: 100%; transform: scale(1.2);}
+    50% {opacity: 50%; transform: scale(1);}
+    100% {opacity: 100%; transform: scale(1.2);}
 }
 
 #test2 {
-    background-color: yellow;
+    /* background-color: yellow; */
 }
 
 .supertest {
-    background-color: aqua;
+    /* background-color: aqua; */
 }
 
 #mission_board {
     grid-row: 1;
-    grid-column: 3;
+    grid-column: 3 / 5;
+
+    align-items: end;
+    display: flex;
+    flex-direction: column;
+
+    color: var(--white);
+    /* font-family: cursive;
+    font-size: large; */
+    text-shadow: 0 0 20px black;
+    /* padding: 20px; */
+    align-self: start;
+    /* align-self: start;
+    background-color: rgba(255, 255, 255, 0.477);
+    padding: 20px; */
+}
+#mission_board * {
+    font-family:'Courier New', Courier, monospace ;
 }
 
 #dialogue_container {
@@ -80,7 +105,7 @@ body { margin: 0; }
 #dialogue_container #ghostPortrait {
     height: 60%;
     width: 30%;
-    background-image: url("https://upload.wikimedia.org/wikipedia/commons/8/81/CERO_Fear.svg");
+    background-image: url("https://scontent-arn2-1.xx.fbcdn.net/v/t1.15752-9/439966278_1624294861720508_792381024668334262_n.png?_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_ohc=A_NxzznmMoUQ7kNvgFYBty6&_nc_ht=scontent-arn2-1.xx&oh=03_Q7cD1QFO8AfFCBNrdfMbyRrakjCqYlB2BpTYznXvz4tieFMd2A&oe=665C3460");
     background-size: cover;
     background-position: center;
 }

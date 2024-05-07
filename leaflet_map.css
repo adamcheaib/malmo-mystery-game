@@ -1,0 +1,81 @@
+:root {
+    --leaflet-tile-filter: grayscale(1) brightness(.6) invert(1) contrast(1.8) brightness(0.5);
+
+    --color-1: #549690;
+    --color-2: #CCEAE9;
+    --color-3: #89AAA9;
+    --color-4: #81CFCD;
+    --color-5: #057B78;
+    --color-6: #5DBFC1;
+    --color-7: #FFFFFF;
+
+    --white: rgb(195, 195, 195);
+}
+
+#map { height: 100%; }
+.leaflet-right {left: 0; opacity: .3; display: none;}
+
+.leaflet-tile {
+    filter: var(--leaflet-tile-filter, none);
+}
+.leaflet-container {
+    background: #303030;
+}
+#map .leaflet-marker-icon {
+    width:0;
+    height:0;
+    border: 0;
+    padding: 0;
+}
+  
+#map .leaflet-div-icon, #map .leaflet-div-icon * {border-radius: 50%; 
+    background-color: var(--white);
+    /* background-color: var(--color-1); */
+}
+#mainDot {
+    height: var(--iconSize); width: var(--iconSize);
+    z-index: 1; position: absolute;
+}
+.signal {
+    --signalSize: 80px;
+    transform: scale(1); opacity: 0;
+    height: var(--signalSize); width: var(--signalSize);
+
+    position: absolute;
+    top: calc(-1 * ((var(--signalSize) / 2) - (var(--iconSize) / 2)) );
+    left: calc(-1 * ((var(--signalSize) / 2) - (var(--iconSize) / 2)) );
+
+    animation: signal 1.5s infinite ease-in-out;
+}
+#signal {animation-delay: 1s;}
+#signal2 {animation-delay: .75s;}
+@keyframes signal {
+    /* 0% {
+        opacity: 0;
+        transform: scale(0);
+      }
+    1% {
+        opacity: .25;
+    }
+    20% {
+        opacity: .25;
+    }
+    60% {
+        transform: scale(1);
+        opacity: 0;
+    } */
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    50% {
+        opacity: 0.4;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1);
+    }
+}
+
+.leaflet-touch .leaflet-bar {border: 2px solid rgba(255, 255, 255, 0.2);}
+.leaflet-bar a {background-color: #303030; color: var(--white);}
