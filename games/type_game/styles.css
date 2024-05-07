@@ -1,0 +1,43 @@
+body {
+    margin: 0;
+    height: 100vh;
+}
+
+h1,
+h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+#wrapper {
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+}
+
+#wrapper > #wordQueue {
+    border: solid 1px black;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 5px;
+    width: 50%;
+    font-size: 21px;
+}
+
+#wordQueue > .queuedWord {
+    display: none;
+}
+
+#wrapper > #playerInput {
+    height: 10px;
+    width: 200px;
+}
+
+.selected {
+    display: grid;
+    background: rgb(201, 201, 201);
+    place-items: center;
+    font-weight: bold;
+}

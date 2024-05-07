@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="leaflet" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$APPLICATION_CONFIG_DIR$/javascript/extLibs/http_unpkg.com_leaflet@1.9.4_dist_leaflet.js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$APPLICATION_CONFIG_DIR$/javascript/extLibs/http_unpkg.com_leaflet@1.9.4_dist_leaflet.js" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
