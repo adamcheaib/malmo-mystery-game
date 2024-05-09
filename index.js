@@ -12,6 +12,8 @@ const statue_coords =
         frans: {latitude: 55.607391899774534, longitude: 12.99839459721525, color: "#dea279"},
         radjur: {latitude: 55.60371767788408, longitude: 12.992158258580288, color: "#baa3b8"},
     }
+let current_zones = ["radjur", "adolf", "katt"];
+localStorage.setItem("current_zones", JSON.stringify(current_zones));
 // const main = [55.604096980734305, 12.996309487293441];
 
 "use strict"
@@ -45,12 +47,16 @@ function createMap(position) {
     var marker = L.marker(currentPosition, {icon: L.divIcon({html: '<div id="mainDot"></div><div id="signal" class="signal"></div><div class="signal" id="signal2"></div>', iconSize: iconSize})}).addTo(map);
 
     // create circles
+    const zones = JSON.parse(localStorage.getItem("current_zones"));
+    console.log(zones);
     for (const location in statue_coords) {
+        if(!zones.includes(location)) continue;
         let circle = L.circle([statue_coords[location]["latitude"], statue_coords[location]["longitude"]], {
             color: statue_coords[location]["color"],
             fillColor: statue_coords[location]["color"],
             fillOpacity: 0.6,
-            radius: 50
+            radius: 50,
+            className: location
         }).addTo(map);
     }
     L.circle(main, {

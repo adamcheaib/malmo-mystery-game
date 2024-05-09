@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Jolly+Lodger&display=swap" rel="stylesheet">
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +14,10 @@
           integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
           crossorigin=""/>
     <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="leaflet_map.css">
+    <link rel="stylesheet" href="css/leaflet_map.css">
+    <link rel="stylesheet" href="css/button_panel.css">
+    <link rel="stylesheet" href="css/mission_board.css">
+    <link rel="stylesheet" href="css/ghost_interaction.css">
 
 </head>
 <body>
@@ -46,21 +53,23 @@
         <div id="mission_board">
             <h3>Current missions:</h3>
             <ul></ul>
+        </div>
 
-            <div id="dialogue_container" class="hidden">
-                <div id="ghostPortrait"></div>
-                <div id="dialogue_box">
-                    <div id="current_text"></div>
-                    <div id="next_text">></div>
-                </div>
+        <div id="dialogue_container" class="hidden">
+            <div id="ghostPortrait"></div>
+            <div id="dialogue_box">
+                <div id="current_text"></div>
+                <div id="next_text">></div>
             </div>
         </div>
+
+        <div id="dialog_modal_container" class="hidden">
+            <dialog id="game_dialog"></dialog>
+        </div>
+
     </div>
 </main>
 
-<div id="dialog_modal_container" class="hidden">
-    <dialog id="game_dialog"></dialog>
-</div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>

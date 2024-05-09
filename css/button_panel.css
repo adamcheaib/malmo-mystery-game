@@ -1,0 +1,35 @@
+#btns-panel {
+    grid-row: 3;
+    grid-column: 4;
+    align-self: flex-end;
+    justify-self: end;
+
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.btns-ui {
+    height: 50px;
+    width: 50px;
+    pointer-events: auto;
+}
+
+.blink {
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 100%;
+        transform: scale(1.2);
+    }
+    50% {
+        opacity: 50%;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 100%;
+        transform: scale(1.2);
+    }
+}

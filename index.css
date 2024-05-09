@@ -1,3 +1,16 @@
+:root {
+    --color-1: #549690;
+    --color-2: #CCEAE9;
+    --color-3: #89AAA9;
+    --color-4: #81CFCD;
+    --color-5: #057B78;
+    --color-6: #5DBFC1;
+    --color-7: #FFFFFF;
+
+    --white: rgb(195, 195, 195);
+    --black: #303030;
+}
+
 * {
     --padding: 20px;
     box-sizing: border-box;
@@ -38,129 +51,6 @@ body {
     pointer-events: none;
 }
 
-#btns-panel {
-    grid-row: 3;
-    grid-column: 4;
-    align-self: flex-end;
-    justify-self: end;
-
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
-
-.btns-ui {
-    height: 50px;
-    width: 50px;
-    pointer-events: auto;
-}
-
-.blink {
-    animation: blink 0.7s infinite;
-}
-
-@keyframes blink {
-    0% {
-        opacity: 100%;
-        transform: scale(1.2);
-    }
-    50% {
-        opacity: 50%;
-        transform: scale(1);
-    }
-    100% {
-        opacity: 100%;
-        transform: scale(1.2);
-    }
-}
-
-
-#mission_board {
-    grid-row: 1;
-    grid-column: 3 / 5;
-
-    align-items: end;
-    display: flex;
-    flex-direction: column;
-
-    color: var(--white);
-    /* font-family: cursive;
-    font-size: large; */
-    text-shadow: 0 0 20px black;
-    /* padding: 20px; */
-    align-self: start;
-    /* align-self: start;
-    background-color: rgba(255, 255, 255, 0.477);
-    padding: 20px; */
-}
-
-#mission_board * {
-    font-family: 'Courier New', Courier, monospace;
-}
-
-#dialogue_container {
-    position: absolute;
-    top: 0;
-
-    z-index: 1001;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-}
-
 .hidden {
     display: none !important;
-}
-
-#dialogue_container #ghostPortrait {
-    height: 60%;
-    width: 80%;
-    background-image: url("./media/ghost.jpg"); /* Disable hard-code  */
-    background-size: cover;
-    background-position: center;
-}
-
-#dialogue_container #dialogue_box {
-    height: 20%;
-    width: 70%;
-
-    background-color: white;
-    padding: 30px;
-}
-
-#dialogue_box {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: auto auto;
-}
-
-#current_text {
-    grid-column: 1 / 3;
-    grid-row: 1;
-}
-
-#next_text {
-    grid-column: 2;
-    grid-row: 2;
-    justify-self: end;
-    align-self: flex-end;
-    cursor: pointer;
-}
-
-#dialog_modal_container {
-    height: 100vh;
-    height: 100svh;
-    width: 100vw;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, 0.6);
-    z-index: 1000;
 }
