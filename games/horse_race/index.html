@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Jolly+Lodger&display=swap" rel="stylesheet">
     <title>Document</title>
 
     <link rel="stylesheet" href="index.css">
@@ -24,6 +25,16 @@
         <div id="otherHorse2" class="horse enemy"></div>
         <div id="otherHorse3" class="horse enemy"></div>
     </main>
+
+    <!-- no zoom on double click -->
+    <script>
+        document.addEventListener('dblclick', event => { 
+        event.preventDefault();
+        event.stopImmediatePropagation();
+            }, {
+            passive: false
+            });
+    </script>
 
     <script src="index.js"></script>
 </body>

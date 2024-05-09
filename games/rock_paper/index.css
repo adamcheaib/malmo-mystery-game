@@ -1,10 +1,12 @@
 * {
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: "Crimson Text", serif;
     color: #CCEAE9;
     letter-spacing: 3px;
+    text-align: center;
+    box-sizing: border-box;
 }
 
-body {margin: 0; background-color: #057B78;}
+body {margin: 0; background-color: #057B78; }
 main {
     height: 100vh; width: 100vw;
 
@@ -13,10 +15,11 @@ main {
     justify-content: center;
     align-items: center;
     gap: 10px;
+    padding: 10px;
 }
 #options {display: flex; gap: 20px;}
 #result {font-weight: bold;}
 .hidden {display: none !important;}
-button {background-color: #CCEAE9; color: #057B78; font-weight: bolder; border: 0px; padding: 5px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;}
+button {background-color: #CCEAE9; color: #057B78; font-weight: bolder; border: 0px; padding: 5px; font-family: "Jolly Lodger", system-ui;}
 button:disabled {opacity: 50%;}
-button span {color: #057B78; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;}
+button span {color: #057B78; font-family: "Jolly Lodger", system-ui;}

@@ -7,18 +7,22 @@
     flex-direction: column;
 
     color: var(--white);
-    /* font-family: cursive;
-    font-size: large; */
     text-shadow: 0 0 20px var(--black);
-    /* padding: 20px; */
     align-self: start;
-    /* align-self: start;
-    background-color: rgba(255, 255, 255, 0.477);
-    padding: 20px; */
 }
 
 #mission_board * {
-    font-family: "Jolly Lodger", system-ui;
+    /* font-family: "Jolly Lodger", system-ui; */
+    font-family: "Crimson Text", serif;
     letter-spacing: 5px;
 }
 #mission_board h3 {text-align: end;}
+
+#mission_board ul {
+    text-align: end;
+    list-style: decimal-leading-zero;
+}
+
+#mission_board ul li {
+    list-style-position: inside;
+}

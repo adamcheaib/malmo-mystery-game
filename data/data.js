@@ -84,7 +84,7 @@ export const all_statues_data =
                     game: true,
                     riddle: false,
                     location_based: false,
-                    iframe_src: "./games/deer_jump/",
+                    iframe_src: "./games/rock_paper/",
                     fullSize: true,
                     completed: false
                 },

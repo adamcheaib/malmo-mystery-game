@@ -82,6 +82,6 @@ function trigger_game(statue_data, height = 50) {
             dialog_container.className = "hidden";
             dialog.close();
         }
-    }, 1000)
+    }, 3000)
 
 }

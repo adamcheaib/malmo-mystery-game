@@ -1,10 +1,10 @@
 let current_missions = [];
 export let mission_options = 
 {
-    none () {return "Enter a zone"},
+    none () {return "Gå in i en zon"},
 
-    inZone (statue) {return `Find ${statue}`},
-    challenge (statue) {return `Solve ${statue} challenge`},
+    inZone (statue) {return `Hitta ${statue}`},
+    challenge (statue) {return `Lös ${statue}s utmaning`},
 
     finished () {return "You finished every mission!!"}
 }
