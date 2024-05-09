@@ -4,16 +4,26 @@
 <!--    <base href="./type_game/"> &lt;!&ndash; Delete this line later on. This is only for LocalHost!  &ndash;&gt;-->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Jolly+Lodger&display=swap" rel="stylesheet">
     <title>Type-Hype Phone</title>
     <link rel="stylesheet" href="./styles.css" />
     <script defer src="./index.js"></script>
   </head>
   <body>
     <div id="wrapper">
-      <h1 id="timer">Time: <span id="seconds">40</span></h1>
-      <h2>Score: <span id="score">0</span></h2>
+
+      <p id="instructions">Skriv av ordet!<br>Tryck på mellanslag för att submit:a.</p>
+
+      <div id="scoreBoard">
+        <h1 id="timer">Tid: <span id="seconds">40</span></h1>
+        <h1>|</h1>
+        <h2>Poäng: <span id="score">0</span></h2>
+      </div>
+
       <div id="wordQueue"></div>
+
       <textarea  type="text" id="playerInput"></textarea>
+
     </div>
   <span id="score_feedback"></span>
   </body>

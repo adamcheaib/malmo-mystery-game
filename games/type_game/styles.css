@@ -1,6 +1,14 @@
+* {color: #549690; font-family: "Jolly Lodger", system-ui; letter-spacing: 4px;}
+
 body {
     margin: 0;
     height: 100vh;
+    background-color: #CCEAE9;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
 }
 
 h1,
@@ -15,10 +23,21 @@ h2 {
     flex-direction: column;
     gap: 5px;
     align-items: center;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#instructions {
+    text-align: center;
+}
+
+#scoreBoard {
+    display: flex; gap: 25px;
 }
 
 #wrapper > #wordQueue {
-    border: solid 1px black;
     display: grid;
     grid-template-columns: 1fr;
     gap: 5px;
@@ -31,13 +50,16 @@ h2 {
 }
 
 #wrapper > #playerInput {
-    height: 10px;
+    height: 20px;
     width: 200px;
+    font-family: "Crimson Text", serif;
 }
 
 .selected {
+    font-family: "Crimson Text", serif;
     display: grid;
-    background: rgb(201, 201, 201);
+    background: #CCEAE9;
     place-items: center;
     font-weight: bold;
+    text-decoration: underline dotted;
 }
