@@ -1,0 +1,14 @@
+[
+    {
+        "username": "adam",
+        "password": "adam123",
+        "user_id": 2,
+        "game_progress": []
+    },
+    {
+        "username": "adamko",
+        "password": "adam123",
+        "user_id": 3,
+        "game_progress": []
+    }
+]
