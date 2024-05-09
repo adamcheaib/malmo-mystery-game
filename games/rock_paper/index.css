@@ -1,10 +1,10 @@
 * {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    color: blanchedalmond;
+    color: #CCEAE9;
     letter-spacing: 3px;
 }
 
-body {margin: 0; background-color: rgb(13, 23, 24);}
+body {margin: 0; background-color: #057B78;}
 main {
     height: 100vh; width: 100vw;
 
@@ -17,6 +17,6 @@ main {
 #options {display: flex; gap: 20px;}
 #result {font-weight: bold;}
 .hidden {display: none !important;}
-button {background-color: blanchedalmond; color: rgb(13, 23, 24); font-weight: bolder; border: 0px; padding: 5px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;}
+button {background-color: #CCEAE9; color: #057B78; font-weight: bolder; border: 0px; padding: 5px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;}
 button:disabled {opacity: 50%;}
-button span {color: rgb(13, 23, 24); font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;}
+button span {color: #057B78; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;}
