@@ -3,6 +3,12 @@ import {update_missions, mission_options} from "./js/missions.js";
 import {show_dialogue, display_dialogue_line} from "./js/functions.js";
 import {state} from "./data/data.js";
 
+// if (window.localStorage.getItem("username") === null) {
+//     window.location.href = "./landing_page/";
+// }
+
+
+
 const statue_coords =
     {
         adolf: {latitude: 55.606749499890064, longitude: 13.000073510709273, color: "#D48C8C"},
