@@ -57,7 +57,8 @@ function startGame () {
         clearInterval(intervalId); document.removeEventListener("touchstart", ownMovement);
     
         document.getElementById("result").textContent = "DU " + event;
-        
+
+        if(event == "VANN") localStorage.setItem("close_iframe", true);
         if(event == "FÖRLORA") {
             // try again
             const tryagainBtn = document.createElement("button");
