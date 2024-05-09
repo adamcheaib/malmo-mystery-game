@@ -35,16 +35,14 @@ if (
 }
 
 $full_db = json_decode(file_get_contents('./db.json'), true);
-sendJSON($full_db);
 
 
-// CONTINUE HERE
+// Replaces the game progress for individual player.
 foreach ($full_db as $user_index => $user) {
     if ($user_id == $user['user_id']) {
         $full_db[$user_index]["game_progress"] = $game_progress;
-        sendJSON($full_db[$user_index]);
         file_put_contents("./db.json", json_encode($full_db, JSON_PRETTY_PRINT));
-        sendJSON(["response" => "Game progress has been updated and saved!"]);
+        sendJSON(["response" => $full_db]);
         break;
     }
 }

@@ -30,13 +30,14 @@
         </div>
 
 
-        <form class="login" action="logreg.php" method="POST">
-            <span id="form_title">INLOGGNING / REGISTRERING</span>
-            <input placeholder="Användarnamn" id="usernameField" name="usernameField" type="text">
-            <input placeholder="Lösenord" id="passwordField" name="passwordField" type="password">
-            <input placeholder="Upprepa lösenord" class="hidden" type="password" name="passwordRepeat" id="">
-            <button type="submit">LOGGA IN</button>
-            <a class="login" href="">Klicka här för att skapa ett konto för ditt lag!</a>
+        <form class="login" action="login_handler.php" method="POST">
+            <span id="form_title">INLOGGNING</span>
+            <span id="notification" class=""></span>
+            <input placeholder="Användarnamn" id="usernameField" name="username" type="text">
+            <input placeholder="Lösenord" id="passwordField" name="password" type="password">
+            <input placeholder="Upprepa lösenord" class="hidden" type="password" name="passwordRepeat" id="passwordRepeat">
+            <button id="submit"  type="submit">LOGGA IN</button>
+            <a class="login" id="switch_log_reg" href="">Skapa konto!</a>
         </form>
     </div>
 
