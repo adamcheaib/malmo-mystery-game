@@ -10,7 +10,10 @@ function randomSteps (max) {
 }
 
 function startGame () {
+    // remove stuff
     if(document.getElementById("tryagainBtn")) document.getElementById("tryagainBtn").remove();
+    document.getElementById("result").textContent = "";
+    document.getElementById("infoPage").style = "display: none";
 
     //establish distances
     let distances = 
@@ -22,10 +25,12 @@ function startGame () {
     document.querySelectorAll(".enemy").forEach(enemy => {distances[enemy.id] = 0; enemy.style = "transform: translateX(0px)"});
 
     // own movement
-    document.getElementById("wrapper").addEventListener("click", ownMovement);
+    document.addEventListener("touchstart", ownMovement);
     function ownMovement (e) {
-        if(e.target !== e.currentTarget) return;
-        if(distances["horseDistance"] >= goal) {whoWon("WON"); return};
+        // start with some if + returns
+        if(e.touches.length > 1) return; if(e.target.id == "tryagainBtn") return;
+        if(distances["horseDistance"] >= goal) {whoWon("VANN"); return};
+
         distances["horseDistance"] = horseMovement("yourHorse", distances["horseDistance"]);
     }
 
@@ -38,9 +43,8 @@ function startGame () {
 
         for (let i = 0; i < document.querySelectorAll(".enemy").length; i++) {
             let enemy = document.querySelectorAll(".enemy")[i];
-            console.log(enemy.id);
 
-            if(distances[enemy.id] >= goal) {intervalClear = true; console.log("WINNER:" + enemy.id); clearInterval(intervalId); whoWon("LOST"); break};
+            if(distances[enemy.id] >= goal) {intervalClear = true; console.log("WINNER:" + enemy.id); clearInterval(intervalId); whoWon("FÖRLORA"); break};
             
             if(!intervalClear) distances[enemy.id] = horseMovement(enemy.id, distances[enemy.id]);
         }
@@ -50,16 +54,16 @@ function startGame () {
     // win decider
     function whoWon (event) {
         // making everything stop
-        clearInterval(intervalId); document.getElementById("wrapper").removeEventListener("click", ownMovement);
+        clearInterval(intervalId); document.removeEventListener("touchstart", ownMovement);
     
-        console.log("YOU " + event);
+        document.getElementById("result").textContent = "DU " + event;
         
-        if(event == "LOST") {
+        if(event == "FÖRLORA") {
             // try again
             const tryagainBtn = document.createElement("button");
             tryagainBtn.id = "tryagainBtn";
-            tryagainBtn.textContent = "Try Again";
-            tryagainBtn.addEventListener("click", startGame);
+            tryagainBtn.textContent = "Försök igen";
+            tryagainBtn.addEventListener("touchstart", startGame);
             document.getElementById("wrapper").append(tryagainBtn);
         }
     }
@@ -67,7 +71,7 @@ function startGame () {
 
 
     function horseMovement (horseName, tracker) {
-        let randomMove = randomSteps(horseName == "yourHorse" ? windowWidth / 30 : windowWidth / 8);
+        let randomMove = randomSteps(horseName == "yourHorse" ? windowWidth / 20 : windowWidth / 7);
         (tracker + randomMove > goal) ? randomMove = goal - tracker : "" ;
         tracker += randomMove;
         
@@ -77,4 +81,4 @@ function startGame () {
     }
 }
 
-startGame();
+document.querySelector("#infoPage > button").addEventListener("click", startGame);
