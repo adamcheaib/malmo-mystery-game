@@ -38,7 +38,7 @@ body {
     pointer-events: none;
 }
 
-#test_panel {
+#btns-panel {
     grid-row: 3;
     grid-column: 4;
     align-self: flex-end;
@@ -74,13 +74,6 @@ body {
     }
 }
 
-#test2 {
-    /* background-color: yellow; */
-}
-
-.supertest {
-    /* background-color: aqua; */
-}
 
 #mission_board {
     grid-row: 1;
@@ -103,19 +96,6 @@ body {
 
 #mission_board * {
     font-family: 'Courier New', Courier, monospace;
-}
-
-#btn-interact {
-    background-color: red;
-}
-
-#btn-show-gamezone {
-    background-color: yellow;
-}
-
-#btn-panToLocation {
-    background-color: aqua;
->>> >>> > adams-functions-main
 }
 
 #dialogue_container {

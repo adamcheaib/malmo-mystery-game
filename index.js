@@ -1,15 +1,17 @@
 import {detect_distance} from "./js/distance.js";
 import {update_missions, mission_options} from "./js/missions.js";
+import {show_dialogue, display_dialogue_line} from "./js/functions.js";
+import {state} from "./data/data.js";
 
-// export const statue_coords =
-//     {
-//         adolf: {latitude: 55.606749499890064, longitude: 13.000073510709273, color: "#D48C8C"},
-//         gass: {latitude: 55.602315039588795, longitude: 12.98734215319501, color: "#93AE88"},
-//         katt: {latitude: 55.60132802122993, longitude: 13.000414613334193, color: "#84a8b9"},
-//         tungsinnet: {latitude: 55.603156508261634, longitude: 13.00720665598558, color: "#e9d1ae"},
-//         frans: {latitude: 55.607391899774534, longitude: 12.99839459721525, color: "#dea279"},
-//         radjur: {latitude: 55.60371767788408, longitude: 12.992158258580288, color: "#baa3b8"},
-//     }
+const statue_coords =
+    {
+        adolf: {latitude: 55.606749499890064, longitude: 13.000073510709273, color: "#D48C8C"},
+        gass: {latitude: 55.602315039588795, longitude: 12.98734215319501, color: "#93AE88"},
+        katt: {latitude: 55.60132802122993, longitude: 13.000414613334193, color: "#84a8b9"},
+        tungsinnet: {latitude: 55.603156508261634, longitude: 13.00720665598558, color: "#e9d1ae"},
+        frans: {latitude: 55.607391899774534, longitude: 12.99839459721525, color: "#dea279"},
+        radjur: {latitude: 55.60371767788408, longitude: 12.992158258580288, color: "#baa3b8"},
+    }
 // const main = [55.604096980734305, 12.996309487293441];
 
 "use strict"

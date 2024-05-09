@@ -1,4 +1,5 @@
 import {update_missions, mission_options} from "./missions.js";
+import {all_statues_data} from "../data/data.js";
 
 export function detect_distance(position, map) {
     for (const statue in all_statues_data) {
