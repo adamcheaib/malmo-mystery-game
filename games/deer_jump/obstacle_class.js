@@ -1,9 +1,8 @@
-import {canvas, ctx, ground_level, generate_random_y_pos} from "./index.js";
+import {canvas, ctx, ground_level, generate_random_y_pos, canvas_height} from "./index.js";
 
 // KOLLA HUR MAN STRETCHAR BILDERNA SÅ ATT DE INTE ÄR SUPER SMALA!!!
 
 const images = [
-    "img_stone_1",
     "img_stone_2",
     "img_stump",
 ];
@@ -17,25 +16,23 @@ export class Obstacle {
     ada
 
     constructor() {
-        this.y = 100;
+        this.y = 400;
         this.x = canvas.width + 500;
-        this.width = 80;  // Subject to change. Make this dynamic.
-        this.height = 100; // Subject to change. Make this dynamic.
+        this.width = 65;  // Subject to change. Make this dynamic.
+        this.height = 400; // Subject to change. Make this dynamic.
         this.img = document.getElementById(images[Math.floor(Math.random() * images.length)]);
     }
 
 
-    Update_height() {
-        console.log(this.height);
-        console.log(ground_level - this.y + this.height - 5);
-        return ground_level - this.y + this.height - 5;
+    Update_y_coord() {
+        this.y = Math.floor(Math.random() * 100 + 375);
     }
 
     Respawn() {
         let random_image = images[Math.floor(Math.random() * images.length)];
         this.img = document.getElementById(random_image);
         this.x = canvas.width + 200 + Math.floor(Math.random() * 400); // Moves the obstacle back far back just to generate randomly.
-        this.height = this.Update_height(); // Generates a height for each obstacle between 100 and 160.
+        this.Update_y_coord();
     }
 
     Draw() {
