@@ -1,0 +1,129 @@
+@font-face {
+    src: url("./fonts/shlop.otf");
+    font-family: "shlop";
+}
+
+body {
+    margin: 0;
+    height: 100svh;
+    height: 100vh;
+    background-color: black;
+}
+
+#wrapper {
+    height: 100svh;
+    height: 100vh;
+    background: url(./landing_page_media/img.png);
+    background-size: cover;
+    background-position-x: -430px;
+    background-repeat: no-repeat;
+}
+
+#content {
+    background: rgba(0, 0, 0, 0.6);
+    height: max-content;
+    display: grid;
+    grid-template-rows: repeat(2, max-content);
+    gap: 20px;
+}
+
+#navigation {
+    display: flex;
+    padding: 10px;
+    background-color: black;
+}
+
+#navigation > #hamburger_menu {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 6px;
+}
+
+#navigation > #hamburger_menu:hover {
+    cursor: pointer;
+}
+
+#navigation > #hamburger_menu > div {
+    border: solid 1px black;
+    height: 2px;
+    background-color: white;
+    width: 30px;
+}
+
+#title, #description {
+    margin-inline: 9px;
+}
+
+#title, #description {
+    color: white;
+}
+
+#title {
+    font-size: 80px;
+    font-weight: bold;
+    display: flex;
+    justify-content:start ;
+    font-family: "shlop";
+}
+
+#description {
+    font-size: 12px;
+    line-height: 24px;
+    justify-self: center;
+    margin: 0 20px 0 20px;
+}
+
+form {
+    border-radius: 10px;
+    display: grid;
+    gap: 8px;
+    width: clamp(200px, 75vw, 400px);
+    background-color: rgb(75, 85, 90);
+    padding: 10px;
+    max-height: 200px;
+    justify-self: center;
+}
+
+#form_title {
+    font-size: 23px;
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+#hamburger_menu_shown {
+    display: flex;
+    position: absolute;
+    left: -100%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 100vh;
+    z-index: 1000;
+    width: 100%;
+    transition: left 200ms
+}
+
+#menu_btns_container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 20px;
+    flex-grow: 0.25;
+    background-color: black;
+    padding: 10px 0 0 10px;
+    border-right: solid 1px white;
+}
+
+.menu_btn {
+    color: white;
+}
+
+#hamburger_menu_close {
+    background: rgba(0,0,0,0.6);
+    flex-grow: 0.75;
+    opacity: 0;
+    transition: opacity 300ms;
+}
