@@ -1,5 +1,10 @@
 <?php
 
+ini_set('display_errors', 1);
+
+$file_name = "./db.json";
+$temp_name = "./*db.json";
+
 function sendJSON($response, $http_code = 200)
 {
     header('Content-type: application/json');
@@ -8,9 +13,26 @@ function sendJSON($response, $http_code = 200)
     exit();
 }
 
+function set_db_busy($file_name, $temp_name)
+{
+    rename($file_name, $temp_name);
+}
+
+function unset_db_busy($file_name, $temp_name)
+{
+    rename($temp_name, $file_name);
+}
+
 $request_method = $_SERVER['REQUEST_METHOD'];
 
+if (!file_exists($file_name)) {
+    sendJSON(["response" => "Något gick fel. Försök igen!"], 409);
+}
+
+set_db_busy($file_name, $temp_name);
+
 if ($request_method != 'POST') {
+    unset_db_busy($file_name, $temp_name);
     sendJSON(["response" => "Invalid request method."], 405);
 }
 
@@ -19,6 +41,7 @@ $user_id = $data_recieved['user_id'];
 $game_progress = $data_recieved['game_progress'];
 
 if ($user_id == null || $game_progress == null || $user_id == '') {
+    unset_db_busy($file_name, $temp_name);
     sendJSON(["response" => "Missing key information in the request"], 400);
 }
 
@@ -31,22 +54,24 @@ if (
     ||
     !isset($game_progress["dialogue_index"])
 ) {
+    unset_db_busy($file_name, $temp_name);
     sendJSON(["response" => "Missing key information from user game progress!"], 400);
 }
 
-$full_db = json_decode(file_get_contents('./db.json'), true);
+$full_db = json_decode(file_get_contents($temp_name), true);
 
-
-// Replaces the game progress for individual player.
+// Replaces the game progress for the individual player.
 foreach ($full_db as $user_index => $user) {
     if ($user_id == $user['user_id']) {
         $full_db[$user_index]["game_progress"] = $game_progress;
-        file_put_contents("./db.json", json_encode($full_db, JSON_PRETTY_PRINT));
+        file_put_contents($temp_name, json_encode($full_db, JSON_PRETTY_PRINT));
+        unset_db_busy($file_name, $temp_name);
         sendJSON(["response" => $full_db]);
         break;
     }
 }
 
+unset_db_busy($file_name, $temp_name);
 sendJSON(["response" => "User not found!"], 400);
 
 
