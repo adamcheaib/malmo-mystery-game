@@ -1,5 +1,5 @@
 :root {
-    --leaflet-tile-filter: grayscale(1) brightness(.6) invert(1) contrast(1.9) brightness(0.4);
+    --leaflet-tile-filter: grayscale(1) brightness(.6) invert(1) contrast(2) brightness(0.5); 
 }
 
 #map { height: 100%; }
