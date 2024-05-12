@@ -7,7 +7,7 @@
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui">
     <title>Malmös Mysteriet</title>
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -69,6 +69,10 @@
 
     </div>
 </main>
+
+<script>
+    document.querySelectorAll(".btns-ui").forEach(btnUI => btnUI.addEventListener("click", e => {btnUI.classList.add("clicked"); setTimeout(() => btnUI.classList.remove("clicked"), 500); if(btnUI.classList.contains("blink")) btnUI.classList.remove("blink")}));
+</script>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
