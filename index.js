@@ -8,7 +8,6 @@ import {state} from "./data/data.js";
 // }
 
 
-
 const statue_coords =
     {
         adolf: {latitude: 55.606749499890064, longitude: 13.000073510709273, color: "#D48C8C"},

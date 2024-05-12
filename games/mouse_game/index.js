@@ -13,7 +13,7 @@ let interval = setInterval(() => {
     mouse.style.top = Math.floor(Math.random() * max_bottom_position) + "px";
 }, 500)
 
-const colors = ["green", "red", "blue", "purple"];
+const colors = ["#549690", "#CCEAE9", "#89AAA9", "#81CFCD"];
 let color_index = 0;
 let score = 0;
 

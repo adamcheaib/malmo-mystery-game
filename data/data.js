@@ -84,7 +84,7 @@ export const all_statues_data =
                     game: true,
                     riddle: false,
                     location_based: false,
-                    iframe_src: "./games/rock_paper/",
+                    iframe_src: "./games/mouse_game/",
                     fullSize: true,
                     completed: false
                 },

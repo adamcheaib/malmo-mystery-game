@@ -13,6 +13,16 @@
 
 <img  draggable="false"  src="./mouse.gif" id="mouse"  alt="">
 
+    <!-- no zoom on double click -->
+    <script>
+        document.addEventListener('dblclick', event => { 
+        event.preventDefault();
+        event.stopImmediatePropagation();
+            }, {
+            passive: false
+            });
+    </script>
+    
 <script src="./index.js"></script>
 </body>
 </html>
