@@ -12,3 +12,14 @@ export function testing (position, map) {
     }
 }
 
+export function testing2 (position, map, statue) {
+
+        const distance = map.distance(position, [statue.latitude, statue.longitude]);
+        if(distance <= 30) {
+            console.log(distance);
+            update_missions("delete", {oldText: mission_options["none"]()});
+            update_missions("post", {newText: mission_options["inZone"](statue)});
+        }
+
+}
+

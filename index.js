@@ -15,7 +15,7 @@ const statue_coords =
         katt: {latitude: 55.60132802122993, longitude: 13.000414613334193, color: "#84a8b9"},
         tungsinnet: {latitude: 55.603156508261634, longitude: 13.00720665598558, color: "#e9d1ae"},
         frans: {latitude: 55.607391899774534, longitude: 12.99839459721525, color: "#dea279"},
-        radjur: {latitude: 55.60371767788408, longitude: 12.992158258580288, color: "#baa3b8"},
+        radjur: {latitude: 55.60440697816811, longitude: 12.992741758035507, color: "#baa3b8"}, 
     }
 let current_zones = ["radjur", "adolf", "katt"];
 localStorage.setItem("current_zones", JSON.stringify(current_zones));
@@ -77,7 +77,9 @@ function createMap(position) {
             currentPosition = [e.latitude, e.longitude];
             marker.setLatLng(currentPosition);
 
-            detect_distance(currentPosition, map);
+            JSON.parse(localStorage.getItem("current_zones")).forEach(zone => {
+                detect_distance(currentPosition, map, statue_coords[zone]);
+            });
         })
         .on("locationerror", e => {
             // console.clear();
