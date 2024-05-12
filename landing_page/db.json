@@ -1,71 +1,38 @@
 [
-    {
-        "username": "adam",
-        "password": "adam123",
-        "user_id": 2,
-        "game_progress": {
-            "cleared_statues": 0,
-            "current_statue": 0,
-            "current_phase": 0,
-            "dialogue_index": 0
-        }
-    },
-    {
-        "username": "adamko",
-        "password": "adam123",
-        "user_id": 3,
-        "game_progress": {
-            "cleared_statues": [
-                1,
-                2
-            ],
-            "current_statue": 0,
-            "current_phase": 0,
-            "dialogue_index": 0
-        }
-    },
-    {
-        "username": "adamcheaib",
-        "password": "asdasd",
-        "user_id": 1,
-        "game_progress": {
-            "cleared_statues": [],
-            "current_statue": 0,
-            "current_phase": 0,
-            "dialogue_index": 0
-        }
-    },
-    {
-        "username": "adam12333",
-        "password": "adam",
-        "user_id": 4,
-        "game_progress": {
-            "cleared_statues": [],
-            "current_statue": 0,
-            "current_phase": 0,
-            "dialogue_index": 0
-        }
-    },
-    {
-        "username": "adam1233",
-        "password": "adam",
-        "user_id": 5,
-        "game_progress": {
-            "cleared_statues": [],
-            "current_statue": 0,
-            "current_phase": 0,
-            "dialogue_index": 0
-        }
-    },
-    {
-        "username": "adam_rastaman",
-        "password": "adam",
-        "user_id": 6,
-        "game_progress": {
-            "cleared_statues": [],
-            "current_statue": 0,
-            "current_phase": 0,
-            "dialogue_index": 0
-        }
+  {
+    "username": "adam",
+    "password": "adam123",
+    "user_id": 2,
+    "game_progress": {
+      "cleared_statues": [
+        3,
+        2
+      ],
+      "current_statue": 0,
+      "current_phase": 0,
+      "dialogue_index": 0
     }
+  },
+  {
+    "username": "adam123",
+    "password": "adam",
+    "user_id": 3,
+    "game_progress": {
+      "cleared_statues": [],
+      "current_statue": 0,
+      "current_phase": 0,
+      "dialogue_index": 0
+    }
+  },
+  {
+    "username": "adam1234",
+    "password": "adam",
+    "user_id": 4,
+    "game_progress": {
+      "cleared_statues": [],
+      "current_statue": 0,
+      "current_phase": 0,
+      "dialogue_index": 0
+    }
+  }
 ]

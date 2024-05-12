@@ -1,12 +1,15 @@
 import {detect_distance} from "./js/distance.js";
 import {update_missions, mission_options} from "./js/missions.js";
 import {show_dialogue, display_dialogue_line} from "./js/functions.js";
-import {state} from "./data/data.js";
 
-// if (window.localStorage.getItem("username") === null) {
-//     window.location.href = "./landing_page/";
-// }
 
+if (window.localStorage.getItem("user_id") === null) {
+    window.location.href = "./landing_page/";
+}
+
+// Kolla hur många utmaningar varje staty ska ha. Om det är endast två, då läggs en avklarad staty till i "cleared_statues" arrayen om phase-indexet är 1 osv osv.
+export let game_progress = JSON.parse(localStorage.getItem("game_progress"));
+console.log(game_progress);
 
 const statue_coords =
     {
@@ -49,13 +52,18 @@ function createMap(position) {
     // var marker = L.marker(currentPosition).addTo(map);
     const iconSize = 12;
     document.body.style.setProperty('--iconSize', `${iconSize}px`);
-    var marker = L.marker(currentPosition, {icon: L.divIcon({html: '<div id="mainDot"></div><div id="signal" class="signal"></div><div class="signal" id="signal2"></div>', iconSize: iconSize})}).addTo(map);
+    var marker = L.marker(currentPosition, {
+        icon: L.divIcon({
+            html: '<div id="mainDot"></div><div id="signal" class="signal"></div><div class="signal" id="signal2"></div>',
+            iconSize: iconSize
+        })
+    }).addTo(map);
 
     // create circles
     const zones = JSON.parse(localStorage.getItem("current_zones"));
     console.log(zones);
     for (const location in statue_coords) {
-        if(!zones.includes(location)) continue;
+        if (!zones.includes(location)) continue;
         let circle = L.circle([statue_coords[location]["latitude"], statue_coords[location]["longitude"]], {
             color: statue_coords[location]["color"],
             fillColor: statue_coords[location]["color"],
@@ -96,7 +104,7 @@ function createMap(position) {
     })
 
     document.getElementById("next_text").addEventListener("click", e => {
-        display_dialogue_line(state.dialogue_index, state.current_phase, state.current_statue, 1);
+        display_dialogue_line(game_progress.dialogue_index, game_progress.current_phase, game_progress.current_statue, 1);
     })
 }
 

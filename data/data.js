@@ -1,12 +1,5 @@
 "use strict"
 
-export let state = {
-    cleared_statues: [], // När man ska interagera med en staty, så kontrolleras den först om den är avklarad.
-    current_statue: 1,
-    current_phase: 0,
-    dialogue_index: 0
-}
-
 export const all_statues_data =
     [
         {
@@ -25,7 +18,7 @@ export const all_statues_data =
                     game: true,
                     riddle: false,
                     location_based: false,
-                    iframe_src: "./games/type_game/",
+                    iframe_src: "./games/kuk/",
                     challenge_attached: true
                 },
                 {
@@ -38,7 +31,7 @@ export const all_statues_data =
                     answer: "Lax",
                 },
                 {
-                    phase: 1,
+                    phase: 2,
                     name: "Hitta Spanaren",
                     game: false,
                     riddle: true,

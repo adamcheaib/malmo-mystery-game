@@ -33,7 +33,7 @@ mouse.ontouchstart = () => {
         setTimeout(() => {
                 localStorage.setItem("completed", true); // Changes the value of the state.
                 localStorage.setItem("close_iframe", true);
-        }
-            , 2000);
+            }
+            , 500);
     }
 }

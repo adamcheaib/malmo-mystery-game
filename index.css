@@ -26,6 +26,7 @@ body {
 #wrapper {
     position: relative;
     height: 100vh;
+    height: 100dvh;
     width: 100vw;
 }
 
@@ -58,4 +59,8 @@ body {
 
 .hidden {
     display: none !important;
+}
+
+dialog {
+    overflow-y: hidden;
 }

@@ -84,6 +84,8 @@ async function submit_func(event) {
     const all_inputs = document.querySelectorAll("input:not(.hidden)");
     all_inputs.forEach(inputField => request_body[inputField.getAttribute("name")] = inputField.value);
 
+    request_body.username = request_body.username.toLowerCase();
+
     const options = {
         method: "POST",
         headers: {"Content-type": "application/json"},
@@ -93,13 +95,14 @@ async function submit_func(event) {
     const response = await fetch("./login_handler.php", options);
     const resource = await response.json();
     notification.textContent = resource.response;
+    console.log(response);
 
     if (response.ok) {
         notification.className = "success";
         const user_info = resource.user_info;
+
+        // Controls whether the user is attempting to login.
         if (user_info !== undefined) {
-
-
             for (let key in user_info) {
                 if (key !== "redirect") {
                     if (typeof user_info[key] === "object") {
@@ -107,14 +110,17 @@ async function submit_func(event) {
                     } else {
                         window.localStorage.setItem(key, user_info[key]);
                     }
-
                 }
             }
-
-            console.log(window.localStorage);
-
+            window.location.href = user_info.redirect;
         }
     } else {
         notification.className = "error";
+
+        if (response.status === 409) {
+            setTimeout(() => {
+                submit_func(event);
+            }, 1500)
+        }
     }
 }
