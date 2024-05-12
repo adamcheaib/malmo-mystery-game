@@ -54,62 +54,67 @@ function toggle_log_reg(event) {
     const inpt_passwordRepeat = document.getElementById("passwordRepeat");
     const form_title = document.getElementById("form_title");
     const switch_log_reg = document.getElementById("switch_log_reg");
+    const form = document.querySelector("form");
+    const notification = document.getElementById("notification");
 
     inpt_passwordRepeat.classList.toggle("hidden");
+    notification.textContent = "";
 
     if (event.target.classList.contains("login")) {
         btn_submit.textContent = "Logga in";
         form_title.textContent = "INLOGGNING";
         switch_log_reg.textContent = "Skapa konto!";
+        form.id = "login_form";
     } else {
         btn_submit.textContent = "Registrera"
         form_title.textContent = "REGISTRERING";
         switch_log_reg.textContent = "Klicka för att logga in!";
-
+        form.id = "register_form";
     }
 }
 
 
 // Toggle fetch here when attempting to register or login.
-function submit_func(event) {
+async function submit_func(event) {
     event.preventDefault();
     const notification = document.getElementById("notification");
-    notification.textContent = "Ditt konto har skapats!";
-    notification.className = "success";
-}
+    const request_body = {};
 
-async function fetch_attempt() {
-    try {
-        const body = {
-            user_id: 3,
-            game_progress: {
-                cleared_statues: [1, 2],
-                current_statue: 0,
-                current_phase: 0,
-                dialogue_index: 0
-            },
-        };
+    // Selects all the input elements that do not have the class "hidden".
+    const all_inputs = document.querySelectorAll("input:not(.hidden)");
+    all_inputs.forEach(inputField => request_body[inputField.getAttribute("name")] = inputField.value);
 
-        const options = {
-            method: "POST",
-            headers: {"Content-type": "application/json"},
-            body: JSON.stringify(body)
-        };
+    const options = {
+        method: "POST",
+        headers: {"Content-type": "application/json"},
+        body: JSON.stringify(request_body)
+    }
 
-        const response = await fetch("./game_data.php", options);
+    const response = await fetch("./login_handler.php", options);
+    const resource = await response.json();
+    notification.textContent = resource.response;
 
-        if (response.ok) {
-            const resource = await response.json();
-            console.log(resource);
-            // window.localStorage.setItem("username", resource.username);
-            // window.localStorage.setItem("game_progress", JSON.stringify(resource.game_progress));
-            // window.localStorage.setItem("user_id", resource.user_id);
-            // window.location.href = resource.redirect;
+    if (response.ok) {
+        notification.className = "success";
+        const user_info = resource.user_info;
+        if (user_info !== undefined) {
+
+
+            for (let key in user_info) {
+                if (key !== "redirect") {
+                    if (typeof user_info[key] === "object") {
+                        window.localStorage.setItem(key, JSON.stringify(user_info[key]));
+                    } else {
+                        window.localStorage.setItem(key, user_info[key]);
+                    }
+
+                }
+            }
+
+            console.log(window.localStorage);
+
         }
-
-    } catch (error) {
-        alert(error.message);
+    } else {
+        notification.className = "error";
     }
 }
-
-// fetch_attempt();
