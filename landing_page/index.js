@@ -113,6 +113,7 @@ async function submit_func(event) {
                 }
             }
             window.location.href = user_info.redirect;
+            // console.log(user_info.redirect);
         }
     } else {
         notification.className = "error";
