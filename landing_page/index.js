@@ -8,6 +8,10 @@ hamburger_btn.onclick = load_phone_menu;
 log_to_reg.onclick = toggle_log_reg;
 form.onsubmit = submit_func;
 
+if (localStorage.getItem("user_id") !== null) {
+    window.location.href = "../";
+}
+
 function load_phone_menu(event) {
     event.target.style.pointerEvents = "none";
     const container = document.createElement("div");

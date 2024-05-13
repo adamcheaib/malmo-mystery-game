@@ -31,7 +31,7 @@ if (!file_exists($file_name)) {
 
 set_db_busy($file_name, $temp_name);
 
-if ($request_method != 'POST') {
+if ($request_method != 'PATCH') {
     unset_db_busy($file_name, $temp_name);
     sendJSON(["response" => "Invalid request method."], 405);
 }
@@ -66,7 +66,7 @@ foreach ($full_db as $user_index => $user) {
         $full_db[$user_index]["game_progress"] = $game_progress;
         file_put_contents($temp_name, json_encode($full_db, JSON_PRETTY_PRINT));
         unset_db_busy($file_name, $temp_name);
-        sendJSON(["response" => $full_db]);
+        sendJSON(["response" => $user["game_progress"]]);
         break;
     }
 }
