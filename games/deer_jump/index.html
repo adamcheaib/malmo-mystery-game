@@ -11,28 +11,70 @@
         body {
             margin: 0;
             height: 100vh;
-            height: 100svh;
+            height: 100dvh;
             background-color: brown;
             overflow-y: hidden;
         }
 
-        h1 {
+        #stats {
             font-family: Arial;
             margin: 0;
             position: absolute;
             top: 0;
-            left: 5px;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            box-sizing: border-box;
         }
+
 
         img {
             display: none
         }
+
+        .gameplay {
+            display: none;
+        }
+
+        #game_info_start_end {
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        button {
+            border-radius: 10px;
+            height: 65px;
+            width: 130px;
+            font-size: 20px;
+        }
+
+        p {
+            color: white;
+            font-family: Arial;
+        }
     </style>
 </head>
 <body>
-<h1>Lives: <span id="lives">5</span></h1>
-<canvas id="canvas"></canvas>
+<div id="stats" class="gameplay">
+    <h1>Lives: <span id="lives">5</span></h1>
+    <h1>Score: <span id="score">0</span></h1>
+</div>
+<canvas class="gameplay" id="canvas"></canvas>
+<div id="game_info_start_end">
+    <p>Du trycker på skärmen för att hoppa. Målet är att du ska hoppa över 20 hinder och då vinner du. </p>
+    <button>Spela</button>
+</div>
 <audio id="jumping_sound" src="./jumping_sound_done.mp3"></audio>
+<audio id="bg_music" src="./press_play.mp3"></audio>
 <img id="img_deer" src="./deer.png" alt="">
 <img id="img_stone_1" src="./stone-1.png" alt="">
 <img id="img_stone_2" src="./stone-2.png" alt="">

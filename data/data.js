@@ -18,7 +18,7 @@ export const all_statues_data =
                     game: true,
                     riddle: false,
                     location_based: false,
-                    iframe_src: "./games/kuk/",
+                    iframe_src: "./games/rock_paper/",
                     challenge_attached: true
                 },
                 {

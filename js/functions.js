@@ -8,7 +8,7 @@ export function show_dialogue() {
     game_progress.dialogue_index = 0;
     const dialogue_container = document.getElementById("dialogue_container");
     const first_dialogue_line = all_statues_data[game_progress.current_statue]
-        .statue_dialogues[game_progress.current_statue]
+        .statue_dialogues[game_progress.current_phase]
         .dialogue_lines[0];
 
     animate_text(first_dialogue_line);
@@ -26,10 +26,9 @@ function animate_text(str) {
     text_box.textContent = "";
 
     interval = setInterval(() => {
-        if (str[str_index] === undefined) {
+        if (str[str_index] === undefined) { // Ends the interval for the text animation.
             next_text_btn.style.pointerEvents = "all";
             clearInterval(interval);
-            // trigger_game(statues_data[state.current_statue]);
             return null;
         }
 
@@ -62,7 +61,7 @@ export function display_dialogue_line(dialogue_index, phase_index, statue_id) {
     }
 }
 
-function trigger_game(statue_data, height = 50) {
+async function trigger_game(statue_data, height = 50) {
     const current_phase = game_progress.current_phase;
     const dialog_container = document.getElementById("dialog_modal_container");
     const dialog = document.getElementById("game_dialog");
@@ -78,24 +77,57 @@ function trigger_game(statue_data, height = 50) {
             console.log(window.localStorage);
             clearInterval(closing_interval);
             localStorage.removeItem("close_iframe");
-            statue_data.statue_challenges[game_progress.current_phase].completed = localStorage.getItem("completed") === "true"; // Create a function for this line of code. Might make a lot of code blocks shorter.
-            // Kolla hur många utmaningar varje staty ska ha. Om det är endast två, då läggs en avklarad staty till i "cleared_statues" arrayen om phase-indexet är 1 osv osv.
+            // statue_data.statue_challenges[game_progress.current_phase].completed = localStorage.getItem("completed") === "true"; // Create a function for this line of code. Might make a lot of code blocks shorter.
 
-            // Incremenet phase_index here.
-            game_progress.current_phase++;
-            if (current_phase === 2) {
-                game_progress.cleared_statues.push(game_progress.current_statue);
-                console.log(game_progress);
-            } else {
-                console.log("NOT DONE YET NIGGA");
+            if (window.localStorage.getItem("completed") !== null || window.localStorage.getItem("completed") !== undefined) {
+                game_progress.current_phase++;
+                if (current_phase === 2) { // The 2 indicates the total amount of challenges each statue has.
+                    game_progress.cleared_statues.push(game_progress.current_statue);
+                    game_progress.current_statue = undefined;
+                    game_progress.current_phase = 0;
+
+                    // localStorage.setItem("game_progress", JSON.stringify(game_progress));
+
+                }
+                
+                const body = {
+                    user_id: localStorage.getItem("user_id"),
+                    game_progress: game_progress
+                };
+
+                const options = {
+                    method: "PATCH",
+                    headers: {"Content-type": "application/json"},
+                    body: JSON.stringify(body)
+                }
+
+                const request = new Request("./landing_page/game_data.php", options);
+                update_game_progress(request);
             }
 
             localStorage.removeItem("completed");
-            console.log(all_statues_data);
             dialog.innerHTML = "";
             dialog_container.className = "hidden";
             dialog.close();
         }
     }, 2000)
+}
 
+
+async function update_game_progress(request) {
+    try {
+        const response = await fetch(request);
+        const resource = await response.json();
+
+        if (response.ok) {
+            localStorage.setItem("game_progress", JSON.stringify(game_progress));
+            console.log(resource.response);
+        } else {
+            alert(resource.response);
+        }
+
+    } catch (e) {
+        console.log("There was something wrong with the fetch!");
+        update_game_progress(request);
+    }
 }

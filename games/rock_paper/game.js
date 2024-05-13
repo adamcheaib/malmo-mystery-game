@@ -1,63 +1,82 @@
 // fun variables wooho
+const audio = document.querySelector("audio");
 const options = ["sten", "sax", "påse"];
-const chart = 
-{
-    sten: 
+const chart =
     {
-        weak: "påse",
-        strong: "sax"
-    },
-    sax: 
-    {
-        weak: "sten",
-        strong: "påse"
-    },
-    påse: 
-    {
-        weak: "sax",
-        strong: "sten"
-    },
-}
+        sten:
+            {
+                weak: "påse",
+                strong: "sax"
+            },
+        sax:
+            {
+                weak: "sten",
+                strong: "påse"
+            },
+        påse:
+            {
+                weak: "sax",
+                strong: "sten"
+            },
+    }
 let scoreCounter = 0;
 let scoreCounter_op = 0;
 
 
 // some functions woooohoo
-function randomOption () {return options[Math.round(Math.random() * 2)];}
-
-function winOrLose (cpu, player) {
-    if(chart[player].weak == cpu) {scoreCounter_op++; return "FÖRLORAR"};
-    if(chart[player].strong == cpu) {scoreCounter++; return "VINNER"};
-    if(player == cpu) return "OAVGJORT";
+function randomOption() {
+    return options[Math.round(Math.random() * 2)];
 }
-function gameOver (result, timer = 10) {
+
+function winOrLose(cpu, player) {
+    if (chart[player].weak == cpu) {
+        scoreCounter_op++;
+        return "FÖRLORAR"
+    }
+    ;
+    if (chart[player].strong == cpu) {
+        scoreCounter++;
+        return "VINNER"
+    }
+    ;
+    if (player == cpu) return "OAVGJORT";
+}
+
+function gameOver(result, timer = 10) {
     document.getElementById("result").textContent = `DU ${result} SPELET`;
     document.querySelectorAll("#options > button").forEach(button => button.disabled = true);
-    
-    if(result == "VANN") localStorage.setItem("close_iframe", true);
 
-    if(result == "FÖRLORAR") 
-    {
+    if (result == "VANN") localStorage.setItem("close_iframe", true);
+
+    if (result == "FÖRLORAR") {
         const tryagain_btn = document.getElementById("tryagain");
         tryagain_btn.classList.remove("hidden");
         document.getElementById("cpu_player_move").textContent = "Lycka till nästa gång!";
 
         // timer time
-        tryagain_btn.querySelector("span").textContent = `om ${timer}s`; tryagain_btn.disabled = true;
-        let interval = setInterval(() => 
-        {
-            // if time is out
-            timer--;
-            if(timer == 0) {clearInterval(interval); localStorage.removeItem("timer"); tryagain_btn.disabled = false; tryagain_btn.querySelector("span").textContent = ""; return};
-            tryagain_btn.querySelector("span").textContent = `om ${timer}s`;
+        tryagain_btn.querySelector("span").textContent = `om ${timer}s`;
+        tryagain_btn.disabled = true;
+        let interval = setInterval(() => {
+                // if time is out
+                timer--;
+                if (timer == 0) {
+                    clearInterval(interval);
+                    localStorage.removeItem("timer");
+                    tryagain_btn.disabled = false;
+                    tryagain_btn.querySelector("span").textContent = "";
+                    return
+                }
+                ;
+                tryagain_btn.querySelector("span").textContent = `om ${timer}s`;
 
-            localStorage.setItem("timer", timer);
-        }, 
-        1000);
-    };
+                localStorage.setItem("timer", timer);
+            },
+            1000);
+    }
 }
+
 // no reload cheating
-if(localStorage.getItem("timer")) {
+if (localStorage.getItem("timer")) {
     gameOver("FÖRLORAR", Number(localStorage.getItem("timer")));
     document.getElementById("tryagain").disabled = true;
 }
@@ -66,9 +85,21 @@ if(localStorage.getItem("timer")) {
 document.querySelectorAll("#options > button").forEach(button => {
 
     button.addEventListener("click", e => {
+        if (audio.paused === true) {
+            audio.play();
+        }
+
         // check if game is over
-        if(scoreCounter == 3) {gameOver("VANN"); return};
-        if(scoreCounter_op == 3) {gameOver("FÖRLORAR"); return};
+        if (scoreCounter == 3) {
+            gameOver("VANN");
+            return
+        }
+        ;
+        if (scoreCounter_op == 3) {
+            gameOver("FÖRLORAR");
+            return
+        }
+        ;
 
         // retriving the moves
         const player_move = e.target.textContent;
@@ -83,9 +114,14 @@ document.querySelectorAll("#options > button").forEach(button => {
 })
 
 document.getElementById("tryagain").addEventListener("click", e => {
+
     // resets everything
-    scoreCounter = 0; scoreCounter_op = 0;
-    document.querySelectorAll("#options > button").forEach(button => button.disabled = false); document.getElementById("tryagain").disabled = true;
-    document.getElementById("cpu_player_move").textContent = ""; document.getElementById("result").textContent = ""; document.querySelector("#tryagain span").textContent = "in 10s";
+    scoreCounter = 0;
+    scoreCounter_op = 0;
+    document.querySelectorAll("#options > button").forEach(button => button.disabled = false);
+    document.getElementById("tryagain").disabled = true;
+    document.getElementById("cpu_player_move").textContent = "";
+    document.getElementById("result").textContent = "";
+    document.querySelector("#tryagain span").textContent = "in 10s";
     e.target.classList.add("hidden");
 })
