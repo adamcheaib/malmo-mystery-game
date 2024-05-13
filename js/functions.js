@@ -87,7 +87,7 @@ function trigger_game(statue_data, height = 50) {
                 game_progress.cleared_statues.push(game_progress.current_statue);
                 console.log(game_progress);
             } else {
-                console.log("NOT DONE YET NIGGA")
+                console.log("NOT DONE YET NIGGA");
             }
 
             localStorage.removeItem("completed");
