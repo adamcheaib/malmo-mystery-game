@@ -1,7 +1,7 @@
 import {detect_distance} from "./js/distance.js";
 import {update_missions, mission_options} from "./js/missions.js";
 import {show_dialogue, display_dialogue_line} from "./js/functions.js";
-import { all_statues_data } from "./data/data.js";
+import {all_statues_data} from "./data/data.js";
 
 if (window.localStorage.getItem("user_id") === null) {
     window.location.href = "./landing_page/";
@@ -9,6 +9,7 @@ if (window.localStorage.getItem("user_id") === null) {
 
 // Kolla hur många utmaningar varje staty ska ha. Om det är endast två, då läggs en avklarad staty till i "cleared_statues" arrayen om phase-indexet är 1 osv osv.
 export let game_progress = JSON.parse(localStorage.getItem("game_progress"));
+game_progress.current_statue = 6;
 
 // const main = [55.604096980734305, 12.996309487293441];
 
@@ -77,7 +78,7 @@ function createMap(position) {
 
             all_statues_data.forEach(statue => {
                 // check if already cleared
-                if(game_progress["cleared_statues"].includes(statue["statue_id"])) return;
+                if (game_progress["cleared_statues"].includes(statue["statue_id"])) return;
                 detect_distance(currentPosition, map, statue["coordinates"], statue.statue_id, statue.statue_name);
             });
             // JSON.parse(localStorage.getItem("current_zones")).forEach(zone => {
