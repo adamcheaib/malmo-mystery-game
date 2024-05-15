@@ -18,7 +18,7 @@
 #dialogue_container #ghostPortrait {
     height: 60%;
     width: 80%;
-    /* background-image: url("../media/karlxgustav.png");  */
+    background-image: url("https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/512x512/plain/symbol_questionmark.png"); 
     /* Disable hard-code  */
     background-size: contain;
     background-position: center; background-repeat: no-repeat;

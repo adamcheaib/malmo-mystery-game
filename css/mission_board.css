@@ -24,7 +24,8 @@
 
 #mission_board ul {
     text-align: end;
-    list-style: decimal-leading-zero;
+    list-style: disc;
+    /* list-style: decimal-leading-zero; */
 
     display: flex; flex-direction: column; gap: 15px;
 }
