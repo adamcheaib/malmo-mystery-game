@@ -1,5 +1,32 @@
 "use strict"
 
+/*
+Mall för statyerna:
+    {
+        statue_id: int,
+        statue_name: str,
+        image: str,
+        color: str,
+        coordinates: {latitude: int, longitude: int},
+        statue_challenges: [
+            {
+                phase: int,
+                name: str,
+                fullSize: bool
+            },
+            ...
+        ],
+        statue_dialogues: [
+            {
+                phase: int,
+                dialogue_lines: [str, str, str...]
+            }
+        ]
+
+    }
+
+ */
+
 export const all_statues_data =
     [
         {
@@ -16,17 +43,16 @@ export const all_statues_data =
                     phase: 0,
                     name: "Skriv Spelet",
                     game: true,
-                    riddle: false,
-                    location_based: false,
+
                     iframe_src: "./games/rock_paper/",
-                    challenge_attached: true
+                    fullSize: true
                 },
                 {
                     phase: 1,
                     name: "Fisk gåtan",
                     game: false,
-                    riddle: true,
-                    location_based: false,
+
+
                     question: "Vilken typ av fisk använder man när man grillar lax?",
                     answer: "Lax",
                 },
@@ -34,8 +60,7 @@ export const all_statues_data =
                     phase: 2,
                     name: "Hitta Spanaren",
                     game: false,
-                    riddle: true,
-                    location_based: true,
+
                     riddle_coordinates: {
                         latitude: 0, // Uppdatera dessa
                         longitude: 0 // Uppdatera dessa
@@ -67,7 +92,7 @@ export const all_statues_data =
             image: "PATH HERE",
             color: "#dea279",
             coordinates: {
-                latitude: 55.60755033894429, 
+                latitude: 55.60755033894429,
                 longitude: 12.998519697215286
             },
             statue_challenges: [
@@ -76,7 +101,7 @@ export const all_statues_data =
                     name: "Skriv Spelet",
                     game: true,
                     riddle: false,
-                    location_based: false,
+
                     iframe_src: "./games/mouse_game/",
                     fullSize: true,
                     completed: false
@@ -85,8 +110,8 @@ export const all_statues_data =
                     phase: 1,
                     name: "Fisk gåtan",
                     game: false,
-                    riddle: true,
-                    location_based: false,
+
+
                     question: "Vilken typ av fisk använder man när man grillar lax?",
                     answer: "Lax",
                     completed: false
@@ -95,8 +120,8 @@ export const all_statues_data =
                     phase: 2,
                     name: "Hitta Skattet",
                     game: false,
-                    riddle: true,
-                    location_based: true,
+
+
                     riddle_coordinates: [
                         {
                             name: "mask",
@@ -150,7 +175,7 @@ export const all_statues_data =
                     name: "Skriv Spelet",
                     game: true,
                     riddle: false,
-                    location_based: false,
+
                     iframe_src: "./games/mouse_game/",
                     fullSize: true,
                     completed: false
@@ -159,8 +184,8 @@ export const all_statues_data =
                     phase: 1,
                     name: "Fisk gåtan",
                     game: false,
-                    riddle: true,
-                    location_based: false,
+
+
                     question: "Vilken typ av fisk använder man när man grillar lax?",
                     answer: "Lax",
                     completed: false
@@ -169,8 +194,8 @@ export const all_statues_data =
                     phase: 2,
                     name: "Hitta Skattet",
                     game: false,
-                    riddle: true,
-                    location_based: true,
+
+
                     riddle_coordinates: [
                         {
                             name: "mask",
@@ -228,7 +253,7 @@ export const all_statues_data =
                     name: "Skriv Spelet",
                     game: true,
                     riddle: false,
-                    location_based: false,
+
                     iframe_src: "./games/mouse_game/",
                     fullSize: true,
                     completed: false
@@ -237,8 +262,8 @@ export const all_statues_data =
                     phase: 1,
                     name: "Fisk gåtan",
                     game: false,
-                    riddle: true,
-                    location_based: false,
+
+
                     question: "Vilken typ av fisk använder man när man grillar lax?",
                     answer: "Lax",
                     completed: false
@@ -247,8 +272,8 @@ export const all_statues_data =
                     phase: 2,
                     name: "Hitta Skattet",
                     game: false,
-                    riddle: true,
-                    location_based: true,
+
+
                     riddle_coordinates: [
                         {
                             name: "mask",
@@ -284,7 +309,7 @@ export const all_statues_data =
                     dialogue_lines: [
                         // finns inte i dokumentet så jag bara skriver nåt
                         "Jag är Katarakt, en väktare av kanalen.",
-                        "Min dödsorsak var drunknande när jag försökte fånga fisk.", 
+                        "Min dödsorsak var drunknande när jag försökte fånga fisk.",
                         "Min hunger har aldrig avlidigt, jag vill att den ska avta.",
                         "Om du fångar föda till mig blir jag mätt och belåten."
                     ]
@@ -306,7 +331,7 @@ export const all_statues_data =
                     name: "Skriv Spelet",
                     game: true,
                     riddle: false,
-                    location_based: false,
+
                     iframe_src: "./games/mouse_game/",
                     fullSize: true,
                     completed: false
@@ -315,8 +340,8 @@ export const all_statues_data =
                     phase: 1,
                     name: "Fisk gåtan",
                     game: false,
-                    riddle: true,
-                    location_based: false,
+
+
                     question: "Vilken typ av fisk använder man när man grillar lax?",
                     answer: "Lax",
                     completed: false
@@ -325,8 +350,8 @@ export const all_statues_data =
                     phase: 2,
                     name: "Hitta Skattet",
                     game: false,
-                    riddle: true,
-                    location_based: true,
+
+
                     riddle_coordinates: [
                         {
                             name: "mask",
@@ -360,7 +385,7 @@ export const all_statues_data =
                     phase: 1,
                     dialogue_lines: [
                         "Jag kallas för tungsinnet, bunden till mina egna sorger och bekymmer.",
-                        "Mitt hjärta är tyngd av olycka från fångenskap, sätt min ande fri från dessa osynliga bojor.", 
+                        "Mitt hjärta är tyngd av olycka från fångenskap, sätt min ande fri från dessa osynliga bojor.",
                         "Hjälp mig att finna föremålet som gav mig tröst och hopp, mitt ljuset i mörkret.",
                     ]
                 }
@@ -381,7 +406,7 @@ export const all_statues_data =
                     name: "Skriv Spelet",
                     game: true,
                     riddle: false,
-                    location_based: false,
+
                     iframe_src: "./games/mouse_game/",
                     fullSize: true,
                     completed: false
@@ -390,8 +415,8 @@ export const all_statues_data =
                     phase: 1,
                     name: "Fisk gåtan",
                     game: false,
-                    riddle: true,
-                    location_based: false,
+
+
                     question: "Vilken typ av fisk använder man när man grillar lax?",
                     answer: "Lax",
                     completed: false
@@ -400,8 +425,6 @@ export const all_statues_data =
                     phase: 2,
                     name: "Hitta Skattet",
                     game: false,
-                    riddle: true,
-                    location_based: true,
                     riddle_coordinates: [
                         {
                             name: "mask",
@@ -435,7 +458,7 @@ export const all_statues_data =
                     phase: 1,
                     dialogue_lines: [
                         "Jag är Diana, naturens väktare.",
-                        "Jag är alla djuren i parken, vindarnas sus och dagsstjärnans ljus.", 
+                        "Jag är alla djuren i parken, vindarnas sus och dagsstjärnans ljus.",
                         "Mitt hjärta slår i takt med naturens pulsslag, men min själ är fångad.",
                         "Hjälp mig till parkens hjärta där jag kan vila i frid."
                     ]
@@ -447,6 +470,7 @@ export const all_statues_data =
             statue_name: "Test",
             image: "PATH HERE",
             color: "lime",
+
             coordinates: {
                 latitude: 55.61068352280841,
                 longitude: 12.99540738127311
@@ -455,9 +479,6 @@ export const all_statues_data =
                 {
                     phase: 0,
                     name: "Fisk gåtan",
-                    game: false,
-                    riddle: true,
-                    location_based: false,
                     question: "Vilken typ av fisk använder man när man grillar lax?",
                     answer: "Lax",
                     completed: false
@@ -465,10 +486,8 @@ export const all_statues_data =
                 {
                     phase: 1,
                     name: "Spel",
-                    game: true,
                     iframe_src: "./games/mouse_game/",
-                    riddle: false,
-                    location_based: false,
+                    fullSize: true,
                     completed: false
                 }
             ],
@@ -479,13 +498,13 @@ export const all_statues_data =
                         "Hej",
                         "Det här är phase 0",
                     ],
-                    challenge_attached: true
                 },
                 {
                     phase: 1,
                     dialogue_lines: [
                         "Det här är phase 1",
-                    ]
+                    ],
+                    fullSize: true
                 }
             ]
         },

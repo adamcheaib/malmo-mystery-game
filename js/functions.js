@@ -5,7 +5,7 @@ import {game_progress} from "../index.js";
 
 export function show_dialogue() {
     const current_statue = all_statues_data.find(statue => statue["statue_id"] == game_progress["current_statue"]);
-    if(game_progress.current_phase !== 0) document.getElementById("ghostPortrait").style.backgroundImage = `url("${current_statue["image"]}")`;
+    if (game_progress.current_phase !== 0) document.getElementById("ghostPortrait").style.backgroundImage = `url("${current_statue["image"]}")`;
 
     game_progress.dialogue_index = 0;
     const dialogue_container = document.getElementById("dialogue_container");
@@ -44,7 +44,7 @@ export function display_dialogue_line(dialogue_index, phase_index, statue_id) {
     let statue_dialogues = all_statues_data[statue_id].statue_dialogues;
     let current_phase = statue_dialogues[phase_index];
     let dialogue_lines = current_phase.dialogue_lines;
-
+    let current_challenge = all_statues_data[statue_id].statue_challenges[phase_index];
 
     if (dialogue_lines[dialogue_index] !== undefined) {
         const text_to_write = dialogue_lines[game_progress.dialogue_index];
@@ -56,10 +56,8 @@ export function display_dialogue_line(dialogue_index, phase_index, statue_id) {
     if (dialogue_lines[dialogue_index] === undefined) {
         dialogue_container.classList.toggle("hidden");
 
-        if (current_phase.challenge_attached) {
-            if (current_phase.fullSize !== false) trigger_game(all_statues_data[game_progress.current_statue], 100);
-            else trigger_game(all_statues_data[game_progress.current_statue])// The value of challange_attached
-        }
+        if (current_challenge.fullSize === true) trigger_game(all_statues_data[game_progress.current_statue], 100);
+        else trigger_game(all_statues_data[game_progress.current_statue]); // The value of challange_attached
     }
 }
 
@@ -67,6 +65,27 @@ async function trigger_game(statue_data, height = 50) {
     const current_phase = game_progress.current_phase;
     const dialog_container = document.getElementById("dialog_modal_container");
     const dialog = document.getElementById("game_dialog");
+
+    if (statue_data.statue_challenges[current_phase].iframe_src === undefined) {
+        game_progress.current_phase++;
+
+        const body = {
+            user_id: localStorage.getItem("user_id"),
+            game_progress: game_progress
+        };
+
+        const options = {
+            method: "PATCH",
+            headers: {"Content-type": "application/json"},
+            body: JSON.stringify(body)
+        };
+
+        const request = new Request("./landing_page/game_data.php", options);
+
+        update_game_progress(request);
+        return null;
+    }
+
     let iframe_src = statue_data.statue_challenges[current_phase].iframe_src;
 
     dialog.innerHTML = `<iframe src=${iframe_src} width=100% height=100%></iframe>`;
@@ -76,7 +95,6 @@ async function trigger_game(statue_data, height = 50) {
 
     let closing_interval = setInterval(() => {
         if (localStorage.getItem("close_iframe") !== null && localStorage.getItem("close_iframe") !== undefined) {
-            console.log(window.localStorage);
             clearInterval(closing_interval);
             localStorage.removeItem("close_iframe");
 
