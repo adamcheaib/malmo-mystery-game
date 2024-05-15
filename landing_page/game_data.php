@@ -47,12 +47,12 @@ if ($user_id == null || $game_progress == null || $user_id == '') {
 
 if (
     !isset($game_progress["cleared_statues"])
-    ||
-    !isset($game_progress["current_statue"])
-    ||
-    !isset($game_progress["current_phase"])
-    ||
-    !isset($game_progress["dialogue_index"])
+//     ||
+//     !isset($game_progress["current_statue"])
+//     ||
+//     !isset($game_progress["current_phase"])
+//     ||
+//     !isset($game_progress["dialogue_index"])
 ) {
     unset_db_busy($file_name, $temp_name);
     sendJSON(["response" => "Missing key information from user game progress!"], 400);

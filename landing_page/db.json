@@ -78,5 +78,16 @@
             "current_phase": 0,
             "dialogue_index": 0
         }
+    },
+    {
+        "username": "erik",
+        "password": "erik",
+        "user_id": 8,
+        "game_progress": {
+            "cleared_statues": [],
+            "current_statue": 0,
+            "current_phase": 0,
+            "dialogue_index": 0
+        }
     }
 ]
