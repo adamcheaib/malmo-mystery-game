@@ -66,26 +66,6 @@ async function trigger_game(statue_data, height = 50) {
     const dialog_container = document.getElementById("dialog_modal_container");
     const dialog = document.getElementById("game_dialog");
 
-    // if (statue_data.statue_challenges[current_phase].iframe_src === undefined) {
-    //     game_progress.current_phase++;
-    //
-    //     const body = {
-    //         user_id: localStorage.getItem("user_id"),
-    //         game_progress: game_progress
-    //     };
-    //
-    //     const options = {
-    //         method: "PATCH",
-    //         headers: {"Content-type": "application/json"},
-    //         body: JSON.stringify(body)
-    //     };
-    //
-    //     const request = new Request("./landing_page/game_data.php", options);
-    //
-    //     update_game_progress(request);
-    //     return null;
-    // }
-
     let iframe_src = statue_data.statue_challenges[current_phase].iframe_src;
 
     dialog.innerHTML = `<iframe src=${iframe_src} width=100% height=100%></iframe>`;
