@@ -1,27 +1,25 @@
 import {detect_distance} from "./js/distance.js";
 import {update_missions, mission_options} from "./js/missions.js";
 import {show_dialogue, display_dialogue_line} from "./js/functions.js";
+import { all_statues_data } from "./data/data.js";
 
-// This is implemented in order to avoid any localStorage keys from other games hosted on the same server.
-if (window.localStorage.getItem("game_code") === null || window.localStorage.getItem("game_code") !== "1405") {
+if (window.localStorage.getItem("user_id") === null) {
     window.location.href = "./landing_page/";
 }
 
 // Kolla hur många utmaningar varje staty ska ha. Om det är endast två, då läggs en avklarad staty till i "cleared_statues" arrayen om phase-indexet är 1 osv osv.
 export let game_progress = JSON.parse(localStorage.getItem("game_progress"));
-console.log(game_progress);
 
-const statue_coords =
-    {
-        adolf: {latitude: 55.606749499890064, longitude: 13.000073510709273, color: "#D48C8C"},
-        gass: {latitude: 55.602315039588795, longitude: 12.98734215319501, color: "#93AE88"},
-        katt: {latitude: 55.60132802122993, longitude: 13.000414613334193, color: "#84a8b9"},
-        tungsinnet: {latitude: 55.603156508261634, longitude: 13.00720665598558, color: "#e9d1ae"},
-        frans: {latitude: 55.607391899774534, longitude: 12.99839459721525, color: "#dea279"},
-        radjur: {latitude: 55.60440697816811, longitude: 12.992741758035507, color: "#baa3b8"},
-    }
-let current_zones = ["radjur", "adolf", "katt"];
-localStorage.setItem("current_zones", JSON.stringify(current_zones));
+// const statue_coords =
+//     {
+//         adolf: {latitude: 55.606749499890064, longitude: 13.000073510709273, color: "#D48C8C"},
+//         gass: {latitude: 55.602315039588795, longitude: 12.98734215319501, color: "#93AE88"},
+//         katt: {latitude: 55.60132802122993, longitude: 13.000414613334193, color: "#84a8b9"},
+//         tungsinnet: {latitude: 55.603156508261634, longitude: 13.00720665598558, color: "#e9d1ae"},
+//         frans: {latitude: 55.607391899774534, longitude: 12.99839459721525, color: "#dea279"},
+//         radjur: {latitude: 55.60440697816811, longitude: 12.992741758035507, color: "#baa3b8"}, 
+//     }
+
 // const main = [55.604096980734305, 12.996309487293441];
 
 "use strict"
@@ -60,18 +58,24 @@ function createMap(position) {
     }).addTo(map);
 
     // create circles
-    const zones = JSON.parse(localStorage.getItem("current_zones"));
-    console.log(zones);
-    for (const location in statue_coords) {
-        if (!zones.includes(location)) continue;
-        let circle = L.circle([statue_coords[location]["latitude"], statue_coords[location]["longitude"]], {
-            color: statue_coords[location]["color"],
-            fillColor: statue_coords[location]["color"],
+    const game_progress = JSON.parse(localStorage.getItem("game_progress"));
+    for (const statue_data of all_statues_data) {
+        // skip if already done
+        if (game_progress["cleared_statues"].includes(statue_data["statue_id"])) continue;
+        const coordinates = [statue_data["coordinates"]["latitude"], statue_data["coordinates"]["longitude"]];
+        // create
+        let circle = L.circle(coordinates, {
+            color: statue_data["color"],
+            fillColor: statue_data["color"],
             fillOpacity: 0.6,
             radius: 50,
-            className: location
+            className: `statueZone_${statue_data["statue_id"]}`
         }).addTo(map);
+
     }
+    // for (const statue_data in all_statues_data) {
+        
+    // }
     L.circle(main, {
         color: "black",
         stroke: false,
@@ -85,9 +89,9 @@ function createMap(position) {
             currentPosition = [e.latitude, e.longitude];
             marker.setLatLng(currentPosition);
 
-            JSON.parse(localStorage.getItem("current_zones")).forEach(zone => {
-                detect_distance(currentPosition, map, statue_coords[zone]);
-            });
+            // JSON.parse(localStorage.getItem("current_zones")).forEach(zone => {
+            //     detect_distance(currentPosition, map, statue_coords[zone]);
+            // });
         })
         .on("locationerror", e => {
             // console.clear();

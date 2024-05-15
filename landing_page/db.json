@@ -9,8 +9,8 @@
                 2
             ],
             "current_statue": 0,
-            "current_phase": 1,
-            "dialogue_index": 3
+            "current_phase": 0,
+            "dialogue_index": 0
         }
     },
     {
@@ -58,20 +58,9 @@
         }
     },
     {
-        "username": "micke",
-        "password": "micke",
-        "user_id": 7,
-        "game_progress": {
-            "cleared_statues": [],
-            "current_statue": 0,
-            "current_phase": 0,
-            "dialogue_index": 0
-        }
-    },
-    {
-        "username": "besha",
-        "password": "besha",
-        "user_id": 8,
+        "username": "test",
+        "password": "test",
+        "user_id": 6,
         "game_progress": {
             "cleared_statues": [],
             "current_statue": 0,

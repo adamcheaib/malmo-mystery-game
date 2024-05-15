@@ -9,18 +9,24 @@
     color: var(--white);
     text-shadow: 0 0 20px var(--black);
     align-self: start;
+
+    display: flex; gap: 15px;
 }
 
 #mission_board * {
     /* font-family: "Jolly Lodger", system-ui; */
     font-family: "Crimson Text", serif;
-    letter-spacing: 5px;
+    letter-spacing: 3px;
+
+    font-size: 13px; margin: 0;
 }
 #mission_board h3 {text-align: end;}
 
 #mission_board ul {
     text-align: end;
     list-style: decimal-leading-zero;
+
+    display: flex; flex-direction: column; gap: 15px;
 }
 
 #mission_board ul li {

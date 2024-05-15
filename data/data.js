@@ -67,8 +67,8 @@ export const all_statues_data =
             image: "PATH HERE",
             color: "#dea279",
             coordinates: {
-                latitude: 55.606749499890064,
-                longitude: 13.000073510709273
+                latitude: 55.60755033894429, 
+                longitude: 12.998519697215286
             },
             statue_challenges: [
                 {

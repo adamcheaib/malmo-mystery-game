@@ -123,6 +123,7 @@ async function submit_func(event) {
             }
             window.localStorage.setItem("game_code", "1405");
             window.location.href = user_info.redirect;
+            // console.log(user_info.redirect);
         }
     } else {
         notification.className = "error";
