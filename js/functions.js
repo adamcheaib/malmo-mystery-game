@@ -3,7 +3,6 @@ import {game_progress} from "../index.js";
 
 "use strict"
 
-// Takes an object literal as an argument.
 export function show_dialogue() {
     game_progress.dialogue_index = 0;
     const dialogue_container = document.getElementById("dialogue_container");
@@ -77,19 +76,19 @@ async function trigger_game(statue_data, height = 50) {
             console.log(window.localStorage);
             clearInterval(closing_interval);
             localStorage.removeItem("close_iframe");
-            // statue_data.statue_challenges[game_progress.current_phase].completed = localStorage.getItem("completed") === "true"; // Create a function for this line of code. Might make a lot of code blocks shorter.
 
             if (window.localStorage.getItem("completed") !== null || window.localStorage.getItem("completed") !== undefined) {
                 game_progress.current_phase++;
                 if (current_phase === 2) { // The 2 indicates the total amount of challenges each statue has.
                     game_progress.cleared_statues.push(game_progress.current_statue);
-                    game_progress.current_statue = undefined;
                     game_progress.current_phase = 0;
+                    game_progress.current_statue = null;
 
-                    // localStorage.setItem("game_progress", JSON.stringify(game_progress));
-
+                    if (game_progress.cleared_statues.length === 6) {
+                        alert("YOU HAVE FINISHED THE FUCKING GAME");
+                    }
                 }
-                
+
                 const body = {
                     user_id: localStorage.getItem("user_id"),
                     game_progress: game_progress
@@ -121,13 +120,12 @@ async function update_game_progress(request) {
 
         if (response.ok) {
             localStorage.setItem("game_progress", JSON.stringify(game_progress));
-            console.log(resource.response);
         } else {
             alert(resource.response);
         }
 
     } catch (e) {
-        console.log("There was something wrong with the fetch!");
+        console.log("Ooops... something went wrong!");
         update_game_progress(request);
     }
 }

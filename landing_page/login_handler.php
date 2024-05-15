@@ -109,6 +109,9 @@ if (isset($data_recieved['passwordRepeat'])) {
                 unset_db_busy($file_name, $temp_name);
                 sendJSON(["user_info" => $user_data, "response" => "Du har loggat in som $username!"]);
                 break;
+            } else if ($user["username"] == $username and $password != $user["password"]) {
+                unset_db_busy($file_name, $temp_name);
+                sendJSON(["response" => "Fel lösenord!"], 400);
             }
         }
         unset_db_busy($file_name, $temp_name);

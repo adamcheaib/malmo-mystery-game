@@ -2,13 +2,14 @@ import {detect_distance} from "./js/distance.js";
 import {update_missions, mission_options} from "./js/missions.js";
 import {show_dialogue, display_dialogue_line} from "./js/functions.js";
 
-
-if (window.localStorage.getItem("user_id") === null) {
+// This is implemented in order to avoid any localStorage keys from other games hosted on the same server.
+if (window.localStorage.getItem("game_code") === null || window.localStorage.getItem("game_code") !== "1405") {
     window.location.href = "./landing_page/";
 }
 
 // Kolla hur många utmaningar varje staty ska ha. Om det är endast två, då läggs en avklarad staty till i "cleared_statues" arrayen om phase-indexet är 1 osv osv.
 export let game_progress = JSON.parse(localStorage.getItem("game_progress"));
+console.log(game_progress);
 
 const statue_coords =
     {
@@ -17,7 +18,7 @@ const statue_coords =
         katt: {latitude: 55.60132802122993, longitude: 13.000414613334193, color: "#84a8b9"},
         tungsinnet: {latitude: 55.603156508261634, longitude: 13.00720665598558, color: "#e9d1ae"},
         frans: {latitude: 55.607391899774534, longitude: 12.99839459721525, color: "#dea279"},
-        radjur: {latitude: 55.60440697816811, longitude: 12.992741758035507, color: "#baa3b8"}, 
+        radjur: {latitude: 55.60440697816811, longitude: 12.992741758035507, color: "#baa3b8"},
     }
 let current_zones = ["radjur", "adolf", "katt"];
 localStorage.setItem("current_zones", JSON.stringify(current_zones));

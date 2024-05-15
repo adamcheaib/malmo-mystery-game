@@ -1,5 +1,9 @@
 "use strict"
 
+
+// Clears the local storage in order to avoid any conflicts with keys from the other games.
+window.localStorage.clear();
+
 const hamburger_btn = document.getElementById("hamburger_menu");
 const form = document.querySelector("form");
 const log_to_reg = document.getElementById("switch_log_reg");
@@ -8,7 +12,7 @@ hamburger_btn.onclick = load_phone_menu;
 log_to_reg.onclick = toggle_log_reg;
 form.onsubmit = submit_func;
 
-if (localStorage.getItem("user_id") !== null) {
+if (localStorage.getItem("user_id") !== null ) {
     window.location.href = "../";
 }
 
@@ -24,9 +28,9 @@ function load_phone_menu(event) {
 
     menu_btns_container.innerHTML = `
         <h3 style="color: white; border-bottom: solid 1px white">Meny</h3>
-        <div class="menu_btn">Spela</div>
-        <div class="menu_btn">Info</div>
-        <div class="menu_btn">Guide</div>`;
+        <div class="menu_btn">Hem</div>
+        <div class="menu_btn">Spelguide</div>
+        <div class="menu_btn">Problem?</div>`;
 
     container.appendChild(menu_btns_container);
     container.appendChild(close_space);
@@ -104,6 +108,7 @@ async function submit_func(event) {
     if (response.ok) {
         notification.className = "success";
         const user_info = resource.user_info;
+        user_info.game_progress.current_statue = null;
 
         // Controls whether the user is attempting to login.
         if (user_info !== undefined) {
@@ -116,6 +121,7 @@ async function submit_func(event) {
                     }
                 }
             }
+            window.localStorage.setItem("game_code", "1405");
             window.location.href = user_info.redirect;
         }
     } else {
