@@ -16,7 +16,8 @@ export function detect_distance(position, map, statue_coords, statue_id, name) {
     // if (name == "Test") console.log(distance);
 
     if(distance <= 50) {
-        update_missions("delete", {oldText: mission_options["none"]()});
+        // update_missions("delete", {oldText: mission_options["none"]()});
+        update_missions("wipe", {});
         update_missions("post", {newText: mission_options["inZone"]()});
 
         game_progress.current_statue = statue_id;
@@ -30,13 +31,14 @@ export function detect_distance(position, map, statue_coords, statue_id, name) {
     if (distance <= 20) {
         const statue = all_statues_data.find(statue => statue["statue_id"] == statue_id);
 
-        update_missions("delete", {oldText: mission_options["inZone"]("statue")});
+        // update_missions("delete", {oldText: mission_options["inZone"]("statue")});
+        update_missions("wipe", {});
         update_missions("post", {newText: mission_options["challenge"](statue["statue_name"])});
 
         document.getElementById("btn-interact").classList.add("blink");
 
-        // game_progress.current_statue = statue_id;
-        // game_progress.current_phase = 1;
-        // localStorage.setItem("game_progress", JSON.stringify(game_progress));
+        game_progress.current_statue = statue_id;
+        game_progress.current_phase = 1;
+        localStorage.setItem("game_progress", JSON.stringify(game_progress));
     }
 }

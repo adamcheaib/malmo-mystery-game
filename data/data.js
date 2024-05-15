@@ -445,7 +445,7 @@ export const all_statues_data =
         {
             statue_id: 6,
             statue_name: "Test",
-            image: "PATH HERE",
+            image: "./media/gaspojke.png",
             color: "lime",
             coordinates: {
                 latitude: 55.61068352280841,
