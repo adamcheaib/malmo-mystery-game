@@ -5,8 +5,8 @@ export let mission_options =
             return "Gå in i en zon"
         },
 
-        inZone(statue) {
-            return `Hitta ${statue}`
+        inZone() {
+            return `Hitta statyn i zonen`
         },
         challenge(statue) {
             return `Lös ${statue}s utmaning`

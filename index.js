@@ -10,16 +10,6 @@ if (window.localStorage.getItem("user_id") === null) {
 // Kolla hur många utmaningar varje staty ska ha. Om det är endast två, då läggs en avklarad staty till i "cleared_statues" arrayen om phase-indexet är 1 osv osv.
 export let game_progress = JSON.parse(localStorage.getItem("game_progress"));
 
-// const statue_coords =
-//     {
-//         adolf: {latitude: 55.606749499890064, longitude: 13.000073510709273, color: "#D48C8C"},
-//         gass: {latitude: 55.602315039588795, longitude: 12.98734215319501, color: "#93AE88"},
-//         katt: {latitude: 55.60132802122993, longitude: 13.000414613334193, color: "#84a8b9"},
-//         tungsinnet: {latitude: 55.603156508261634, longitude: 13.00720665598558, color: "#e9d1ae"},
-//         frans: {latitude: 55.607391899774534, longitude: 12.99839459721525, color: "#dea279"},
-//         radjur: {latitude: 55.60440697816811, longitude: 12.992741758035507, color: "#baa3b8"}, 
-//     }
-
 // const main = [55.604096980734305, 12.996309487293441];
 
 "use strict"
@@ -58,7 +48,6 @@ function createMap(position) {
     }).addTo(map);
 
     // create circles
-    const game_progress = JSON.parse(localStorage.getItem("game_progress"));
     for (const statue_data of all_statues_data) {
         // skip if already done
         if (game_progress["cleared_statues"].includes(statue_data["statue_id"])) continue;
@@ -73,9 +62,6 @@ function createMap(position) {
         }).addTo(map);
 
     }
-    // for (const statue_data in all_statues_data) {
-        
-    // }
     L.circle(main, {
         color: "black",
         stroke: false,
@@ -89,6 +75,11 @@ function createMap(position) {
             currentPosition = [e.latitude, e.longitude];
             marker.setLatLng(currentPosition);
 
+            all_statues_data.forEach(statue => {
+                // check if already cleared
+                if(game_progress["cleared_statues"].includes(statue["statue_id"])) return;
+                detect_distance(currentPosition, map, statue["coordinates"], statue.statue_id, statue.statue_name);
+            });
             // JSON.parse(localStorage.getItem("current_zones")).forEach(zone => {
             //     detect_distance(currentPosition, map, statue_coords[zone]);
             // });

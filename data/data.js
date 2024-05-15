@@ -442,5 +442,52 @@ export const all_statues_data =
                 }
             ]
         },
+        {
+            statue_id: 6,
+            statue_name: "Test",
+            image: "PATH HERE",
+            color: "lime",
+            coordinates: {
+                latitude: 55.61068352280841,
+                longitude: 12.99540738127311
+            },
+            statue_challenges: [
+                {
+                    phase: 0,
+                    name: "Fisk gåtan",
+                    game: false,
+                    riddle: true,
+                    location_based: false,
+                    question: "Vilken typ av fisk använder man när man grillar lax?",
+                    answer: "Lax",
+                    completed: false
+                },
+                {
+                    phase: 1,
+                    name: "Spel",
+                    game: true,
+                    iframe_src: "./games/mouse_game/",
+                    riddle: false,
+                    location_based: false,
+                    completed: false
+                }
+            ],
+            statue_dialogues: [
+                {
+                    phase: 0,
+                    dialogue_lines: [
+                        "Hej",
+                        "Det här är phase 0",
+                    ],
+                    challenge_attached: true
+                },
+                {
+                    phase: 1,
+                    dialogue_lines: [
+                        "Det här är phase 1",
+                    ]
+                }
+            ]
+        },
 
     ]

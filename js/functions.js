@@ -4,6 +4,9 @@ import {game_progress} from "../index.js";
 "use strict"
 
 export function show_dialogue() {
+    const current_statue = all_statues_data.find(statue => statue["statue_id"] == game_progress["current_statue"]);
+    if(game_progress.current_phase !== 0) document.getElementById("ghostPortrait").style.backgroundImage = `url("${current_statue["image"]}")`;
+
     game_progress.dialogue_index = 0;
     const dialogue_container = document.getElementById("dialogue_container");
     const first_dialogue_line = all_statues_data[game_progress.current_statue]

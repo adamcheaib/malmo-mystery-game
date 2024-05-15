@@ -18,7 +18,8 @@
 #dialogue_container #ghostPortrait {
     height: 60%;
     width: 80%;
-    background-image: url("../media/karlxgustav.png"); /* Disable hard-code  */
+    /* background-image: url("../media/karlxgustav.png");  */
+    /* Disable hard-code  */
     background-size: contain;
     background-position: center; background-repeat: no-repeat;
 }
