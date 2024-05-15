@@ -57,7 +57,7 @@ export function display_dialogue_line(dialogue_index, phase_index, statue_id) {
         dialogue_container.classList.toggle("hidden");
 
         if (current_challenge.fullSize === true) trigger_game(all_statues_data[game_progress.current_statue], 100);
-        else trigger_game(all_statues_data[game_progress.current_statue]); // The value of challange_attached
+        else if (current_challenge.fullSize === false) trigger_game(all_statues_data[game_progress.current_statue]); // The value of challange_attached
     }
 }
 
@@ -66,25 +66,25 @@ async function trigger_game(statue_data, height = 50) {
     const dialog_container = document.getElementById("dialog_modal_container");
     const dialog = document.getElementById("game_dialog");
 
-    if (statue_data.statue_challenges[current_phase].iframe_src === undefined) {
-        game_progress.current_phase++;
-
-        const body = {
-            user_id: localStorage.getItem("user_id"),
-            game_progress: game_progress
-        };
-
-        const options = {
-            method: "PATCH",
-            headers: {"Content-type": "application/json"},
-            body: JSON.stringify(body)
-        };
-
-        const request = new Request("./landing_page/game_data.php", options);
-
-        update_game_progress(request);
-        return null;
-    }
+    // if (statue_data.statue_challenges[current_phase].iframe_src === undefined) {
+    //     game_progress.current_phase++;
+    //
+    //     const body = {
+    //         user_id: localStorage.getItem("user_id"),
+    //         game_progress: game_progress
+    //     };
+    //
+    //     const options = {
+    //         method: "PATCH",
+    //         headers: {"Content-type": "application/json"},
+    //         body: JSON.stringify(body)
+    //     };
+    //
+    //     const request = new Request("./landing_page/game_data.php", options);
+    //
+    //     update_game_progress(request);
+    //     return null;
+    // }
 
     let iframe_src = statue_data.statue_challenges[current_phase].iframe_src;
 
