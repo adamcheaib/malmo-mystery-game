@@ -63,8 +63,6 @@ $full_db = json_decode(file_get_contents($temp_name), true);
 // Replaces the game progress for the individual player.
 foreach ($full_db as $user_index => $user) {
     if ($user_id == $user['user_id']) {
-        $game_progress["phase_index"] = 0;
-        $game_progress["dialogue_index"] = 0;
         $full_db[$user_index]["game_progress"] = $game_progress;
         file_put_contents($temp_name, json_encode($full_db, JSON_PRETTY_PRINT));
         unset_db_busy($file_name, $temp_name);

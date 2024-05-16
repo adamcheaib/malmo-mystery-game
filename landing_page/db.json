@@ -9,8 +9,8 @@
                 2
             ],
             "current_statue": 6,
-            "current_phase": 0,
-            "dialogue_index": 0
+            "current_phase": 1,
+            "dialogue_index": 2
         }
     },
     {
@@ -51,12 +51,10 @@
         "password": "test",
         "user_id": 6,
         "game_progress": {
-            "cleared_statues": [
-                6
-            ],
-            "current_statue": null,
-            "current_phase": 0,
-            "dialogue_index": 1
+            "cleared_statues": [],
+            "current_statue": 0,
+            "current_phase": 1,
+            "dialogue_index": 3
         }
     },
     {
@@ -90,60 +88,6 @@
             "current_statue": 0,
             "current_phase": 0,
             "dialogue_index": 0
-        }
-    },
-    {
-        "username": "test2",
-        "password": "test",
-        "user_id": 9,
-        "game_progress": {
-            "cleared_statues": [
-                6
-            ],
-            "current_statue": null,
-            "current_phase": 0,
-            "dialogue_index": 1
-        }
-    },
-    {
-        "username": "hejj",
-        "password": "hejj",
-        "user_id": 10,
-        "game_progress": {
-            "cleared_statues": [
-                6
-            ],
-            "current_statue": null,
-            "current_phase": 0,
-            "dialogue_index": 1
-        }
-    },
-    {
-        "username": "halloj",
-        "password": "test",
-        "user_id": 11,
-        "game_progress": {
-            "cleared_statues": [
-                6
-            ],
-            "current_statue": null,
-            "current_phase": 0,
-            "dialogue_index": 1
-        }
-    },
-    {
-        "username": "rastaman",
-        "password": "1234",
-        "user_id": 12,
-        "game_progress": {
-            "cleared_statues": [
-                1,
-                2
-            ],
-            "current_statue": null,
-            "current_phase": 0,
-            "dialogue_index": 0,
-            "phase_index": 0
         }
     }
 ]
