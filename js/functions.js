@@ -7,6 +7,7 @@ import { mission_options, update_missions } from "./missions.js";
 export function show_dialogue(final = null) {
     const current_statue = all_statues_data.find(statue => statue["statue_id"] == game_progress["current_statue"]);
     if (game_progress.current_phase !== 0) document.getElementById("ghostPortrait").style.backgroundImage = `url("${current_statue["image"]}")`;
+    if (game_progress.current_phase == 0) document.getElementById("ghostPortrait").style.backgroundImage = "";
 
     game_progress.dialogue_index = 0;
     const dialogue_container = document.getElementById("dialogue_container");
