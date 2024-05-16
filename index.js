@@ -3,13 +3,12 @@ import {update_missions, mission_options} from "./js/missions.js";
 import {show_dialogue, display_dialogue_line} from "./js/functions.js";
 import {all_statues_data} from "./data/data.js";
 
-if (window.localStorage.getItem("user_id") === null) {
+if (window.localStorage.getItem("game_code") === null) {
     window.location.href = "./landing_page/";
 }
 
 // Kolla hur många utmaningar varje staty ska ha. Om det är endast två, då läggs en avklarad staty till i "cleared_statues" arrayen om phase-indexet är 1 osv osv.
 export let game_progress = JSON.parse(localStorage.getItem("game_progress"));
-game_progress.current_statue = 6;
 
 // const main = [55.604096980734305, 12.996309487293441];
 
@@ -20,7 +19,7 @@ const main = [55.604096980734305, 12.996309487293441];
 let currentPosition = [];
 
 navigator.geolocation.getCurrentPosition(createMap, function (er) {
-    console.log(er)
+    alert(er);
 }, {enableHighAccuracy: true});
 
 function createMap(position) {
@@ -76,8 +75,11 @@ function createMap(position) {
             currentPosition = [e.latitude, e.longitude];
             marker.setLatLng(currentPosition);
 
+            console.log(game_progress);
+
             all_statues_data.forEach(statue => {
                 // check if already cleared
+                document.getElementById("btn-interact").setAttribute("disabled", "true");
                 if (game_progress["cleared_statues"].includes(statue["statue_id"])) return;
                 detect_distance(currentPosition, map, statue["coordinates"], statue.statue_id, statue.statue_name);
             });
@@ -99,6 +101,9 @@ function createMap(position) {
 
     document.getElementById("btn-interact").addEventListener("click", e => {
         show_dialogue();
+
+        const statue_data = all_statues_data.find(statue => statue.statue_id == game_progress.current_statue);
+        statue_data.statue_challenges[game_progress.current_phase].interacted = true;
     })
 
     document.getElementById("next_text").addEventListener("click", e => {
