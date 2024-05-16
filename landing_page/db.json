@@ -1,1 +1,13 @@
-[]
+[
+    {
+        "username": "adam",
+        "password": "adam123",
+        "user_id": 1,
+        "game_progress": {
+            "cleared_statues": [],
+            "current_statue": 0,
+            "current_phase": 0,
+            "dialogue_index": 0
+        }
+    }
+]
