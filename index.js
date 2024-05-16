@@ -89,7 +89,7 @@ function createMap(position) {
 
             all_statues_data.forEach(statue => {
                 // check if already cleared
-                document.getElementById("btn-interact").setAttribute("disabled", "true");
+                // document.getElementById("btn-interact").setAttribute("disabled", "true");
                 if (game_progress["cleared_statues"].includes(statue["statue_id"])) return;
                 detect_distance(currentPosition, map, statue["coordinates"], statue.statue_id, statue.statue_name);
             });
@@ -122,4 +122,6 @@ function createMap(position) {
 
     render_final_view();
 }
+
+alert("new vers!!!!!!!!");
 
