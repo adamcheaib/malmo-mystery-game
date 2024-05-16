@@ -13,7 +13,7 @@ export let mission_options =
         },
 
         finished() {
-            return "You finished every mission!!"
+            return "Du klarade alla uppdrag!!"
         }
     }
 
