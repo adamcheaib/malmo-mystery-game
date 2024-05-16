@@ -11,6 +11,7 @@ if (window.localStorage.getItem("game_code") === null) {
 export let game_progress = JSON.parse(localStorage.getItem("game_progress"));
 // const main = [55.604096980734305, 12.996309487293441];
 
+
 "use strict"
 
 const main = [55.604096980734305, 12.996309487293441];

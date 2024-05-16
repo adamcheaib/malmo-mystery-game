@@ -3,6 +3,42 @@
 // Clears the local storage in order to avoid any conflicts with keys from the other games.
 window.localStorage.clear();
 
+
+// Store the original HTML structure
+const originalTitle = document.getElementById('title').innerHTML;
+const originalDescription = document.getElementById('description').innerHTML;
+const originalLoginForm = document.getElementById('login_form').outerHTML;
+
+const pages = [
+    {
+        name: "problem",
+        title: "Problem",
+        innerHTML: "<ol>Om appen inte funkar, prova något av dessa tips:\n" +
+            "    <li>Försäkra att du accepterat att dela platsinfo. Kolla i inställningarna för din webbläsare, för webbsidan och i din telefons inställningar. Om du inte tillåter att din plats används så kommer spelet inte fungera.</li>\n" +
+            "    <li>Byta webbläsare. Om din default webbläsare inte fungerar så finns andra att ladda ner, t.ex. firefox, chrome, brave osv. Om en av dem har problem brukar det oftast fungera på en annan. All din spelinformation är sparad i din användare, så det är ingen fara om du byter webbläsare mitt i spelandet!</li>\n" +
+            "    <li>Töm din cache. Ibland kan felaktig data sparats i din cache, prova att helt rensa ut den för webbsidan.</li>\n" +
+            "    <li>Gå utomhus. Din live location har svårare att uppdateras inomhus, om du är utomhus är den mer precis. Hela spelet är ändå gjord för att spelas i utomhus miljö!</li>\n" +
+            "    <li>Om inget annat funkar, prova med någon annans mobil. Ibland vill vissa mobiler inte sammarbeta. Om du spelar i grupp, prova att använda någon annans mobil. Eftersom din speldata är sparad i din användare behöver du bara logga in på sidan igen och så förlorar du ingen värdefull speltid!</li>\n" +
+            "</ol>"
+    },
+    {
+        name: "spelguide",
+        title: "Spelguide",
+        innerHTML: 'Välkommen till spelguiden. Här hittar du all information du behöver för att komma igång med spelet och lösa mysterierna i Malmö.'
+    }
+];
+
+
+if (window.location.href.includes("help")) {
+    document.getElementById("title").textContent = pages[0].title;
+    document.getElementById("description").innerHTML = pages[0].innerHTML;
+    document.getElementById("login_form").style.display = "none";
+} else if (window.location.href.includes("guide")) {
+    document.getElementById("title").textContent = pages[1].title;
+    document.getElementById("description").innerHTML = pages[1].innerHTML;
+    document.getElementById("login_form").style.display = "none";
+}
+
 const hamburger_btn = document.getElementById("hamburger_menu");
 const form = document.querySelector("form");
 const log_to_reg = document.getElementById("switch_log_reg");
@@ -11,10 +47,6 @@ hamburger_btn.onclick = load_phone_menu;
 log_to_reg.onclick = toggle_log_reg;
 form.onsubmit = submit_func;
 
-// Store the original HTML structure
-const originalTitle = document.getElementById('title').innerHTML;
-const originalDescription = document.getElementById('description').innerHTML;
-const originalLoginForm = document.getElementById('login_form').outerHTML;
 
 function load_phone_menu(event) {
     event.target.style.pointerEvents = "none";
@@ -65,12 +97,19 @@ function load_phone_menu(event) {
 
     document.getElementById('problem_btn').addEventListener('click', () => {
         document.getElementById('title').innerHTML = 'PROBLEM';
-        document.getElementById('description').innerHTML = 'Om du stöter på några problem under spelets gång, kan du hitta lösningar här. Vi har samlat vanliga frågor och deras svar för att hjälpa dig.';
+        document.getElementById('description').innerHTML = "<ol>Om appen inte funkar, prova något av dessa tips:<br> " +
+            "    <li>Försäkra att du accepterat att dela platsinfo. Kolla i inställningarna för din webbläsare, för webbsidan och i din telefons inställningar. Om du inte tillåter att din plats används så kommer spelet inte fungera.</li>\n" +
+            "    <li>Byta webbläsare. Om din default webbläsare inte fungerar så finns andra att ladda ner, t.ex. firefox, chrome, brave osv. Om en av dem har problem brukar det oftast fungera på en annan. All din spelinformation är sparad i din användare, så det är ingen fara om du byter webbläsare mitt i spelandet!</li>\n" +
+            "    <li>Töm din cache. Ibland kan felaktig data sparats i din cache, prova att helt rensa ut den för webbsidan.</li>\n" +
+            "    <li>Gå utomhus. Din live location har svårare att uppdateras inomhus, om du är utomhus är den mer precis. Hela spelet är ändå gjord för att spelas i utomhus miljö!</li>\n" +
+            "    <li>Om inget annat funkar, prova med någon annans mobil. Ibland vill vissa mobiler inte sammarbeta. Om du spelar i grupp, prova att använda någon annans mobil. Eftersom din speldata är sparad i din användare behöver du bara logga in på sidan igen och så förlorar du ingen värdefull speltid!</li>\n" +
+            "</ol>";
         document.getElementById('login_form').style.display = 'none';
         container.remove();
     });
 }
 
+// Toggle fetch here when attempting to register or login.
 function toggle_log_reg(event) {
     event.preventDefault();
     event.target.classList.toggle("login");
@@ -113,102 +152,7 @@ async function submit_func(event) {
 
     const options = {
         method: "POST",
-        headers: { "Content-type": "application/json" },
-        body: JSON.stringify(request_body)
-    }
-
-    const response = await fetch("./login_handler.php", options);
-    const resource = await response.json();
-    notification.textContent = resource.response;
-    console.log(response);
-
-    if (response.ok) {
-        notification.className = "success";
-        const user_info = resource.user_info;
-        user_info.game_progress.current_statue = null;
-
-        // Controls whether the user is attempting to login.
-        if (user_info !== undefined) {
-            for (let key in user_info) {
-                if (key !== "redirect") {
-                    if (typeof user_info[key] === "object") {
-                        window.localStorage.setItem(key, JSON.stringify(user_info[key]));
-                    } else {
-                        window.localStorage.setItem(key, user_info[key]);
-                    }
-                }
-            }
-            window.localStorage.setItem("game_code", "1405");
-            window.location.href = user_info.redirect;
-            // console.log(user_info.redirect);
-        }
-    } else {
-        notification.className = "error";
-
-        if (response.status === 409) {
-            setTimeout(() => {
-                submit_func(event);
-            }, 1500)
-        }
-    }
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-    const hamburgerMenu = document.getElementById('hamburger_menu');
-
-    if (hamburgerMenu) {
-        hamburgerMenu.addEventListener('click', load_phone_menu);
-    }
-});
-
-
-
-
-
-function toggle_log_reg(event) {
-    event.preventDefault();
-    event.target.classList.toggle("login");
-    event.target.classList.toggle("register");
-
-    const btn_submit = document.getElementById("submit");
-    const inpt_passwordRepeat = document.getElementById("passwordRepeat");
-    const form_title = document.getElementById("form_title");
-    const switch_log_reg = document.getElementById("switch_log_reg");
-    const form = document.querySelector("form");
-    const notification = document.getElementById("notification");
-
-    inpt_passwordRepeat.classList.toggle("hidden");
-    notification.textContent = "";
-
-    if (event.target.classList.contains("login")) {
-        btn_submit.textContent = "Logga in";
-        form_title.textContent = "INLOGGNING";
-        switch_log_reg.textContent = "Skapa konto!";
-        form.id = "login_form";
-    } else {
-        btn_submit.textContent = "Registrera"
-        form_title.textContent = "REGISTRERING";
-        switch_log_reg.textContent = "Klicka för att logga in!";
-        form.id = "register_form";
-    }
-}
-
-
-// Toggle fetch here when attempting to register or login.
-async function submit_func(event) {
-    event.preventDefault();
-    const notification = document.getElementById("notification");
-    const request_body = {};
-
-    // Selects all the input elements that do not have the class "hidden".
-    const all_inputs = document.querySelectorAll("input:not(.hidden)");
-    all_inputs.forEach(inputField => request_body[inputField.getAttribute("name")] = inputField.value);
-
-    request_body.username = request_body.username.toLowerCase();
-
-    const options = {
-        method: "POST",
-        headers: { "Content-type": "application/json" },
+        headers: {"Content-type": "application/json"},
         body: JSON.stringify(request_body)
     }
 
