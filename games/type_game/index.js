@@ -15,6 +15,7 @@ function trigger_win_lose_screen() {
             document.body.innerHTML = "<h1>Bra jobbat!</h1>";
             document.querySelector("h1").style.fontSize = "30px";
             document.querySelector("h1").style.textAlign = "center";
+            localStorage.setItem("completed", true);
         }, 100);
     } else {
         setTimeout(() => {
