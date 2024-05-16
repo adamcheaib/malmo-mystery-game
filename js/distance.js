@@ -13,12 +13,10 @@ export function detect_distance(position, map, statue_coords, statue_id, name) {
 
     const statue_data = all_statues_data.find(statue => statue.statue_id == statue_id);
 
-    if(distance <= 50) {
-        gettingCloser(50, 0);
-    }
-
-    if (distance <= 20) {
+    if(distance <= 20) {
         gettingCloser(20, 1);
+    } else if (distance <= 50) {
+        gettingCloser(50, 0);
     }
 
 
