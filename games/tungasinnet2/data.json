@@ -1,0 +1,28 @@
+{
+    "phase": 2,
+    "name": "Befria Tungsinnet",
+    "game": false,
+    "riddle": true,
+    "location_based": false,
+    "riddle_coordinates": [
+        {
+            "name": "Teatermasken",
+            "riddle": "Vad döljer sig bakom masken när ljusen släcks?",
+            "answer": "Skuggan",
+            "found": false
+        },
+        {
+            "name": "Filmrullen",
+            "riddle": "I en värld där bilder flyter, vad rullar förbi oss utan att röra sig?",
+            "answer": "Tid",
+            "found": false
+        },
+        {
+            "name": "Teaterbiljetten",
+            "riddle": "Vilken biljett tar dig inte till din destination men tar dig till en ny värld?",
+            "answer": "Biljetten",
+            "found": false
+        }
+    ],
+    "completed": false
+}
