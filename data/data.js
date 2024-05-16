@@ -196,23 +196,13 @@ export const all_statues_data =
             statue_challenges: [
                 {
                     phase: 0,
-                    name: "Skriv Spelet",
-                    game: true,
-                    riddle: false,
-
-                    iframe_src: "./games/mouse_game/",
-                    fullSize: true,
-                    completed: false
                 },
                 {
                     phase: 1,
                     name: "Fisk gåtan",
                     game: false,
-
-
-                    question: "Vilken typ av fisk använder man när man grillar lax?",
-                    answer: "Lax",
-                    completed: false
+                    iframe_src: "./games/mouse_game/",
+                    fullSize: true
                 },
                 {
                     phase: 2,
