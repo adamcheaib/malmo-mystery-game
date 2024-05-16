@@ -123,5 +123,5 @@ function createMap(position) {
     render_final_view();
 }
 
-alert("new vers!!!!!!!!");
+alert("VERSION 3!!!!!!!!");
 
