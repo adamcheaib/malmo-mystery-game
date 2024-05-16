@@ -87,7 +87,7 @@ async function trigger_game(statue_data, height = 50) {
             clearInterval(closing_interval);
             localStorage.removeItem("close_iframe");
 
-            if (window.localStorage.getItem("completed") !== null || window.localStorage.getItem("completed") !== undefined) {
+            if (window.localStorage.getItem("completed") !== null && window.localStorage.getItem("completed") !== undefined) {
                 // say thanks
                 show_dialogue("final");
 
