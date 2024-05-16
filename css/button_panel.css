@@ -27,11 +27,17 @@
     animation: click 0.5s ease-in-out;
 }
 
-/* LOGOUT */
-#logout_button {
+/* CONTROL PANEL */
+#control_panel {
     grid-row: 3;
     grid-column: 1;
     align-self: flex-end;
+
+    display: flex; flex-direction: column;
+    gap: 30px;
+}
+
+#control_panel > * {
     opacity: .4;
 }
 #logout_backdrop {

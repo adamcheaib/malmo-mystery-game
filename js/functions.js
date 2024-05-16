@@ -4,15 +4,17 @@ import { mission_options, update_missions } from "./missions.js";
 
 "use strict"
 
-export function show_dialogue() {
+export function show_dialogue(final = null) {
     const current_statue = all_statues_data.find(statue => statue["statue_id"] == game_progress["current_statue"]);
     if (game_progress.current_phase !== 0) document.getElementById("ghostPortrait").style.backgroundImage = `url("${current_statue["image"]}")`;
 
     game_progress.dialogue_index = 0;
     const dialogue_container = document.getElementById("dialogue_container");
-    const first_dialogue_line = all_statues_data[game_progress.current_statue]
+    let first_dialogue_line = all_statues_data[game_progress.current_statue]
         .statue_dialogues[game_progress.current_phase]
         .dialogue_lines[0];
+
+    if(final) first_dialogue_line = "Tack för att du räddade mig!";
 
     animate_text(first_dialogue_line);
     game_progress.dialogue_index++;
@@ -41,6 +43,12 @@ function animate_text(str) {
 }
 
 export function display_dialogue_line(dialogue_index, phase_index, statue_id) {
+    // final thank you dialogue
+    if(statue_id == undefined) {
+        document.getElementById("dialogue_container").classList.toggle("hidden");
+        return;
+    }
+
     const dialogue_container = document.getElementById("dialogue_container");
     let statue_dialogues = all_statues_data[statue_id].statue_dialogues;
     let current_phase = statue_dialogues[phase_index];
@@ -80,6 +88,9 @@ async function trigger_game(statue_data, height = 50) {
             localStorage.removeItem("close_iframe");
 
             if (window.localStorage.getItem("completed") !== null || window.localStorage.getItem("completed") !== undefined) {
+                // say thanks
+                show_dialogue("final");
+
                 game_progress.current_phase++;
                 if (current_phase === 1) { // The 2 indicates the total amount of challenges each statue has.
                     game_progress.cleared_statues.push(game_progress.current_statue);
@@ -87,8 +98,9 @@ async function trigger_game(statue_data, height = 50) {
                     game_progress.current_statue = null;
                     console.log(game_progress);
 
-                    if (game_progress.cleared_statues.length === 6) {
+                    if (game_progress.cleared_statues.length === all_statues_data.length) {
                         alert("YOU HAVE FINISHED THE FUCKING GAME");
+                        render_final_view();
                     }
                 }
 
@@ -144,6 +156,15 @@ function update_on_site () {
 
     document.getElementById("btn-interact").setAttribute("disabled", "true");
 
-    update_missions("wipe", {});
-    update_missions("post", {newText: mission_options["none"]()});
+    if (game_progress.cleared_statues.length === all_statues_data.length) {
+        update_missions("wipe", {});
+        update_missions("post", {newText: mission_options["none"]()});
+    }
+}
+
+export function render_final_view () {
+    if(game_progress.cleared_statues.length === all_statues_data.length) {
+        update_missions("wipe", {}); update_missions("post", {newText: mission_options["final_update"]()});
+        document.querySelector(".finalZone").classList.remove("hidden");
+    }
 }

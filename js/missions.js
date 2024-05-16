@@ -14,6 +14,10 @@ export let mission_options =
 
         finished() {
             return "Du klarade alla uppdrag!!"
+        },
+
+        final_update() {
+            return "Hitta QR-koden i den sista zonen för ditt pris..."
         }
     }
 
