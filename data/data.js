@@ -35,8 +35,8 @@ export const all_statues_data =
             image: "./media/karlxgustav.png",
             color: "#D48C8C",
             coordinates: {
-                latitude: 55.606749499890064,
-                longitude: 13.000073510709273
+                latitude: 55.60619668984432,
+                longitude: 13.000168597537746
             },
             statue_challenges: [
                 {
