@@ -9,8 +9,8 @@
                 2
             ],
             "current_statue": 6,
-            "current_phase": 1,
-            "dialogue_index": 2
+            "current_phase": 0,
+            "dialogue_index": 0
         }
     },
     {
@@ -135,6 +135,21 @@
             "current_statue": null,
             "current_phase": 0,
             "dialogue_index": 1
+        }
+    },
+    {
+        "username": "rastaman",
+        "password": "1234",
+        "user_id": 12,
+        "game_progress": {
+            "cleared_statues": [
+                1,
+                2
+            ],
+            "current_statue": null,
+            "current_phase": 0,
+            "dialogue_index": 0,
+            "phase_index": 0
         }
     }
 ]
