@@ -125,9 +125,9 @@ export const all_statues_data =
                     dialogue_lines: [
                         "Jag är Frans Suell, en handelsman från förr.",
                         "Jag levde för längesen men vandrar än idag Malmös gator.",
-                        "För länge sedan gjorde min inköpare ett misstag.",
-                        "Han gjorde ett skrivfel och beställde för mycket tobak.",
-                        "",
+                        "För länge sedan gjorde min inköpare ett grovt misstag.",
+                        "I sin beställning fanns ett skrivfel och för mycket tobak blev köpt.",
+                        "Bevisa för mig att dina kunskaper är bättre, så att jag må finna frid.",
                     ]
                 }
             ]
@@ -187,7 +187,7 @@ export const all_statues_data =
         {
             statue_id: 3,
             statue_name: "Katarkt",
-            image: "PATH HERE",
+            image: "./media/katarakt.png",
             color: "#84a8b9",
             coordinates: {
                 latitude: 55.60132802122993,
@@ -196,36 +196,20 @@ export const all_statues_data =
             statue_challenges: [
                 {
                     phase: 0,
+                    game: false,
+                    completed: false,
+
+                    interacted: false
                 },
                 {
                     phase: 1,
-                    name: "Fisk gåtan",
-                    game: false,
+                    name: "Spel",
                     iframe_src: "./games/mouse_game/",
-                    fullSize: true
-                },
-                {
-                    phase: 2,
-                    name: "Hitta Skattet",
-                    game: false,
+                    fullSize: true,
+                    game: true,
+                    completed: false,
 
-
-                    riddle_coordinates: [
-                        {
-                            name: "mask",
-                            latitude: 0, // Uppdatera dessa
-                            longitude: 0, // Uppdatera dessa
-                            found: false
-                        },
-                        {
-                            name: "mask",
-                            latitude: 0, // Uppdatera dessa
-                            longitude: 0, // Uppdatera dessa
-                            found: false,
-                        },
-                    ]
-                    ,
-                    completed: false
+                    interacted: false
                 }
             ],
             statue_dialogues: [
@@ -255,7 +239,7 @@ export const all_statues_data =
         {
             statue_id: 4,
             statue_name: "Tungsinnet",
-            image: "PATH HERE",
+            image: "./media/tungsinnet.png",
             color: "#e9d1ae",
             coordinates: {
                 latitude: 55.603156508261634,
@@ -264,46 +248,20 @@ export const all_statues_data =
             statue_challenges: [
                 {
                     phase: 0,
-                    name: "Skriv Spelet",
-                    game: true,
-                    riddle: false,
+                    game: false,
+                    completed: false,
 
-                    iframe_src: "./games/mouse_game/",
-                    fullSize: true,
-                    completed: false
+                    interacted: false
                 },
                 {
                     phase: 1,
-                    name: "Fisk gåtan",
-                    game: false,
+                    name: "Spel",
+                    iframe_src: "./games/riddle_game/",
+                    fullSize: true,
+                    game: true,
+                    completed: false,
 
-
-                    question: "Vilken typ av fisk använder man när man grillar lax?",
-                    answer: "Lax",
-                    completed: false
-                },
-                {
-                    phase: 2,
-                    name: "Hitta Skattet",
-                    game: false,
-
-
-                    riddle_coordinates: [
-                        {
-                            name: "mask",
-                            latitude: 0, // Uppdatera dessa
-                            longitude: 0, // Uppdatera dessa
-                            found: false
-                        },
-                        {
-                            name: "mask",
-                            latitude: 0, // Uppdatera dessa
-                            longitude: 0, // Uppdatera dessa
-                            found: false,
-                        },
-                    ]
-                    ,
-                    completed: false
+                    interacted: false
                 }
             ],
             statue_dialogues: [
@@ -330,7 +288,7 @@ export const all_statues_data =
         {
             statue_id: 5,
             statue_name: "Diana",
-            image: "PATH HERE",
+            image: "./media/radjur.png",
             color: "#baa3b8",
             coordinates: {
                 latitude: 55.60371767788408,
@@ -339,44 +297,20 @@ export const all_statues_data =
             statue_challenges: [
                 {
                     phase: 0,
-                    name: "Skriv Spelet",
-                    game: true,
-                    riddle: false,
+                    game: false,
+                    completed: false,
 
-                    iframe_src: "./games/mouse_game/",
-                    fullSize: true,
-                    completed: false
+                    interacted: false
                 },
                 {
                     phase: 1,
-                    name: "Fisk gåtan",
-                    game: false,
+                    name: "Spel",
+                    iframe_src: "./games/deer_jump/",
+                    fullSize: true,
+                    game: true,
+                    completed: false,
 
-
-                    question: "Vilken typ av fisk använder man när man grillar lax?",
-                    answer: "Lax",
-                    completed: false
-                },
-                {
-                    phase: 2,
-                    name: "Hitta Skattet",
-                    game: false,
-                    riddle_coordinates: [
-                        {
-                            name: "mask",
-                            latitude: 0, // Uppdatera dessa
-                            longitude: 0, // Uppdatera dessa
-                            found: false
-                        },
-                        {
-                            name: "mask",
-                            latitude: 0, // Uppdatera dessa
-                            longitude: 0, // Uppdatera dessa
-                            found: false,
-                        },
-                    ]
-                    ,
-                    completed: false
+                    interacted: false
                 }
             ],
             statue_dialogues: [
@@ -400,52 +334,5 @@ export const all_statues_data =
                     ]
                 }
             ]
-        },
-        {
-            statue_id: 6,
-            statue_name: "Test",
-            image: "./media/gaspojke.png",
-            color: "lime",
-
-            coordinates: {
-                latitude: 55.61068352280841,
-                longitude: 12.99540738127311
-            },
-            statue_challenges: [
-                {
-                    phase: 0,
-                    game: false,
-                    completed: false,
-
-                    interacted: false
-                },
-                {
-                    phase: 1,
-                    name: "Spel",
-                    iframe_src: "./games/rock_paper/",
-                    fullSize: true,
-                    game: true,
-                    completed: false,
-
-                    interacted: false
-                }
-            ],
-            statue_dialogues: [
-                {
-                    phase: 0,
-                    dialogue_lines: [
-                        "Hej",
-                        "Det här är phase 0",
-                    ],
-                },
-                {
-                    phase: 1,
-                    dialogue_lines: [
-                        "Det här är phase 1",
-                    ],
-                    fullSize: true
-                }
-            ]
-        },
-
+        }
     ]

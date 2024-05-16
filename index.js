@@ -1,20 +1,21 @@
 import {detect_distance} from "./js/distance.js";
 import {update_missions, mission_options} from "./js/missions.js";
-import {show_dialogue, display_dialogue_line} from "./js/functions.js";
+import {show_dialogue, display_dialogue_line, render_final_view} from "./js/functions.js";
 import {all_statues_data} from "./data/data.js";
 
-if (window.localStorage.getItem("game_code") === null) {
+if (window.localStorage.getItem("game_code") === null && window.localStorage.getItem("user_id") === null) {
     window.location.href = "./landing_page/";
 }
 
 // Kolla hur många utmaningar varje staty ska ha. Om det är endast två, då läggs en avklarad staty till i "cleared_statues" arrayen om phase-indexet är 1 osv osv.
 export let game_progress = JSON.parse(localStorage.getItem("game_progress"));
-// const main = [55.604096980734305, 12.996309487293441];
+// game_progress.cleared_statues = [0, 1, 2, 3, 4 ,5];
 
 
 "use strict"
 
 const main = [55.604096980734305, 12.996309487293441];
+const finalCoords = [55.610808474655926, 12.9954238741806];
 
 let currentPosition = [];
 
@@ -62,6 +63,15 @@ function createMap(position) {
         }).addTo(map);
 
     }
+    //hidden
+    L.circle(finalCoords, {
+        color: "yellow",
+        fillColor: "yellow",
+        fillOpacity: 0.6,
+        radius: 50,
+        className: "finalZone hidden"
+    }).addTo(map);
+    // big
     L.circle(main, {
         color: "black",
         stroke: false,
@@ -109,5 +119,7 @@ function createMap(position) {
     document.getElementById("next_text").addEventListener("click", e => {
         display_dialogue_line(game_progress.dialogue_index, game_progress.current_phase, game_progress.current_statue, 1);
     })
+
+    render_final_view();
 }
 
