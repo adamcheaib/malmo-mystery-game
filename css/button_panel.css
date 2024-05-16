@@ -13,11 +13,6 @@
     height: 40px;
     width: 40px;
     pointer-events: auto;
-
-    background: none; border: none; padding: 0;
-}
-.btns-ui:disabled {
-    opacity: .5;
 }
 
 .blink {

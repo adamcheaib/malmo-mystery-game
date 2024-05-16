@@ -1,6 +1,5 @@
 import {all_statues_data} from "../data/data.js";
 import {game_progress} from "../index.js";
-import { mission_options, update_missions } from "./missions.js";
 
 "use strict"
 
@@ -81,11 +80,10 @@ async function trigger_game(statue_data, height = 50) {
 
             if (window.localStorage.getItem("completed") !== null || window.localStorage.getItem("completed") !== undefined) {
                 game_progress.current_phase++;
-                if (current_phase === 1) { // The 2 indicates the total amount of challenges each statue has.
+                if (current_phase === 2) { // The 2 indicates the total amount of challenges each statue has.
                     game_progress.cleared_statues.push(game_progress.current_statue);
                     game_progress.current_phase = 0;
                     game_progress.current_statue = null;
-                    console.log(game_progress);
 
                     if (game_progress.cleared_statues.length === 6) {
                         alert("YOU HAVE FINISHED THE FUCKING GAME");
@@ -105,7 +103,6 @@ async function trigger_game(statue_data, height = 50) {
 
                 const request = new Request("./landing_page/game_data.php", options);
                 update_game_progress(request);
-                update_on_site();
             }
 
             localStorage.removeItem("completed");
@@ -132,18 +129,4 @@ async function update_game_progress(request) {
         console.log("Ooops... something went wrong!");
         update_game_progress(request);
     }
-}
-
-function update_on_site () {
-    game_progress.current_statue = null;
-    localStorage.setItem("game_progress", JSON.stringify(game_progress));
-
-    const latestClear = game_progress.cleared_statues[game_progress.cleared_statues.length - 1];
-    const clearedZone = document.querySelector(`.statueZone_${latestClear}`);
-    clearedZone.remove();
-
-    document.getElementById("btn-interact").setAttribute("disabled", "true");
-
-    update_missions("wipe", {});
-    update_missions("post", {newText: mission_options["none"]()});
 }

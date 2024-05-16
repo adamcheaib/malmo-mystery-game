@@ -1,6 +1,5 @@
 // fun variables wooho
 const audio = document.querySelector("audio");
-audio.volume = 0.1;
 const options = ["sten", "sax", "påse"];
 const chart =
     {
@@ -47,11 +46,7 @@ function gameOver(result, timer = 10) {
     document.getElementById("result").textContent = `DU ${result} SPELET`;
     document.querySelectorAll("#options > button").forEach(button => button.disabled = true);
 
-    if (result == "VANN") {
-        localStorage.setItem("completed", true);
-        localStorage.setItem("close_iframe", true)
-    }
-    ;
+    if (result == "VANN") localStorage.setItem("close_iframe", true);
 
     if (result == "FÖRLORAR") {
         const tryagain_btn = document.getElementById("tryagain");

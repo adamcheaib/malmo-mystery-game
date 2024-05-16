@@ -32,7 +32,7 @@ export const all_statues_data =
         {
             statue_id: 0,
             statue_name: "Gustav Adolf",
-            image: "./media/karlxgustav.png",
+            image: "PATH HERE",
             color: "#D48C8C",
             coordinates: {
                 latitude: 55.606749499890064,
@@ -41,41 +41,47 @@ export const all_statues_data =
             statue_challenges: [
                 {
                     phase: 0,
-                    game: false,
-                    completed: false,
+                    name: "Skriv Spelet",
+                    game: true,
 
-                    interacted: false
+                    iframe_src: "./games/rock_paper/",
+                    fullSize: true
                 },
                 {
                     phase: 1,
-                    name: "Spel",
-                    iframe_src: "./games/horse_race/",
-                    fullSize: true,
-                    game: true,
-                    completed: false,
+                    name: "Fisk gåtan",
+                    game: false,
 
-                    interacted: false
+
+                    question: "Vilken typ av fisk använder man när man grillar lax?",
+                    answer: "Lax",
+                },
+                {
+                    phase: 2,
+                    name: "Hitta Spanaren",
+                    game: false,
+
+                    riddle_coordinates: {
+                        latitude: 0, // Uppdatera dessa
+                        longitude: 0 // Uppdatera dessa
+                    }
                 }
             ],
             statue_dialogues: [
                 {
                     phase: 0,
                     dialogue_lines: [
-                        "Jag var en gång en mäktig kung, nu fast mellan stenar och tid.",
-                        "Vid min staty ska du söka, för att släppa mig fri.",
-                        "Mitt namn är ett minne från en svunnen tid.",
-                        "Vem är jag?"
+                        "Du där din äckliga gris!",
+                        "Du luktar skit!",
+                        "Åk hem till ditt hemland igen invandrarjävel!"
                     ],
                     challenge_attached: true
                 },
                 {
                     phase: 1,
                     dialogue_lines: [
-                        "Jag är Karl X Gustav, jag sitter på min ståtliga häst.",
-                        "Mitt livs sista krig förlorade jag mot danskarna.",
-                        "Min sista önskan är att vinna en gång för alla.",
-                        "En hästkapplöpning mot mina fiender må bli min sista kamp.",
-                        "Hurra på mig så att jag kan bli fri."
+                        "Tack för att du räddade Svea-riket från arab-jävlarna!",
+                        "Ditt nästa steg är att döda alla danskar!"
                     ]
                 }
             ]
@@ -83,7 +89,7 @@ export const all_statues_data =
         {
             statue_id: 1,
             statue_name: "Frans Suell",
-            image: "./media/franssuell.png",
+            image: "PATH HERE",
             color: "#dea279",
             coordinates: {
                 latitude: 55.60755033894429,
@@ -92,42 +98,64 @@ export const all_statues_data =
             statue_challenges: [
                 {
                     phase: 0,
-                    game: false,
-                    completed: false,
+                    name: "Skriv Spelet",
+                    game: true,
+                    riddle: false,
 
-                    interacted: false
+                    iframe_src: "./games/mouse_game/",
+                    fullSize: true,
+                    completed: false
                 },
                 {
                     phase: 1,
-                    name: "Spel",
-                    iframe_src: "./games/type_game/",
-                    fullSize: true,
-                    game: true,
-                    completed: false,
+                    name: "Fisk gåtan",
+                    game: false,
 
-                    interacted: false
+
+                    question: "Vilken typ av fisk använder man när man grillar lax?",
+                    answer: "Lax",
+                    completed: false
+                },
+                {
+                    phase: 2,
+                    name: "Hitta Skattet",
+                    game: false,
+
+
+                    riddle_coordinates: [
+                        {
+                            name: "mask",
+                            latitude: 0, // Uppdatera dessa
+                            longitude: 0, // Uppdatera dessa
+                            found: false
+                        },
+                        {
+                            name: "mask",
+                            latitude: 0, // Uppdatera dessa
+                            longitude: 0, // Uppdatera dessa
+                            found: false,
+                        },
+                    ]
+                    ,
+                    completed: false
                 }
             ],
             statue_dialogues: [
                 {
                     phase: 0,
                     dialogue_lines: [
-                        "På Malmös gator står jag, en herre, stadig och stolt.",
-                        "Med rockens veck och staven i min hand, vandrar mitt spöke.",
-                        "Här vandrar mitt spöke, bundet till denna epok.",
-                        "Sök mig där jag en gång satte min fot, bland minnen och tiders skatter.",
-                        "Vem är jag?"
+                        "Jag heter Frans Suell!",
+                        "Jag köpte tobak från USA för inte så längesen...!",
+                        "Jag råkade köpa för mycket på grund av min inköpare som är dum!",
+                        "Därför vill jag testa din skrivkunskaper innan du får prata med mig!"
                     ],
                     challenge_attached: true
                 },
                 {
                     phase: 1,
                     dialogue_lines: [
-                        "Jag är Frans Suell, en handelsman från förr.",
-                        "Jag levde för längesen men vandrar än idag Malmös gator.",
-                        "För länge sedan gjorde min inköpare ett misstag.",
-                        "Han gjorde ett skrivfel och beställde för mycket tobak.",
-                        "",
+                        "Tack för att du räddade Svea-riket från arab-jävlarna!",
+                        "Ditt nästa steg är att döda alla danskar!"
                     ]
                 }
             ]
@@ -135,7 +163,7 @@ export const all_statues_data =
         {
             statue_id: 2,
             statue_name: "Pojke med gäss",
-            image: "./media/gaspojke.png",
+            image: "PATH HERE",
             color: "#93AE88",
             coordinates: {
                 latitude: 55.602315039588795,
@@ -144,20 +172,46 @@ export const all_statues_data =
             statue_challenges: [
                 {
                     phase: 0,
-                    game: false,
-                    completed: false,
+                    name: "Skriv Spelet",
+                    game: true,
+                    riddle: false,
 
-                    interacted: false
+                    iframe_src: "./games/mouse_game/",
+                    fullSize: true,
+                    completed: false
                 },
                 {
                     phase: 1,
-                    name: "Spel",
-                    iframe_src: "./games/rock_paper/",
-                    fullSize: true,
-                    game: true,
-                    completed: false,
+                    name: "Fisk gåtan",
+                    game: false,
 
-                    interacted: false
+
+                    question: "Vilken typ av fisk använder man när man grillar lax?",
+                    answer: "Lax",
+                    completed: false
+                },
+                {
+                    phase: 2,
+                    name: "Hitta Skattet",
+                    game: false,
+
+
+                    riddle_coordinates: [
+                        {
+                            name: "mask",
+                            latitude: 0, // Uppdatera dessa
+                            longitude: 0, // Uppdatera dessa
+                            found: false
+                        },
+                        {
+                            name: "mask",
+                            latitude: 0, // Uppdatera dessa
+                            longitude: 0, // Uppdatera dessa
+                            found: false,
+                        },
+                    ]
+                    ,
+                    completed: false
                 }
             ],
             statue_dialogues: [
@@ -196,13 +250,23 @@ export const all_statues_data =
             statue_challenges: [
                 {
                     phase: 0,
+                    name: "Skriv Spelet",
+                    game: true,
+                    riddle: false,
+
+                    iframe_src: "./games/mouse_game/",
+                    fullSize: true,
+                    completed: false
                 },
                 {
                     phase: 1,
                     name: "Fisk gåtan",
                     game: false,
-                    iframe_src: "./games/mouse_game/",
-                    fullSize: true
+
+
+                    question: "Vilken typ av fisk använder man när man grillar lax?",
+                    answer: "Lax",
+                    completed: false
                 },
                 {
                     phase: 2,
@@ -414,20 +478,17 @@ export const all_statues_data =
             statue_challenges: [
                 {
                     phase: 0,
-                    game: false,
-                    completed: false,
-
-                    interacted: false
+                    name: "Fisk gåtan",
+                    question: "Vilken typ av fisk använder man när man grillar lax?",
+                    answer: "Lax",
+                    completed: false
                 },
                 {
                     phase: 1,
                     name: "Spel",
-                    iframe_src: "./games/rock_paper/",
+                    iframe_src: "./games/mouse_game/",
                     fullSize: true,
-                    game: true,
-                    completed: false,
-
-                    interacted: false
+                    completed: false
                 }
             ],
             statue_dialogues: [
