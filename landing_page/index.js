@@ -13,7 +13,10 @@ const pages = [
     {
         name: "problem",
         title: "Problem",
-        innerHTML: "<ol>Om appen inte funkar, prova något av dessa tips:\n" +
+        innerHTML: 
+            '<a href="./?pages=guide">Vet du inte hur man spelar? Tryck här för att komma till guiden.</a>' + 
+            "<p>Om appen inte funkar, prova något av dessa tips:</p>" +
+            "<ol>" +
             "    <li>Försäkra att du accepterat att dela platsinfo. Kolla i inställningarna för din webbläsare, för webbsidan och i din telefons inställningar. Om du inte tillåter att din plats används så kommer spelet inte fungera.</li>\n" +
             "    <li>Byta webbläsare. Om din default webbläsare inte fungerar så finns andra att ladda ner, t.ex. firefox, chrome, brave osv. Om en av dem har problem brukar det oftast fungera på en annan. All din spelinformation är sparad i din användare, så det är ingen fara om du byter webbläsare mitt i spelandet!</li>\n" +
             "    <li>Töm din cache. Ibland kan felaktig data sparats i din cache, prova att helt rensa ut den för webbsidan.</li>\n" +
@@ -24,7 +27,28 @@ const pages = [
     {
         name: "spelguide",
         title: "Spelguide",
-        innerHTML: 'Välkommen till spelguiden. Här hittar du all information du behöver för att komma igång med spelet och lösa mysterierna i Malmö.'
+        innerHTML: 
+        '<a href="./?pages=help">Har något gått fel? Tryck här för problemhantering.</a>' + 
+        '<p>Välkommen till spelguiden. Här hittar du all information du behöver för att komma igång med spelet och lösa mysterierna i Malmö.</p>' +
+        '<p>I Malmö Mysteriet har du uppdraget att befria spöken från jorden. Det finns 6 stycken spöken som fortfarande är fast i de levandes värld på grund av ofullbordade önskningar; din uppgift är att uppfylla önskningarna och befria spökena! Varje spöke är bebodda i varsin staty som du måste hitta innan du kan prata med spöket. Hitta alla 6, lös deras gåtor och uppfyll deras utmaningar.</p>' +
+        '<p>Varje spöke följer samma rutin, vänligen läs instruktionerna för att få en basic guide av hur spelet fungerar:</p>' +
+        '<ol>' +
+            '<li>Olika zoner finns markerade på kartan, inuti varje zon finns en staty, därmed också ett spöke. Gå in i en av zonerna för att påbörja ett spökes uppdrag.</li>' +
+            '<li>När du stigit in i en zon kommer du få en gåta av spöket. Denna gåta fungerar som en ledtråd för att hitta statyn som spöket finns inuti. Du får åtkomst till gåtan genom att trycka på pratbubblan som aktiveras när du befinner dig inuti en zon.</li>' +
+            '<li>När du tagit dig närmre statyn kommer dialogen ändras, tryck ännu en gång på pratbubblan för att ta del av den nya texten. Denna gång kommer du även presenteras ett relevant spel.</li>' +
+            '<li>Du måste vinna spelet för att befria spöket och ge den frid. När du gjort det är zonen avklarad.</li>' +
+            '<li>Upprepa processen för varje markerad zon, när du klarat av alla har du vunnit spelet!</li>' +
+        '</ol>' +
+        '<p>Kortare instruktioner, för den som har bråttom:</p>' +
+        '<ol>' +
+            '<li>Gå in i en av zonerna som finns på kartan.</li>' +
+            '<li>Tryck på pratbubblan när du är inne i en zon för en ledtråd.</li>' +
+            '<li>Tryck ännu en gång på pratbubblan när du hittat statyn.</li>' +
+            '<li>Klara av minispelet.</li>' +
+            '<li>Gå in i nästa zon för att upprepa processen.</li>' +
+        '</ol>' +
+        '<p>Om du får problem under spelets gång, vänligen läs sektionen om problemhantering. Medans du spelar finns det ett frågetecken symbol som du närsomhelst kan trycka på för att öppna upp instruktionerna i en ny flik.</p>' +
+        '<p>Ha kul!</p>'
     }
 ];
 
@@ -90,20 +114,14 @@ function load_phone_menu(event) {
 
     document.getElementById('guide_btn').addEventListener('click', () => {
         document.getElementById('title').innerHTML = 'SPELGUIDE';
-        document.getElementById('description').innerHTML = 'Välkommen till spelguiden. Här hittar du all information du behöver för att komma igång med spelet och lösa mysterierna i Malmö.';
+        document.getElementById('description').innerHTML = pages[1].innerHTML;
         document.getElementById('login_form').style.display = 'none';
         container.remove();
     });
 
     document.getElementById('problem_btn').addEventListener('click', () => {
         document.getElementById('title').innerHTML = 'PROBLEM';
-        document.getElementById('description').innerHTML = "<ol>Om appen inte funkar, prova något av dessa tips:<br> " +
-            "    <li>Försäkra att du accepterat att dela platsinfo. Kolla i inställningarna för din webbläsare, för webbsidan och i din telefons inställningar. Om du inte tillåter att din plats används så kommer spelet inte fungera.</li>\n" +
-            "    <li>Byta webbläsare. Om din default webbläsare inte fungerar så finns andra att ladda ner, t.ex. firefox, chrome, brave osv. Om en av dem har problem brukar det oftast fungera på en annan. All din spelinformation är sparad i din användare, så det är ingen fara om du byter webbläsare mitt i spelandet!</li>\n" +
-            "    <li>Töm din cache. Ibland kan felaktig data sparats i din cache, prova att helt rensa ut den för webbsidan.</li>\n" +
-            "    <li>Gå utomhus. Din live location har svårare att uppdateras inomhus, om du är utomhus är den mer precis. Hela spelet är ändå gjord för att spelas i utomhus miljö!</li>\n" +
-            "    <li>Om inget annat funkar, prova med någon annans mobil. Ibland vill vissa mobiler inte sammarbeta. Om du spelar i grupp, prova att använda någon annans mobil. Eftersom din speldata är sparad i din användare behöver du bara logga in på sidan igen och så förlorar du ingen värdefull speltid!</li>\n" +
-            "</ol>";
+        document.getElementById('description').innerHTML = pages[0].innerHTML;
         document.getElementById('login_form').style.display = 'none';
         container.remove();
     });
