@@ -4,7 +4,47 @@
         "password": "test",
         "user_id": 1,
         "game_progress": {
-            "cleared_statues": [0, 1, 2, 3, 4, 5],
+            "cleared_statues": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5
+            ],
+            "current_statue": 0,
+            "current_phase": 0,
+            "dialogue_index": 0
+        }
+    },
+    {
+        "username": "adadadada",
+        "password": "adaa",
+        "user_id": 2,
+        "game_progress": {
+            "cleared_statues": [],
+            "current_statue": 0,
+            "current_phase": 0,
+            "dialogue_index": 0
+        }
+    },
+    {
+        "username": "sade",
+        "password": "adam",
+        "user_id": 3,
+        "game_progress": {
+            "cleared_statues": [],
+            "current_statue": 0,
+            "current_phase": 0,
+            "dialogue_index": 0
+        }
+    },
+    {
+        "username": "adam",
+        "password": "adam",
+        "user_id": 4,
+        "game_progress": {
+            "cleared_statues": [],
             "current_statue": 0,
             "current_phase": 0,
             "dialogue_index": 0

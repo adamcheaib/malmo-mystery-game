@@ -13,8 +13,8 @@ const pages = [
     {
         name: "problem",
         title: "Problem",
-        innerHTML: 
-            '<a href="./?pages=guide">Vet du inte hur man spelar? Tryck här för att komma till guiden.</a>' + 
+        innerHTML:
+            '<a href="./?pages=guide">Vet du inte hur man spelar? Tryck här för att komma till guiden.</a>' +
             "<p>Om appen inte funkar, prova något av dessa tips:</p>" +
             "<ol>" +
             "    <li>Försäkra att du accepterat att dela platsinfo. Kolla i inställningarna för din webbläsare, för webbsidan och i din telefons inställningar. Om du inte tillåter att din plats används så kommer spelet inte fungera.</li>\n" +
@@ -27,28 +27,28 @@ const pages = [
     {
         name: "spelguide",
         title: "Spelguide",
-        innerHTML: 
-        '<a href="./?pages=help">Har något gått fel? Tryck här för problemhantering.</a>' + 
-        '<p>Välkommen till spelguiden. Här hittar du all information du behöver för att komma igång med spelet och lösa mysterierna i Malmö.</p>' +
-        '<p>I Malmö Mysteriet har du uppdraget att befria spöken från jorden. Det finns 6 stycken spöken som fortfarande är fast i de levandes värld på grund av ofullbordade önskningar; din uppgift är att uppfylla önskningarna och befria spökena! Varje spöke är bebodda i varsin staty som du måste hitta innan du kan prata med spöket. Hitta alla 6, lös deras gåtor och uppfyll deras utmaningar.</p>' +
-        '<p>Varje spöke följer samma rutin, vänligen läs instruktionerna för att få en basic guide av hur spelet fungerar:</p>' +
-        '<ol>' +
+        innerHTML:
+            '<a href="./?pages=help">Har något gått fel? Tryck här för problemhantering.</a>' +
+            '<p>Välkommen till spelguiden. Här hittar du all information du behöver för att komma igång med spelet och lösa mysterierna i Malmö.</p>' +
+            '<p>I Malmö Mysteriet har du uppdraget att befria spöken från jorden. Det finns 6 stycken spöken som fortfarande är fast i de levandes värld på grund av ofullbordade önskningar; din uppgift är att uppfylla önskningarna och befria spökena! Varje spöke är bebodda i varsin staty som du måste hitta innan du kan prata med spöket. Hitta alla 6, lös deras gåtor och uppfyll deras utmaningar.</p>' +
+            '<p>Varje spöke följer samma rutin, vänligen läs instruktionerna för att få en basic guide av hur spelet fungerar:</p>' +
+            '<ol>' +
             '<li>Olika zoner finns markerade på kartan, inuti varje zon finns en staty, därmed också ett spöke. Gå in i en av zonerna för att påbörja ett spökes uppdrag.</li>' +
             '<li>När du stigit in i en zon kommer du få en gåta av spöket. Denna gåta fungerar som en ledtråd för att hitta statyn som spöket finns inuti. Du får åtkomst till gåtan genom att trycka på pratbubblan som aktiveras när du befinner dig inuti en zon.</li>' +
             '<li>När du tagit dig närmre statyn kommer dialogen ändras, tryck ännu en gång på pratbubblan för att ta del av den nya texten. Denna gång kommer du även presenteras ett relevant spel.</li>' +
             '<li>Du måste vinna spelet för att befria spöket och ge den frid. När du gjort det är zonen avklarad.</li>' +
             '<li>Upprepa processen för varje markerad zon, när du klarat av alla har du vunnit spelet!</li>' +
-        '</ol>' +
-        '<p>Kortare instruktioner, för den som har bråttom:</p>' +
-        '<ol>' +
+            '</ol>' +
+            '<p>Kortare instruktioner, för den som har bråttom:</p>' +
+            '<ol>' +
             '<li>Gå in i en av zonerna som finns på kartan.</li>' +
             '<li>Tryck på pratbubblan när du är inne i en zon för en ledtråd.</li>' +
             '<li>Tryck ännu en gång på pratbubblan när du hittat statyn.</li>' +
             '<li>Klara av minispelet.</li>' +
             '<li>Gå in i nästa zon för att upprepa processen.</li>' +
-        '</ol>' +
-        '<p>Om du får problem under spelets gång, vänligen läs sektionen om problemhantering. Medans du spelar finns det ett frågetecken symbol som du närsomhelst kan trycka på för att öppna upp instruktionerna i en ny flik.</p>' +
-        '<p>Ha kul!</p>'
+            '</ol>' +
+            '<p>Om du får problem under spelets gång, vänligen läs sektionen om problemhantering. Medans du spelar finns det ett frågetecken symbol som du närsomhelst kan trycka på för att öppna upp instruktionerna i en ny flik.</p>' +
+            '<p>Ha kul!</p>'
     }
 ];
 
@@ -109,6 +109,7 @@ function load_phone_menu(event) {
         document.getElementById('title').innerHTML = originalTitle;
         document.getElementById('description').innerHTML = originalDescription;
         document.getElementById('login_form').outerHTML = originalLoginForm;
+        window.location.href = "./"
         container.remove();
     });
 
@@ -158,6 +159,7 @@ function toggle_log_reg(event) {
 
 // Toggle fetch here when attempting to register or login.
 async function submit_func(event) {
+    trigger_loading_screen();
     event.preventDefault();
     const notification = document.getElementById("notification");
     const request_body = {};
@@ -176,6 +178,7 @@ async function submit_func(event) {
 
     const response = await fetch("./login_handler.php", options);
     const resource = await response.json();
+    remove_loading_screen();
     notification.textContent = resource.response;
     console.log(response);
 
@@ -197,7 +200,6 @@ async function submit_func(event) {
             }
             window.localStorage.setItem("game_code", "1405");
             window.location.href = user_info.redirect;
-            // console.log(user_info.redirect);
         }
     } else {
         notification.className = "error";
@@ -208,4 +210,21 @@ async function submit_func(event) {
             }, 1500)
         }
     }
+}
+
+function trigger_loading_screen() {
+    document.querySelector("html").style.overflow = "hidden";
+    const loading_dialog = document.createElement("div");
+    const loading_icon = document.createElement("img");
+
+    loading_icon.src = "./landing_page_media/loading_icon.gif";
+    loading_dialog.appendChild(loading_icon);
+    loading_dialog.id = "loading_dialog";
+
+    document.body.appendChild(loading_dialog);
+}
+
+function remove_loading_screen() {
+    document.getElementById("loading_dialog").remove();
+    document.querySelector("html").style.overflow = "";
 }
