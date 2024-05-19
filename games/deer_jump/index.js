@@ -91,6 +91,8 @@ function init_game() {
         obstacle.Respawn();
         score++;
         document.getElementById("score").textContent = score;
+
+        if (score >= 10) {localStorage.setItem("completed", true); localStorage.setItem("close_iframe", true)}
     }
 
     // OBSTACLE SECTION END

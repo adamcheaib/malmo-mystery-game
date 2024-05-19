@@ -291,8 +291,8 @@ export const all_statues_data =
             image: "./media/radjur.png",
             color: "#baa3b8",
             coordinates: {
-                latitude: 55.60371767788408,
-                longitude: 12.992158258580288
+                latitude: 55.604506066537596,
+                longitude: 12.992848186072646
             },
             statue_challenges: [
                 {
