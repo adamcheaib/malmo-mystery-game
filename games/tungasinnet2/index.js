@@ -171,6 +171,7 @@ function transformPageForCompletion() {
         document.body.style.alignItems = "center";
         document.body.style.height = "100vh";
 
-        localStorage.setItem("riddleGameCompleted", true);
+        localStorage.setItem("completed", true);
+        localStorage.setItem("close_iframe", true);
     }, 3000);
 }
