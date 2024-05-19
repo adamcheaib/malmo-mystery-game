@@ -17,7 +17,7 @@ export let mission_options =
         },
 
         final_update() {
-            return "Hitta QR-koden i den sista zonen för ditt pris..."
+            return "Du befriade alla spöken. Bra jobbat!"
         }
     }
 

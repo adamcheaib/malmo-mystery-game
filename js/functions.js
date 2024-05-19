@@ -100,7 +100,6 @@ async function trigger_game(statue_data, height = 50) {
                     console.log(game_progress);
 
                     if (game_progress.cleared_statues.length === all_statues_data.length) {
-                        alert("YOU HAVE FINISHED THE FUCKING GAME");
                         render_final_view();
                     }
                 }
@@ -166,6 +165,6 @@ function update_on_site () {
 export function render_final_view () {
     if(game_progress.cleared_statues.length === all_statues_data.length) {
         update_missions("wipe", {}); update_missions("post", {newText: mission_options["final_update"]()});
-        document.querySelector(".finalZone").classList.remove("hidden");
+        // document.querySelector(".finalZone").classList.remove("hidden");
     }
 }
