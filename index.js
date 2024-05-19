@@ -15,7 +15,7 @@ export let game_progress = JSON.parse(localStorage.getItem("game_progress"));
 "use strict"
 
 const main = [55.604096980734305, 12.996309487293441];
-const finalCoords = [55.610808474655926, 12.9954238741806];
+// const finalCoords = [55.610808474655926, 12.9954238741806];
 
 let currentPosition = [];
 
@@ -64,13 +64,13 @@ function createMap(position) {
 
     }
     //hidden
-    L.circle(finalCoords, {
-        color: "yellow",
-        fillColor: "yellow",
-        fillOpacity: 0.6,
-        radius: 50,
-        className: "finalZone hidden"
-    }).addTo(map);
+    // L.circle(finalCoords, {
+    //     color: "yellow",
+    //     fillColor: "yellow",
+    //     fillOpacity: 0.6,
+    //     radius: 50,
+    //     className: "finalZone hidden"
+    // }).addTo(map);
     // big
     L.circle(main, {
         color: "black",
@@ -81,11 +81,8 @@ function createMap(position) {
 
     map.locate({watch: true, enableHighAccuracy: true, timeout: 2000, maximumAge: Infinity})
         .on("locationfound", e => {
-            console.log(e.latitude, e.longitude);
             currentPosition = [e.latitude, e.longitude];
             marker.setLatLng(currentPosition);
-
-            console.log(game_progress);
 
             all_statues_data.forEach(statue => {
                 // check if already cleared
@@ -122,6 +119,4 @@ function createMap(position) {
 
     render_final_view();
 }
-
-alert("VERSION 4!!!!!!!!");
 

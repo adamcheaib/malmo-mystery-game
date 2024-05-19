@@ -125,8 +125,8 @@ export const all_statues_data =
                     dialogue_lines: [
                         "Jag är Frans Suell, en handelsman från förr.",
                         "Jag levde för längesen men vandrar än idag Malmös gator.",
-                        "För länge sedan gjorde min inköpare ett grovt misstag.",
-                        "I sin beställning fanns ett skrivfel och för mycket tobak blev köpt.",
+                        "För länge sedan begick jag ett grovt misstag.",
+                        "I min beställning fanns ett skrivfel och för mycket tobak blev köpt.",
                         "Bevisa för mig att dina kunskaper är bättre, så att jag må finna frid.",
                     ]
                 }
@@ -175,10 +175,10 @@ export const all_statues_data =
                 {
                     phase: 1,
                     dialogue_lines: [
-                        // finns inte i dokumentet så jag bara skriver nåt
-                        "Jag är pojken med gäss. Min önskan är att gässen ska bli besegrade.",
-                        "Jag är en riktigt dålig förlorare men lyckas aldrig få en vinst.",
-                        "Gässen omkring mig vinner varenda gång, men nu ska de få på nöten!",
+                        "Jag är pojken med gäss. Vi leker ofta ihop.",
+                        "Vi spelar alla slags spel men gässen vinner varje gång!",
+                        "Det är kul att leka men jag vill få en vinst innan jag kan lämna mitt purgatorium.",
+                        "Om vi bildar ett lag kanske jag har en chans!",
                         "Vinn mot alla tre gäss i en lek för att befria min själ."
                     ]
                 }
@@ -229,8 +229,8 @@ export const all_statues_data =
                     dialogue_lines: [
                         // finns inte i dokumentet så jag bara skriver nåt
                         "Jag är Katarakt, en väktare av kanalen.",
-                        "Min dödsorsak var drunknande när jag försökte fånga fisk.",
-                        "Min hunger har aldrig avlidigt, jag vill att den ska avta.",
+                        "Hela mitt liv som hemlös katt var jag hungrig.",
+                        "Min hunger har aldrig avlidigt även efter döden, jag vill att den ska avta.",
                         "Om du fångar föda till mig blir jag mätt och belåten."
                     ]
                 }
@@ -280,7 +280,8 @@ export const all_statues_data =
                     dialogue_lines: [
                         "Jag kallas för tungsinnet, bunden till mina egna sorger och bekymmer.",
                         "Mitt hjärta är tyngd av olycka från fångenskap, sätt min ande fri från dessa osynliga bojor.",
-                        "Hjälp mig att finna föremålet som gav mig tröst och hopp, mitt ljuset i mörkret.",
+                        "Statyn jag befinner mig i är en känd skådespelare men mina egna teaterdrömmar gick aldrig i uppfyllelse.",
+                        "Hjälp mig att finna föremålen som ger mig tröst och hopp, ljuset i mitt mörker.",
                     ]
                 }
             ]
@@ -330,7 +331,8 @@ export const all_statues_data =
                         "Jag är Diana, naturens väktare.",
                         "Jag är alla djuren i parken, vindarnas sus och dagsstjärnans ljus.",
                         "Mitt hjärta slår i takt med naturens pulsslag, men min själ är fångad.",
-                        "Hjälp mig till parkens hjärta där jag kan vila i frid."
+                        "Jag har förlorat mina älskade rådjur i parkens grönska.",
+                        "Snälla för dem till mig så jag vet att de mår bra innan jag kan vila i frid.",
                     ]
                 }
             ]
