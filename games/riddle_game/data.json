@@ -7,20 +7,20 @@
     "riddle_coordinates": [
         {
             "name": "Teatermasken",
-            "riddle": "Vad döljer sig bakom masken när ljusen släcks?",
-            "answer": "Skuggan",
+            "riddle": "Vad döljer sig bakom masken när ljusen tänds?",
+            "answer": ["skugga", "skuggan", "skoggor"],
             "found": false
         },
         {
             "name": "Filmrullen",
             "riddle": "I en värld där bilder flyter, vad rullar förbi oss utan att röra sig?",
-            "answer": "Tid",
+            "answer": ["tiden", "tid"],
             "found": false
         },
         {
             "name": "Teaterbiljetten",
             "riddle": "Vilken biljett tar dig inte till din destination men tar dig till en ny värld?",
-            "answer": "Biljetten",
+            "answer": ["biobljett", "bio biljett", "bio biljetten", "biobiljetten", "biobiljetter", "bio biljetter"],
             "found": false
         }
     ],
