@@ -1,5 +1,3 @@
-
-
 let riddleData = {};
 let currentRiddleIndex = -1;
 
@@ -17,28 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
     loadData();
     setupButtons();
 });
-
-/* function setupButtons() {
-    const buttons = document.querySelectorAll('button');
-    buttons.forEach(button => {
-        const action = button.getAttribute('onclick');
-        if (action) {
-            button.removeAttribute('onclick');
-            button.addEventListener('click', () => {
-                if (action.includes('showRiddle')) {
-                    const index = action.match(/\d+/)[0];
-                    showRiddle(parseInt(index, 10));
-                } else if (action.includes('submitAnswer')) {
-                    submitAnswer();
-                } else if (action.includes('tryAgain')) {
-                    tryAgain();
-                } else if (action.includes('closePopup')) {
-                    closePopup();
-                }
-            });
-        }
-    });
-} */
 
 function setupButtons() {
     const buttons = document.querySelectorAll('button');
@@ -58,8 +34,7 @@ function setupButtons() {
                     closePopup();
                 }
             };
-            button.addEventListener('click', eventHandler);
-            button.addEventListener('touchend', eventHandler);
+            button.addEventListener('touchstart', eventHandler);
         }
     });
 }
@@ -167,7 +142,8 @@ function transformPageForCompletion() {
         document.body.style.height = "100vh";
 
 
-        localStorage.setItem("riddleGameCompleted", true);
+        localStorage.setItem("completed", true);
+        localStorage.setItem("close_iframe", true);
     }, 2000);
 }
 
