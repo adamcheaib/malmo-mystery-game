@@ -66,7 +66,8 @@ function submitAnswer() {
     const riddle = riddleData.riddle_coordinates[currentRiddleIndex];
     const userAnswer = document.getElementById('userAnswer').value;
 
-    if (userAnswer.toLowerCase() === riddle.answer.toLowerCase()) {
+    if (riddle.answer.includes(userAnswer.toLowerCase())) {
+    // if (userAnswer.toLowerCase() === riddle.answer.toLowerCase()) {
         riddle.found = true;
         document.getElementById('feedbackText').innerText = 'Rätt svar!';
         document.getElementById('userAnswer').style.display = 'none';
@@ -142,8 +143,8 @@ function transformPageForCompletion() {
         document.body.style.height = "100vh";
 
 
-        localStorage.setItem("completed", true);
         localStorage.setItem("close_iframe", true);
+        localStorage.setItem("completed", true);
     }, 2000);
 }
 
