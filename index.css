@@ -36,14 +36,11 @@ body {
     width: 100%;
     display: grid;
     padding: var(--padding);
-
     grid-template-rows: repeat(3, 1fr);
     grid-template-columns: repeat(4, 1fr);
-
     z-index: 1000;
     top: 0;
     pointer-events: none;
-
     padding: 20px;
 }
 
@@ -63,4 +60,8 @@ body {
 
 dialog {
     overflow-y: hidden;
+}
+
+dialog, iframe, #dialog_modal_container {
+    touch-action: manipulation;
 }

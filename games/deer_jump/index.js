@@ -12,11 +12,17 @@ export function generate_random_y_pos() {
 }
 
 function start_game(event) {
+    if (event.target.className === "audio_start") {
+        event.target.className = "";
+        return null;
+    }
+
     event.target.parentElement.remove();
     document.querySelectorAll(".gameplay").forEach(item => item.className = "");
     init_game();
     interval = setInterval(init_game, 20);
     bg_music.play();
+
 }
 
 let lives = 5;

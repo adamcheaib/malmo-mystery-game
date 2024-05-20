@@ -72,7 +72,8 @@ export function display_dialogue_line(dialogue_index, phase_index, statue_id) {
     }
 }
 
-async function trigger_game(statue_data, height = 50) {
+
+async function trigger_game(statue_data, height = 75) {
     const current_phase = game_progress.current_phase;
     const dialog_container = document.getElementById("dialog_modal_container");
     const dialog = document.getElementById("game_dialog");
