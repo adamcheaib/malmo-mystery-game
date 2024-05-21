@@ -10,7 +10,6 @@ if (window.localStorage.getItem("game_code") === null && window.localStorage.get
 // Kolla hur många utmaningar varje staty ska ha. Om det är endast två, då läggs en avklarad staty till i "cleared_statues" arrayen om phase-indexet är 1 osv osv.
 export let game_progress = JSON.parse(localStorage.getItem("game_progress"));
 
-
 // game_progress.cleared_statues = [0, 1, 2, 3, 4 ,5];
 
 
